@@ -1,0 +1,34 @@
+Signature = _ '(' args:args? _ ')' _ returnType:('=>' Return )? _ {return {"args":args, "returnType":returnType?returnType[1]:null};}
+
+args =  farg: arg other:extraArg* {return [farg].concat(other)}
+extraArg = (_ ',' _ r: arg) {return r;}
+
+arg = lit:char* opt:('?')? ':' t:Term {return { "name":lit.join(''),"type":t,"opt":opt?true:false}}
+
+Return = Code / Term
+
+Code = '{'  r:ResponseAndType other:(CommaAndResponse)* '}' { return {"type":"responses","codes":[r].concat(other)}}
+
+CommaAndResponse = ',' v:ResponseAndType {return v}
+
+ResponseAndType =   c0:char c1:char c2:char ':' t:Term { return {"type":"codeAndType","expr":t,"code":c0+c1+c2}}
+
+Term
+  = _ first:Factor rest:( _ ("|") _ r0:Term)? {
+      return rest?{"type": "union","first":first,"rest":rest[3]}:first
+    }
+
+Factor
+  = "(" _ expr:Term _ ")" arr:(_ '[]')* { return {"type":"parens","expr":expr,"arr":arr.length}; }
+  / Literal
+
+TypeParams ='<' first:Term  other:ExtraParam* '>' {return [first].concat(other)}
+ExtraParam =',' r:Term {return r;}
+
+Literal "name"
+  = r:(char)+ tp:TypeParams? c:(_ '[]')* { return { "type":"name","params":tp, "value":r.join(""),"arr":(c.length)}; }
+
+_ "whitespace"
+  = [ \t\n\r]*
+
+char=[A-Z] / '_' / '-' / '.'/[a-z]/ [0-9]

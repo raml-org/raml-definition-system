@@ -1,0 +1,49 @@
+Expression = c:ConditionalExpression {return c}
+UnaryExpression = c:PrimaryExpression {return c}
+                / Unop
+CallExpression = c:PrimaryExpression
+Unop=op:UnaryOperator exp:UnaryExpression {return {'type':'unary','op':op,'exp':exp}}
+MultiplicativeExpression    = l:UnaryExpression r:([*%/] MultiplicativeExpression)?{return r?({"type":r[0], "l":l ,"r":r[1]}):l }
+AdditiveExpression          = l:MultiplicativeExpression r:([-+] AdditiveExpression)?{return r?({"type":r[0], "l":l ,"r":r[1]}):l }
+RelationalExpression        = l:AdditiveExpression r:(("<=" / ">=" / "<" / ">") RelationalExpression)?{return r?({"type":r[0], "l":l ,"r":r[1]}):l }
+EqualityExpression          = l:RelationalExpression r:(("==" / "!=") EqualityExpression)?{return r?({"type":r[0], "l":l ,"r":r[1]}):l }
+ANDExpression               = l:EqualityExpression r:('&' ANDExpression)?{return r?({"type":r[0], "l":l ,"r":r[1]}):l }
+ExclusiveORExpression       = l:ANDExpression r:('^' ExclusiveORExpression)?{return r?({"type":r[0], "l":l ,"r":r[1]}):l }
+InclusiveORExpression       = l:ExclusiveORExpression r:('|' InclusiveORExpression)?{return r?({"type":r[0], "l":l ,"r":r[1]}):l }
+LogicalANDExpression        = l:InclusiveORExpression r:("&&" LogicalANDExpression)? {return r?({"type":r[0], "l":l ,"r":r[1]}):l }
+LogicalORExpression         = l:LogicalANDExpression r:("||" LogicalORExpression)? {return r?({"type":r[0], "l":l ,"r":r[1]}):l }
+ConditionalExpression       = p:LogicalORExpression e:('?' Expression ':' ConditionalExpression)? {return e?null:p}
+
+PrimaryExpression = Access
+                  / StringLiteral
+                  / NumberLiteral
+                  / CharLiteral
+                  / Paren
+
+Access = r:QualifiedName q:Qualifier? {return q?{type:"qualifier" ,"baseExp":r ,"qualifier":q}:r}
+Qualifier = r:Paren / r:Brackets {return r}
+Paren= '(' e:Expression ')' {return {'type':'paren','exp':e}}
+Brackets=  r:Bracket+ { return r.length==1?r[0]:{ type:"multidimensionAccess", dimValues: r}}
+Bracket= '[' e:Expression ']' {return {'type':'brackets','exp':e}}
+
+UnaryOperator = [-&*~!]
+ConstantExpression = ConditionalExpression
+QualifiedName = v0:('$'/[a-zA-Z_]) v1:([a-zA-Z0-9_]/ '.')* {return {'type':'ident',value: [v0].concat(v1).join('')}}
+StringLiteral = doublequote m:(DQChar)* doublequote  {m=m.map(function(x){return x[1]}); return {'type':'string','value':m.join('')}}
+doublequote='"'
+DQChar = r:EscapeSequence
+        / l:!doublequote .
+QChar = r:EscapeSequence
+        / r:!quote .
+EscapeSequence = backslash ( quote
+                            / doublequote
+                            / backslash
+                            / [abfnrtv]
+                            )
+backslash = '\\'
+quote = "'"
+CharLiteral = quote  m:(QChar)* quote {m=m.map(function(x){return x[1]}); return {'type':'string','value':m.join('')}}
+Integer = f:digit+ {return f.join('');}
+digit = [0-9]
+NumberLiteral = v:Integer f:("." Integer)? { if (!f) f=[]; var val=[v].concat(f).join(''); return {'type':'number','value':val} }
+Sign = "-"

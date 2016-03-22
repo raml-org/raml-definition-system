@@ -1,0 +1,24 @@
+start
+  = or
+
+
+or=left:sequence  "|" r:or { return {'type':'or','left':left,'right':r?r:null}}
+   /
+   left:sequence
+sequence=left:primary "." r: sequence {return {'type':'dot','left':left,'right':r}}
+         /
+         left:primary
+primary= childRef
+ /
+ doubleStar
+ /
+ star
+ /
+ doubleDollar
+ /
+ dollar
+dollar="$" {return {'type':'parent'}}
+doubleDollar="$$" {return {'type':'ancestor'}}
+doubleStar="**" {return {'type':'descendant'}}
+star= "*" {return {'type':'child'}}
+childRef=chars:[A-z]+ {return {'type':'classLiteral',"name":chars.join("")}}
