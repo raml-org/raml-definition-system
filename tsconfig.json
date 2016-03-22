@@ -9,6 +9,10 @@
     "sourceMap": true,
     "outDir":"dist/"
   },
+  "files":[
+      "scripts/builder.ts",
+      "src/index.ts"
+  ],
   "exclude": [
     "node_modules",
     "typings"
