@@ -10,8 +10,12 @@
     "outDir":"dist/"
   },
   "files":[
-      "scripts/builder.ts",
-      "src/index.ts"
+    "src/builder.ts",
+    "src/index.ts",
+    "src/definitionSystem.ts",
+    "src/annotationHandlers.ts",
+    "src/tsStruct2Def.ts",
+    "src/universe.ts"
   ],
   "exclude": [
     "node_modules",

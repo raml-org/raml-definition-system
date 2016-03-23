@@ -10,15 +10,12 @@ var locations = {
     "RAML08" : "./spec-0.8/api.ts"
 
 };
-var defPath=path.resolve(__dirname,"../../raml-definition/")
+var defPath=path.resolve(__dirname,"../raml-definition/")
 
 
-var jsonDefinitions:{ [key:string]:any}={}
 function getDecl(key:string){
 
-    if(jsonDefinitions[key]){
-        return toModule(jsonDefinitions[key]);
-    }
+
 
     var tsPath=path.resolve(defPath,locations[key]);
     var decls=fs.readFileSync(tsPath).toString();

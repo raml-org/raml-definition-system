@@ -15,6 +15,7 @@ export enum LocationKind{
 export class ExampleSpec extends Common.RAMLLanguageElement{
     content:string
     $content=[
+        MetaModel.example(),
         MetaModel.selfNode(),
         MetaModel.description("String representation of example"),
         MetaModel.required(),
@@ -112,6 +113,7 @@ export class TypeDeclaration extends Common.RAMLLanguageElement{
 
     schema: string
     $schema=[
+        MetaModel.typeExpression(),
         MetaModel.description("Alias for the equivalent \"type\" property, for compatibility with RAML 0.8. Deprecated - API definitions should use the \"type\" property, as the \"schema\" alias for that property name may be removed in a future RAML version. The \"type\" property allows for XML and JSON schemas."),
         MetaModel.valueDescription("Single string denoting the base type or type expression")
     ]
@@ -124,6 +126,7 @@ export class TypeDeclaration extends Common.RAMLLanguageElement{
 
     type:string;
     $type=[
+        MetaModel.typeExpression(),
         MetaModel.allowMultiple(),
         //MetaModel.needsClarification("I suggest to remove multiple type feature from RAML 1.0 in favour of parameter overloading"),
         MetaModel.canBeValue(),
@@ -165,6 +168,7 @@ export class TypeDeclaration extends Common.RAMLLanguageElement{
 
     example:string
     $example=[
+        MetaModel.example(),
         MetaModel.selfNode(),
         MetaModel.description("An example of this type instance represented as string. This can be used, e.g., by documentation generators to generate sample values for an object of this type. Cannot be present if the examples property is present."),
         MetaModel.valueDescription("* Valid value for this type<br>* String representing the serialized version of a valid value")

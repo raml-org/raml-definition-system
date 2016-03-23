@@ -2,17 +2,19 @@
   "name": "raml-definition-system",
   "version": "0.0.5",
   "private": false,
-  "main": "dist/src/index.js",
+  "main": "dist/definitionSystem.js",
   "scripts": {
     "test-cov": " ./node_modules/.bin/istanbul cover _mocha tests/*Tests.js",
     "build": "rm -rf dist/ && ./node_modules/typescript/bin/tsc ",
     "build-browser": "./node_modules/.bin/webpack --entry ./src/browser.js  --output-path ./browser --output-filename bundle.js --verbose --profile --display-modules "
   },
   "dependencies": {
+    "know-your-http-well": "^0.2.0",
+    "raml-typesystem": "0.0.13",
     "ts-structure-parser": "0.0.2",
     "underscore": "^1.8.3"
   },
-  "typings": "dist/src/index.d.ts",
+  "typings": "dist/definitionSystem.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/mulesoft-labs/typesystem-ts.git"

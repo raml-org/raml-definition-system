@@ -5,8 +5,8 @@ export interface JSONDump{
     RAML10:ts.Module
 }
 export var universeDumps:JSONDump={
-    RAML08: toModule(require("../RAML08")),
-    RAML10: toModule(require("../RAML10"))
+    RAML08: toModule(require("./RAML08")),
+    RAML10: toModule(require("./RAML10"))
 }
 
 function toModule(arr:any[]):any{

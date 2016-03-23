@@ -321,3 +321,7 @@ export function customHandling(){}
  * List of additional inherited classes
  */
 export function superclasses(classNames:string[]){}
+
+export function typeExpression(){};
+
+export function example(){};
