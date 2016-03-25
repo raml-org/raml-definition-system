@@ -1,4 +1,6 @@
-import typeSystem=require("../node_modules/raml-typesystem/dist/src/nominal-types")
+
+import rt=require("raml-typesystem")
+import typeSystem=rt.nt;
 function registerAdapters(a:typeSystem.Adaptable){
     if ((<any>a)["isUnion"]) {
         a.addAdapter(new RAMLService(<AbstractType>a))
