@@ -2,6 +2,7 @@
 import tsModel=require("ts-structure-parser")
 import def=require("./definitionSystem")
 import khttp=require ("know-your-http-well");
+import _=require("underscore")
 var services=def;
 export interface AnnotationHandler{
     (a:tsModel.Annotation,f:def.Property)
