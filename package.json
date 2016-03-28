@@ -1,6 +1,6 @@
 {
   "name": "raml-definition-system",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "private": false,
   "main": "dist/definitionSystem.js",
   "scripts": {
@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "know-your-http-well": "^0.2.0",
-    "raml-typesystem": "0.0.13",
+    "raml-typesystem": "0.0.16",
     "ts-structure-parser": "0.0.2",
     "underscore": "^1.8.3"
   },

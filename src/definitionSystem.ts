@@ -1,5 +1,5 @@
 
-import rt=require("raml-typesystem")
+export import  rt=require("raml-typesystem")
 import typeSystem=rt.nt;
 function registerAdapters(a:typeSystem.Adaptable){
     if ((<any>a)["isUnion"]) {
