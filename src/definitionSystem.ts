@@ -1059,6 +1059,7 @@ export var getUniverse:UniverseProvider = (()=>{
         if(universes[key]){
             return universes[key];
         }
+
         var src = jsonDefinitions[key];
         var universe = ts2def.toDefSystem(src,(key=="RAML08")?unDesc["Universe08"]:unDesc["Universe10"]);
         if(universe) {
