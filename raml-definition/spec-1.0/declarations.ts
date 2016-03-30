@@ -7,11 +7,6 @@ import  common=require("./common")
 
 export class AnnotationTypeDeclaration extends datamodel.TypeDeclaration implements Sys.DeclaresDynamicType<AnnotationTypeDeclaration>{
 
-    allowMultiple:boolean;
-    $allowMultiple=[
-        MetaModel.description("Whether multiple instances of annotations of this type may be applied simultaneously at the same location")
-    ];
-
     allowedTargets:AnnotationTarget[]
     $allowedTargets=[
         MetaModel.oneOf(
