@@ -5,7 +5,9 @@
   "main": "dist/definitionSystem.js",
   "scripts": {
     "test-cov": " ./node_modules/.bin/istanbul cover _mocha tests/*Tests.js",
-    "build": "rm -rf dist/ && ./node_modules/typescript/bin/tsc ",
+    "compile": "rm -rf dist/ && ./node_modules/typescript/bin/tsc ",
+    "generateJSON": "node dist/builder.js",
+    "build": "npm run compile && npm run generateJSON",
     "build-browser": "./node_modules/.bin/webpack --entry ./src/browser.js  --output-path ./browser --output-filename bundle.js --verbose --profile --display-modules "
   },
   "dependencies": {
