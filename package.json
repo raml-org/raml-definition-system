@@ -1,6 +1,6 @@
 {
   "name": "raml-definition-system",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "private": false,
   "main": "dist/definitionSystem.js",
   "scripts": {
@@ -12,24 +12,24 @@
   },
   "dependencies": {
     "know-your-http-well": "^0.2.0",
-    "raml-typesystem": "^0.0.17",
-    "ts-structure-parser": "^0.0.3",
+    "raml-typesystem": "^0.0.18",
+    "ts-structure-parser": "^0.0.4",
     "underscore": "^1.8.3"
   },
   "typings": "dist/definitionSystem.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mulesoft-labs/typesystem-ts.git"
+    "url": "https://github.com/mulesoft/raml-definition-system.git"
   },
   "keywords": [
     "raml",
-    "definititions",
+    "definition",
     "typesystem"
   ],
-  "homepage": "https://github.com/mulesoft-labs/typesystem-ts",
+  "homepage": "https://github.com/mulesoft/raml-definition-system",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/mulesoft-labs/typesystem-ts/issues"
+    "url": "https://github.com/mulesoft-labs/raml-definition-system/issues"
   },
   "devDependencies": {
     "typescript": "1.8.7",
