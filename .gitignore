@@ -5,6 +5,7 @@
 /src/**/*.d.ts
 
 *.iml
+*.log
 
 /typings/
 
