@@ -1,5 +1,5 @@
-import  MetaModel = require("../metamodel")
-import  Sys = require("./systemTypes")
+import MetaModel = require("../metamodel")
+import Sys = require("./systemTypes")
 
 /**
  * Created by kor on 07/07/15.
@@ -11,9 +11,10 @@ export class RAMLLanguageElement {
     //"If displayName is not specified, it defaults to the element's key (the name of the property itself)."),MetaModel.thisFeatureCovers("https://github.com/raml-org/raml-spec/issues/136")]
 
     description:Sys.MarkdownString
-    $description=[MetaModel.description("The description attribute describes the intended use or meaning of the $self. This value MAY be formatted using Markdown [MARKDOWN]")]
-
+    $description=[
+      MetaModel.description("The description attribute describes the intended use or " +
+      "meaning of the $self. This value MAY be formatted using Markdown.")
+    ]
 }
-export class RAMLSimpleElement{
 
-}
+export class RAMLSimpleElement{}

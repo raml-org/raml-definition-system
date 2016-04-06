@@ -1,7 +1,8 @@
 interface IProperty{
-    name:string
-    range: string
+  name:string
+  range: string
 }
+
 interface ITypeDef{
   name: string
   properties: IProperty[]
