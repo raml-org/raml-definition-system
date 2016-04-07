@@ -111,6 +111,13 @@ export class TypeDeclaration extends Common.RAMLLanguageElement{
     MetaModel.hide()
   ]
 
+  displayName:string
+  $displayName=[
+    MetaModel.description("The displayName attribute specifies the type display name. It is a friendly name used only for  " +
+        "display or documentation purposes. If displayName is not specified, it defaults to the element's key (the name of the " +
+        "property itself).")
+  ]
+
   facets:TypeDeclaration[];
   $facets=[
     MetaModel.declaringFields(),
