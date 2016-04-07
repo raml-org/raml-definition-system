@@ -233,6 +233,24 @@ export class TypeDeclaration extends Common.RAMLLanguageElement{
       "begins with \"(\" and ends with \")\" and whose name (the part between the beginning and ending parentheses) is a " +
       "declared annotation name.")
   ]
+
+  xml: XMLFacetInfo
+}
+export class XMLFacetInfo{
+  attribute:	boolean
+  $attribute=[MetaModel.description("If attribute is set to true, a type instance should be serialized as an XML attribute. It can only be true for scalar types.")]
+
+  wrapped:boolean
+  $wrapped=[MetaModel.description('If wrapped is set to true, a type instance should be wrapped in its own XML element. It can not be true for scalar types and it can not be true at the same moment when attribute is true.')]
+
+  name:	string
+  $name=[MetaModel.description("Allows to override the name of the XML element or XML attribute in it's XML representation.")]
+
+  $namespace: string
+  $namespace=[MetaModel.description("Allows to configure the name of the XML namespace.")]
+  prefix: string
+  $prefix=[MetaModel.description("Allows to configure the prefix which will be used during serialization to XML.")]
+
 }
 
 export class ScalarElement {
