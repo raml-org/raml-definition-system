@@ -123,7 +123,7 @@ class Api extends LibraryBase {
     MetaModel.valueDescription("Array of strings, with each being \"HTTP\" or \"HTTPS\", case-insensitive")
   ]
 
-  mediaType:Bodies.MimeType
+  mediaType:Bodies.MimeType[]
   $mediaType=[
     MetaModel.oftenKeys([
       "application/json",
