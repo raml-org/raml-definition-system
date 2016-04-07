@@ -183,8 +183,8 @@ class Overlay extends Api {
     MetaModel.description("contains description of why overlay exist")
   ]
 
-  masterRef:string;
-  $masterRef=[
+  extends:string;
+  $extends=[
     MetaModel.required(),
     MetaModel.description("Location of a valid RAML API definition (or overlay or extension), the overlay is applied to.")
   ]
@@ -201,8 +201,8 @@ class Extension extends Api{
     MetaModel.description("contains description of why extension exist")
   ]
 
-  masterRef:string;
-  $masterRef=[
+  extends:string;
+  $extends=[
     MetaModel.required(),
     MetaModel.description("Location of a valid RAML API definition (or overlay or extension), the extension is applied to")
   ]
