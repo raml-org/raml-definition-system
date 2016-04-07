@@ -10,3 +10,6 @@
 /typings/
 
 /dist/
+
+.project
+.settings
