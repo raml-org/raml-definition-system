@@ -3,45 +3,10 @@ import Sys = require("./systemTypes")
 import DataModel = require("./datamodel")
 import Common = require("./common")
 
-export interface MimeTypeModel {
-  type:string
-  tree?:string
-  subtype:string;
-  suffix?:string;
-  parameters?:string;
-}
-
 export class MimeType extends Sys.StringType {
-  isForm(){
-    if (this.value()=="application/x-www-form-urlencoded"||this.value()=='multipart/form-data'){
-      return true
-    }
-    //TODO USE PARSE
-    return false//more smart code here
-  }
-
-  isXML(){
-    //TODO USE PARSE
-
-    if (this.value()=="application/xml"){
-      return true
-    }
-    return false//more smart code here
-  }
-
-  isJSON(){
-    //TODO USE PARSE
-
-    if (this.value()=="application/json"){
-      return true
-    }
-    return false//more smart code here
-  }
-
   $=[MetaModel.description("This sub type of the string represents mime types")]
 }
 
-//TODO CHECK if it all actually extends RAML Language element
 export class Response extends Common.RAMLLanguageElement {
   code:Sys.StatusCodeString
   $code=[

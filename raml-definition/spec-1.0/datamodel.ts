@@ -405,13 +405,7 @@ export class BooleanTypeDeclaration extends TypeDeclaration{
   ]
 }
 
-export class ValueTypeDeclaration extends TypeDeclaration{
-  type="value"
-  $=[
-    MetaModel.description("Value must be a boolean"),
-    MetaModel.declaresSubTypeOf("TypeDeclaration")
-  ]
-}
+
 
 export class NumberTypeDeclaration extends TypeDeclaration{
   type="number"
@@ -470,23 +464,8 @@ export class IntegerTypeDeclaration extends NumberTypeDeclaration{
   ]
 }
 
-export class RAMLExpression extends TypeDeclaration{
-  type="ramlexpression"
-  $=[
-    MetaModel.requireValue("locationKind",LocationKind.APISTRUCTURE),
-    MetaModel.requireValue("location",
-    ModelLocation.ANNOTATION)
-  ]
-}
 
-export class SchemaElement extends TypeDeclaration{
-  type="schema"
 
-  $=[
-    MetaModel.requireValue("locationKind",LocationKind.APISTRUCTURE),
-    MetaModel.nameAtRuntime("SchemaString")
-  ]
-}
 
 export class DateTypeDeclaration extends TypeDeclaration{
   type="date"
@@ -497,7 +476,7 @@ export class DateTypeDeclaration extends TypeDeclaration{
     MetaModel.declaresSubTypeOf("TypeDeclaration")
   ]
 
-  dateFormat:Sys.DateFormatSpec;
+  format:string;
 }
 
 export class TypeInstance {
