@@ -1,6 +1,6 @@
 {
   "name": "raml-definition-system",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "main": "dist/definitionSystem.js",
   "scripts": {
     "compile": "rm -rf dist/ && ./node_modules/typescript/bin/tsc",
@@ -9,8 +9,8 @@
   },
   "dependencies": {
     "know-your-http-well": "^0.2.0",
-    "raml-typesystem": "^0.0.18",
-    "ts-structure-parser": "^0.0.4",
+    "raml-typesystem": "^0.0.20",
+    "ts-structure-parser": "^0.0.5",
     "underscore": "^1.8.3"
   },
   "typings": "dist/definitionSystem.d.ts",
