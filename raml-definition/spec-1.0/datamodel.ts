@@ -298,11 +298,6 @@ export class UnionTypeDeclaration extends TypeDeclaration {
     MetaModel.requireValue("locationKind",LocationKind.MODELS),
     MetaModel.declaresSubTypeOf("TypeDeclaration")
   ]
-
-  discriminator:string;//FIXME should be pointer at some moment
-  $discriminator=[
-    MetaModel.description("Type property name to be used as a discriminator or boolean")
-  ]
 }
 export class ObjectTypeDeclaration extends TypeDeclaration{
   type="object"
