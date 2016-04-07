@@ -197,6 +197,12 @@ export class AbstractSecurityScheme extends Common.RAMLLanguageElement implement
       "the headers, query parameters or responses. As a best practice, even for standard security schemes, API designers SHOULD " +
       "describe these properties of security schemes. Including the security scheme description completes an API documentation.")
   ]
+  displayName:string
+  $displayName=[
+    MetaModel.description("The displayName attribute specifies the security scheme display name. It is a friendly name used only for  " +
+        "display or documentation purposes. If displayName is not specified, it defaults to the element's key (the name of the " +
+        "property itself).")
+  ]
 
   settings:SecuritySchemeSettings;
   $settings=[
@@ -286,6 +292,13 @@ export class Trait extends MethodBase implements Sys.DeclaresDynamicType<Trait>{
   name:string
   $name=[MetaModel.key(),MetaModel.description("Name of the trait")]
 
+  displayName:string
+  $displayName=[
+    MetaModel.description("The displayName attribute specifies the trait display name. It is a friendly name used only for  " +
+        "display or documentation purposes. If displayName is not specified, it defaults to the element's key (the name of the " +
+        "property itself).")
+  ]
+
   usage:string
   $usage = [ MetaModel.description("Instructions on how and when the trait should be used.") ]
 
@@ -320,6 +333,13 @@ export class ResourceTypeRef extends Sys.Reference<ResourceType>{
 
 export class ResourceType extends ResourceBase implements Sys.DeclaresDynamicType<ResourceType> {
   $=[MetaModel.inlinedTemplates(),MetaModel.allowQuestion()]
+
+  displayName:string
+  $displayName=[
+    MetaModel.description("The displayName attribute specifies the resource type display name. It is a friendly name used only for  " +
+        "display or documentation purposes. If displayName is not specified, it defaults to the element's key (the name of the " +
+        "property itself).")
+  ]
 
   name:string
   $name=[
@@ -403,6 +423,13 @@ export class Resource extends ResourceBase {
     MetaModel.hide()
   ]
 
+  displayName:string
+  $displayName=[
+    MetaModel.description("The displayName attribute specifies the resource display name. It is a friendly name used only for  " +
+        "display or documentation purposes. If displayName is not specified, it defaults to the element's key (the name of the " +
+        "property itself).")
+  ]
+
   resources:Resource[];
   $resources=[
     MetaModel.newInstanceName("New Resource"),
@@ -480,9 +507,14 @@ export class Method extends MethodBase {
     MetaModel.hide()
   ]
 
+  displayName:string
   $displayName=[
-    MetaModel.description("An alternate, human-friendly name for the method (in the resource's context).")
+    MetaModel.description("The displayName attribute specifies the method display name. It is a friendly name used only for  " +
+        "display or documentation purposes. If displayName is not specified, it defaults to the element's key (the name of the " +
+        "property itself).")
   ]
+
+
 
   $description=[
     MetaModel.description("A longer, human-friendly description of the method (in the resource's context)"),
