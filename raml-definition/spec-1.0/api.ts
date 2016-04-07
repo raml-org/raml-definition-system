@@ -79,13 +79,7 @@ export class LibraryBase extends Common.RAMLLanguageElement{
     MetaModel.valueDescription("An object whose properties map security scheme names to security scheme declarations; or an array of such objects")
   ]
 
-  uses:Library[];
-  $uses=[
-    MetaModel.embeddedInMaps(),
-    MetaModel.description("Importing libraries"),
-    MetaModel.setsContextValue("decls","true"),
-    MetaModel.valueDescription("An array of libraries or a single library")
-  ]
+ 
 }
 
 ///////////////////

@@ -291,13 +291,7 @@ export class Trait extends MethodBase implements Sys.DeclaresDynamicType<Trait>{
 
   $=[MetaModel.inlinedTemplates(),MetaModel.allowQuestion()]
 
-  uses:Api.Library[];
-  $uses=[
-    MetaModel.embeddedInMaps(),
-    MetaModel.description("You may import library locally here it contents is accessible only inside of this trait"),
-    MetaModel.setsContextValue("decls","true"),
-    MetaModel.valueDescription("An array of libraries or a single library")
-  ]
+
 
   parametrizedProperties:DataModel.TypeInstance
   $parametrizedProperties = [
@@ -332,13 +326,7 @@ export class ResourceType extends ResourceBase implements Sys.DeclaresDynamicTyp
     MetaModel.description("Instructions on how and when the resource type should be used.")
   ]
 
-  uses:Api.Library[];
-  $uses=[
-    MetaModel.embeddedInMaps(),
-    MetaModel.description("You may import library locally here it contents is accessible only inside of this resource type"),
-    MetaModel.setsContextValue("decls","true"),
-    MetaModel.valueDescription("An array of libraries")
-  ]
+  
 
   parametrizedProperties:DataModel.TypeInstance
   $parametrizedProperties = [
