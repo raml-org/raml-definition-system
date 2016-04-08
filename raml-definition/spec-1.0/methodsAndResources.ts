@@ -39,14 +39,7 @@ export class SecuritySchemePart extends MethodBase {
     MetaModel.hide()
   ]
 
-  $displayName=[
-    MetaModel.description("An alternate, human-friendly name for the security scheme part")
-  ]
 
-  $description=[
-      MetaModel.description("A longer, human-friendly description of the security scheme part"),
-      MetaModel.valueDescription("Markdown string")
-  ]
 
   $annotations=[
     MetaModel.description("Annotations to be applied to this security scheme part. Annotations are any property whose " +
@@ -184,6 +177,10 @@ export class AbstractSecurityScheme extends Common.RAMLLanguageElement implement
     MetaModel.description("The securitySchemes property MUST be used to specify an API's security mechanisms, including the required settings and the authentication methods that the API supports. one authentication method is allowed if the API supports them."),
     MetaModel.valueDescription("string<br><br>The value MUST be one of<br>* OAuth 1.0,<br>* OAuth 2.0,<br>* BasicSecurityScheme Authentication<br>* DigestSecurityScheme Authentication<br>* Pass Through<br>* x-&lt;other&gt;")
   ]
+  $displayName=[
+    MetaModel.description("An alternate, human-friendly name for the security scheme")
+  ]
+
 
   description:Sys.MarkdownString;
   $description=[
