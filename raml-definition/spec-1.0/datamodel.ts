@@ -172,7 +172,7 @@ export class TypeDeclaration extends Common.RAMLLanguageElement{
     MetaModel.hide()
   ]
 
-  example:string
+  example:any
   $example=[
     MetaModel.example(),
     MetaModel.selfNode(),
@@ -187,7 +187,7 @@ export class TypeDeclaration extends Common.RAMLLanguageElement{
     MetaModel.description("Returns object representation of example, if possible")
   ];
 
-  
+
 
 
   repeat:boolean
