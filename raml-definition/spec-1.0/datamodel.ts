@@ -464,8 +464,47 @@ export class IntegerTypeDeclaration extends NumberTypeDeclaration{
   ]
 }
 
+export class DateOnly extends TypeDeclaration{
+  type="date-only"
+
+  $=[
+    MetaModel.description(`the "full-date" notation of RFC3339, namely yyyy-mm-dd (no implications about time or timezone-offset)`),
+    MetaModel.declaresSubTypeOf("TypeDeclaration")
+  ]
 
 
+}
+export class TimeOnly extends TypeDeclaration{
+  type="time-only"
+
+  $=[
+    MetaModel.description(`the "partial-time" notation of RFC3339, namely hh:mm:ss[.ff...] (no implications about date or timezone-offset)`),
+    MetaModel.declaresSubTypeOf("TypeDeclaration")
+  ]
+
+
+}
+export class DateTimeOnly extends TypeDeclaration{
+  type="datetime-only"
+
+  $=[
+    MetaModel.description(`combined date-only and time-only with a separator of "T", namely yyyy-mm-ddThh:mm:ss[.ff...] (no implications about timezone-offset)`),
+    MetaModel.declaresSubTypeOf("TypeDeclaration")
+  ]
+
+
+}
+export class DateTime extends TypeDeclaration{
+  type="datetime"
+
+  $=[
+    MetaModel.description(`a timestamp, either in the "date-time" notation of RFC3339, if format is omitted or is set to rfc3339, or in the format defined in RFC2616, if format is set to rfc2616.`),
+    MetaModel.declaresSubTypeOf("TypeDeclaration")
+  ]
+
+  format:string;
+  $format=[MetaModel.oneOf(['rfc3339','rfc2616']),MetaModel.description('Format used for this date time rfc3339 or rfc2616')]
+}
 
 export class DateTypeDeclaration extends TypeDeclaration{
   type="date"
