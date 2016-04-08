@@ -13,7 +13,7 @@ export enum LocationKind{
 }
 
 export class ExampleSpec extends Common.RAMLLanguageElement {
-  content:string
+  value:any
   $content=[
     MetaModel.example(),
     MetaModel.selfNode(),
@@ -187,13 +187,7 @@ export class TypeDeclaration extends Common.RAMLLanguageElement{
     MetaModel.description("Returns object representation of example, if possible")
   ];
 
-  examples: ExampleSpec[]
-  $examples=[
-      MetaModel.description("An object containing named examples of instances of this type. This can be used, e.g., by " +
-        "documentation generators to generate sample values for an object of this type. Cannot be present if the examples property " +
-        "is present."),
-      MetaModel.valueDescription("An object whose properties map example names to Example objects; or an array of Example objects.")
-  ]
+  
 
 
   repeat:boolean
