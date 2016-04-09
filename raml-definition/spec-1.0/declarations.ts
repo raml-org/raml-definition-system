@@ -96,33 +96,25 @@ export class ObjectAnnotationTypeDeclaration extends DataModel.ObjectTypeDeclara
 
 export class StringAnnotationTypeDeclaration extends DataModel.StringTypeDeclaration {
     $ = [
-      MetaModel.superclasses(["ValueAnnotationTypeDeclaration"])
+      MetaModel.superclasses(["AnnotationTypeDeclaration"])
     ]
 }
 
 export class BooleanAnnotationTypeDeclaration extends DataModel.BooleanTypeDeclaration {
   $ = [
-    MetaModel.superclasses(["ValueAnnotationTypeDeclaration"])
-  ]
-}
-
-export class ValueAnnotationTypeDeclaration extends DataModel.ValueTypeDeclaration {
-  $ = [
     MetaModel.superclasses(["AnnotationTypeDeclaration"])
   ]
 }
+
+
 
 export class NumberAnnotationTypeDeclaration extends DataModel.NumberTypeDeclaration {
   $ = [
-    MetaModel.superclasses(["ValueAnnotationTypeDeclaration"])
-  ]
-}
-
-export class RAMLExpressionAnnotation extends DataModel.RAMLExpression {
-  $ = [
     MetaModel.superclasses(["AnnotationTypeDeclaration"])
   ]
 }
+
+
 
 export class DateTypeAnnotationDeclaration extends DataModel.DateTypeDeclaration {
   $ = [

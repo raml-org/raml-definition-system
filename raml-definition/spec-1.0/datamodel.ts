@@ -233,6 +233,24 @@ export class TypeDeclaration extends Common.RAMLLanguageElement{
       "begins with \"(\" and ends with \")\" and whose name (the part between the beginning and ending parentheses) is a " +
       "declared annotation name.")
   ]
+
+  xml: XMLFacetInfo
+}
+export class XMLFacetInfo{
+  attribute:	boolean
+  $attribute=[MetaModel.description("If attribute is set to true, a type instance should be serialized as an XML attribute. It can only be true for scalar types.")]
+
+  wrapped:boolean
+  $wrapped=[MetaModel.description('If wrapped is set to true, a type instance should be wrapped in its own XML element. It can not be true for scalar types and it can not be true at the same moment when attribute is true.')]
+
+  name:	string
+  $name=[MetaModel.description("Allows to override the name of the XML element or XML attribute in it's XML representation.")]
+
+  $namespace: string
+  $namespace=[MetaModel.description("Allows to configure the name of the XML namespace.")]
+  prefix: string
+  $prefix=[MetaModel.description("Allows to configure the prefix which will be used during serialization to XML.")]
+
 }
 
 export class ScalarElement {
@@ -297,11 +315,6 @@ export class UnionTypeDeclaration extends TypeDeclaration {
     MetaModel.convertsToGlobalOfType("SchemaString"),
     MetaModel.requireValue("locationKind",LocationKind.MODELS),
     MetaModel.declaresSubTypeOf("TypeDeclaration")
-  ]
-
-  discriminator:string;//FIXME should be pointer at some moment
-  $discriminator=[
-    MetaModel.description("Type property name to be used as a discriminator or boolean")
   ]
 }
 export class ObjectTypeDeclaration extends TypeDeclaration{
@@ -405,13 +418,7 @@ export class BooleanTypeDeclaration extends TypeDeclaration{
   ]
 }
 
-export class ValueTypeDeclaration extends TypeDeclaration{
-  type="value"
-  $=[
-    MetaModel.description("Value must be a boolean"),
-    MetaModel.declaresSubTypeOf("TypeDeclaration")
-  ]
-}
+
 
 export class NumberTypeDeclaration extends TypeDeclaration{
   type="number"
@@ -470,23 +477,8 @@ export class IntegerTypeDeclaration extends NumberTypeDeclaration{
   ]
 }
 
-export class RAMLExpression extends TypeDeclaration{
-  type="ramlexpression"
-  $=[
-    MetaModel.requireValue("locationKind",LocationKind.APISTRUCTURE),
-    MetaModel.requireValue("location",
-    ModelLocation.ANNOTATION)
-  ]
-}
 
-export class SchemaElement extends TypeDeclaration{
-  type="schema"
 
-  $=[
-    MetaModel.requireValue("locationKind",LocationKind.APISTRUCTURE),
-    MetaModel.nameAtRuntime("SchemaString")
-  ]
-}
 
 export class DateTypeDeclaration extends TypeDeclaration{
   type="date"
@@ -497,7 +489,7 @@ export class DateTypeDeclaration extends TypeDeclaration{
     MetaModel.declaresSubTypeOf("TypeDeclaration")
   ]
 
-  dateFormat:Sys.DateFormatSpec;
+  format:string;
 }
 
 export class TypeInstance {
