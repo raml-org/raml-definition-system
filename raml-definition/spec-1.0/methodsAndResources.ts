@@ -11,34 +11,15 @@ import Api = require("./api")
 //// Security Scheme
 //////////////////
 
-export class SecuritySchemePart extends MethodBase {
-  $headers=[
-    MetaModel.markdownDescription("Optional array of headers, documenting the possible headers that could be accepted."),
-    MetaModel.valueDescription("Object whose property names are the request header names and whose values describe the values.")
-  ]
+export class SecuritySchemePart extends Params.HasNormalParameters {
 
-  $queryParameters=[
-    MetaModel.markdownDescription("Query parameters, used by the scheme in order to authorize the request. Mutually exclusive with queryString."),
-    MetaModel.valueDescription("Object whose property names are the query parameter names and whose values describe the values.")
-  ]
-
-  $queryString=[
-    MetaModel.description("Specifies the query string, used by the scheme in order to authorize the request. Mutually exclusive with queryParameters."),
-    MetaModel.valueDescription("Type name or type declaration")
-  ]
-
+  responses:Bodies.Response[]
   $responses=[
-    MetaModel.description("Optional array of responses, describing the possible responses that could be sent.")
+    MetaModel.setsContextValue("response","true"),
+    MetaModel.newInstanceName("New Response"),
+    MetaModel.description("Information about the expected responses to a request"),
+    MetaModel.valueDescription("An object whose keys are the HTTP status codes of the responses and whose values describe the responses.")
   ]
-
-  $is=[
-    MetaModel.hide()
-  ]
-
-  $securedBy=[
-    MetaModel.hide()
-  ]
-
 
 
   $annotations=[
