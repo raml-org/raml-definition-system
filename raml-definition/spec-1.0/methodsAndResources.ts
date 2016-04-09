@@ -547,27 +547,3 @@ export class Method extends MethodBase {
   ]
 }
 
-///////////////////
-//// Others
-//////////////////
-
-export class ResourceTypeOrTrait {
-  usage:string
-  $usage=[
-    MetaModel.description("Instructions on how and when to use this resource type in a RAML spec"),
-    MetaModel.valueDescription("Markdown string")
-  ]
-
-  uses:Api.Library[];
-  $uses=[
-    MetaModel.embeddedInMaps(),
-    MetaModel.description("You may import library locally here it contents is accessible only inside of this trait"),
-    MetaModel.valueDescription("An array of libraries")
-  ]
-
-  parameters:string[]
-  $parameters=[
-    MetaModel.description("Optional declaration of the parameters that the resource type employs."),
-    MetaModel.valueDescription("An object whose property names are the parameter names and whose property values describe the parameter data types.")
-  ]
-}
