@@ -6,12 +6,7 @@ import  Decls=require("./declarations")
  * Created by kor on 07/07/15.
  */
 export class RAMLLanguageElement {
-  displayName:string
-  $displayName=[
-    MetaModel.description("The displayName attribute specifies the $self's display name. It is a friendly name used only for  " +
-      "display or documentation purposes. If displayName is not specified, it defaults to the element's key (the name of the " +
-      "property itself).")
-  ]
+  
 
   description:Sys.MarkdownString
   $description=[

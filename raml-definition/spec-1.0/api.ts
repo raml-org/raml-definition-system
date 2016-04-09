@@ -146,9 +146,7 @@ class Api extends LibraryBase {
     MetaModel.description(`Additional overall documentation for the API`)
   ]
 
-  $displayName=[
-    MetaModel.hide()
-  ]
+  
 
   $description=[
     MetaModel.description("A longer, human-friendly description of the API")
