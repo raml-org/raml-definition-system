@@ -3,11 +3,6 @@ import Common = require("./common")
 
 export class ValueType {
 
-  /**
-   * parses inner structure of value type if value type has invalid value you should throw error
-   * with descriptive message
-   */
-  parse():any{}
 
 }
 
@@ -16,9 +11,6 @@ export class StringType extends ValueType {
     MetaModel.nameAtRuntime("string")
   ]
 
-  value():string {
-    return null
-  }
 }
 
 export class AnyType extends ValueType {
@@ -26,9 +18,6 @@ export class AnyType extends ValueType {
     MetaModel.nameAtRuntime("any")
   ]
 
-  value():any {
-    return null
-  }
 }
 export class NumberType extends ValueType {
   $=[
@@ -71,109 +60,19 @@ export class UriTemplate extends StringType {
     MetaModel.description("This type currently serves both for absolute and relative urls")
   ]
 
-  templateArguments():string[]{
-    var pos=0
-    var str=this.value()
-    var result=[]
-    while(true){
-      var start=str.indexOf("{",pos)
-      if (start!=-1){
-        var end=str.indexOf("}",start+1)
-        result.push(str.substring(start+1,end))
-        pos=end
-      }
-      else{
-        break
-      }
-    }
-    return result
-  }
 
-  validate(){
-    var str=this.value()
-    //write something to validate Url here
-  }
 }
 export class RelativeUriString extends UriTemplate{
   $=[
     MetaModel.description("This  type describes relative uri templates")
   ]
 
-  parse():string[]{
-    //FIXME INHERITANCE
-    var value=this.value()
-    var result=[]
-    var temp=""
-    var inPar=false
-    var count=0
-    for (var a=0;a<value.length;a++){
-        var c=value[a]
-        if (c=='{'){
-            count++
-            inPar=true
-            continue
-        }
-        if (c=='}'){
-            count--
-            inPar=false
-            result.push(temp)
-            temp=""
-            continue
-        }
-        if (inPar){
-            temp+=c
-        }
-    }
-    if (count>0){
-        throw new Error("Unmatched '{'")
-    }
-    if (count<0){
-        throw new Error("Unmatched '}'")
-    }
-    return result
-  }
+
 }
 export class FullUriTemplateString extends UriTemplate{
   $=[MetaModel.description("This  type describes absolute uri templates")]
-  parse():string[]{//FIXME INHERITANCE
-    var value=this.value()
-    var result=[]
-    var temp=""
-    var inPar=false
-    var count=0
 
-    for (var a=0;a<value.length;a++){
-      var c=value[a]
-      if (c=='{'){
-          count++
-          inPar=true
-          continue
-      }
-      if (c=='}'){
-          count--
-          inPar=false
-          result.push(temp)
-          temp=""
-          continue;
-      }
-      if (inPar){
-          temp+=c
-      }
-    }
 
-    if (count>0){
-        throw new Error("Unmatched '{'")
-    }
-    if (count<0){
-        throw new Error("Unmatched '}'")
-    }
-    return result
-  }
-
-  validate(){
-    var str=this.value()
-    //write something to validate Url here
-  }
 }
 export class FixedUri extends StringType{
   $=[
@@ -194,11 +93,7 @@ export class SchemaString extends StringType{
     MetaModel.description("Schema at this moment only two subtypes are supported (json schema and xsd)")
   ]
 
-  validate(){
-    var str=this.value()
-    //write something to validate schema here here
-    //in fact it should check that content is valid json or xsd schema
-  }
+
 }
 
 export class JSonSchemaString extends SchemaString{
@@ -226,23 +121,7 @@ export class JSONExample extends ExampleString {
 
   $$:any
 
-  parse():any{
-    try {
-      JSON.parse(this.value())
-    } catch (e){
-      var ne=new Error("Warning: Can not parse JSON:"+e.message)
-      throw ne
-    }
-
-    var a=this.$$.parent().attr('schema')
-
-    if (a) {
-      var sm=  a.findReferencedValue()
-      if (sm&&sm.validate){
-        sm.validate(this.value())
-      }
-    }
-  }
+  
 }
 
 export class XMLExample extends ExampleString{

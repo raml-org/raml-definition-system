@@ -79,13 +79,7 @@ export class LibraryBase extends Common.RAMLLanguageElement{
     MetaModel.valueDescription("An object whose properties map security scheme names to security scheme declarations; or an array of such objects")
   ]
 
-  uses:Library[];
-  $uses=[
-    MetaModel.embeddedInMaps(),
-    MetaModel.description("Importing libraries"),
-    MetaModel.setsContextValue("decls","true"),
-    MetaModel.valueDescription("An array of libraries or a single library")
-  ]
+ 
 }
 
 ///////////////////
@@ -123,7 +117,7 @@ class Api extends LibraryBase {
     MetaModel.valueDescription("Array of strings, with each being \"HTTP\" or \"HTTPS\", case-insensitive")
   ]
 
-  mediaType:Bodies.MimeType
+  mediaType:Bodies.MimeType[]
   $mediaType=[
     MetaModel.oftenKeys([
       "application/json",
@@ -152,9 +146,7 @@ class Api extends LibraryBase {
     MetaModel.description(`Additional overall documentation for the API`)
   ]
 
-  $displayName=[
-    MetaModel.hide()
-  ]
+  
 
   $description=[
     MetaModel.description("A longer, human-friendly description of the API")
@@ -183,8 +175,8 @@ class Overlay extends Api {
     MetaModel.description("contains description of why overlay exist")
   ]
 
-  masterRef:string;
-  $masterRef=[
+  extends:string;
+  $extends=[
     MetaModel.required(),
     MetaModel.description("Location of a valid RAML API definition (or overlay or extension), the overlay is applied to.")
   ]
@@ -201,8 +193,8 @@ class Extension extends Api{
     MetaModel.description("contains description of why extension exist")
   ]
 
-  masterRef:string;
-  $masterRef=[
+  extends:string;
+  $extends=[
     MetaModel.required(),
     MetaModel.description("Location of a valid RAML API definition (or overlay or extension), the extension is applied to")
   ]

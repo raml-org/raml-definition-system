@@ -588,6 +588,9 @@ function createProp(x:FieldWrapper,clazz:def.NodeClass,t:def.IType,custom:boolea
         p.withMultiValue(true)
     }
     p.unmerge()
+    if (!t){
+        console.log(x.name()+":"+clazz.nameId()+" has undefined type");
+    }
     if (!t.hasValueTypeInHierarchy()){
       t.properties().forEach(p0=>{
           if (p0.getAdapter(services.RAMLPropertyService).isKey()){

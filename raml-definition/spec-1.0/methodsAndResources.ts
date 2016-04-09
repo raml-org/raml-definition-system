@@ -39,14 +39,7 @@ export class SecuritySchemePart extends MethodBase {
     MetaModel.hide()
   ]
 
-  $displayName=[
-    MetaModel.description("An alternate, human-friendly name for the security scheme part")
-  ]
 
-  $description=[
-      MetaModel.description("A longer, human-friendly description of the security scheme part"),
-      MetaModel.valueDescription("Markdown string")
-  ]
 
   $annotations=[
     MetaModel.description("Annotations to be applied to this security scheme part. Annotations are any property whose " +
@@ -184,6 +177,10 @@ export class AbstractSecurityScheme extends Common.RAMLLanguageElement implement
     MetaModel.description("The securitySchemes property MUST be used to specify an API's security mechanisms, including the required settings and the authentication methods that the API supports. one authentication method is allowed if the API supports them."),
     MetaModel.valueDescription("string<br><br>The value MUST be one of<br>* OAuth 1.0,<br>* OAuth 2.0,<br>* BasicSecurityScheme Authentication<br>* DigestSecurityScheme Authentication<br>* Pass Through<br>* x-&lt;other&gt;")
   ]
+  $displayName=[
+    MetaModel.description("An alternate, human-friendly name for the security scheme")
+  ]
+
 
   description:Sys.MarkdownString;
   $description=[
@@ -196,6 +193,12 @@ export class AbstractSecurityScheme extends Common.RAMLLanguageElement implement
     MetaModel.description("A description of the request components related to Security that are determined by the scheme: " +
       "the headers, query parameters or responses. As a best practice, even for standard security schemes, API designers SHOULD " +
       "describe these properties of security schemes. Including the security scheme description completes an API documentation.")
+  ]
+  displayName:string
+  $displayName=[
+    MetaModel.description("The displayName attribute specifies the security scheme display name. It is a friendly name used only for  " +
+        "display or documentation purposes. If displayName is not specified, it defaults to the element's key (the name of the " +
+        "property itself).")
   ]
 
   settings:SecuritySchemeSettings;
@@ -286,18 +289,19 @@ export class Trait extends MethodBase implements Sys.DeclaresDynamicType<Trait>{
   name:string
   $name=[MetaModel.key(),MetaModel.description("Name of the trait")]
 
+  displayName:string
+  $displayName=[
+    MetaModel.description("The displayName attribute specifies the trait display name. It is a friendly name used only for  " +
+        "display or documentation purposes. If displayName is not specified, it defaults to the element's key (the name of the " +
+        "property itself).")
+  ]
+
   usage:string
   $usage = [ MetaModel.description("Instructions on how and when the trait should be used.") ]
 
   $=[MetaModel.inlinedTemplates(),MetaModel.allowQuestion()]
 
-  uses:Api.Library[];
-  $uses=[
-    MetaModel.embeddedInMaps(),
-    MetaModel.description("You may import library locally here it contents is accessible only inside of this trait"),
-    MetaModel.setsContextValue("decls","true"),
-    MetaModel.valueDescription("An array of libraries or a single library")
-  ]
+
 
   parametrizedProperties:DataModel.TypeInstance
   $parametrizedProperties = [
@@ -321,6 +325,13 @@ export class ResourceTypeRef extends Sys.Reference<ResourceType>{
 export class ResourceType extends ResourceBase implements Sys.DeclaresDynamicType<ResourceType> {
   $=[MetaModel.inlinedTemplates(),MetaModel.allowQuestion()]
 
+  displayName:string
+  $displayName=[
+    MetaModel.description("The displayName attribute specifies the resource type display name. It is a friendly name used only for  " +
+        "display or documentation purposes. If displayName is not specified, it defaults to the element's key (the name of the " +
+        "property itself).")
+  ]
+
   name:string
   $name=[
     MetaModel.key(),
@@ -332,13 +343,7 @@ export class ResourceType extends ResourceBase implements Sys.DeclaresDynamicTyp
     MetaModel.description("Instructions on how and when the resource type should be used.")
   ]
 
-  uses:Api.Library[];
-  $uses=[
-    MetaModel.embeddedInMaps(),
-    MetaModel.description("You may import library locally here it contents is accessible only inside of this resource type"),
-    MetaModel.setsContextValue("decls","true"),
-    MetaModel.valueDescription("An array of libraries")
-  ]
+  
 
   parametrizedProperties:DataModel.TypeInstance
   $parametrizedProperties = [
@@ -401,6 +406,13 @@ export class Resource extends ResourceBase {
     MetaModel.startFrom("/"),
     MetaModel.description("Relative URL of this resource from the parent resource"),
     MetaModel.hide()
+  ]
+
+  displayName:string
+  $displayName=[
+    MetaModel.description("The displayName attribute specifies the resource display name. It is a friendly name used only for  " +
+        "display or documentation purposes. If displayName is not specified, it defaults to the element's key (the name of the " +
+        "property itself).")
   ]
 
   resources:Resource[];
@@ -480,9 +492,14 @@ export class Method extends MethodBase {
     MetaModel.hide()
   ]
 
+  displayName:string
   $displayName=[
-    MetaModel.description("An alternate, human-friendly name for the method (in the resource's context).")
+    MetaModel.description("The displayName attribute specifies the method display name. It is a friendly name used only for  " +
+        "display or documentation purposes. If displayName is not specified, it defaults to the element's key (the name of the " +
+        "property itself).")
   ]
+
+
 
   $description=[
     MetaModel.description("A longer, human-friendly description of the method (in the resource's context)"),

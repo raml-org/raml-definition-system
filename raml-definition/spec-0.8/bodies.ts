@@ -3,37 +3,8 @@ import Sys = require("./systemTypes")
 import Params = require("./parameters")
 import Common = require("./common")
 
-export interface MimeTypeModel {
-  type:string
-  tree?:string
-  subtype:string
-  suffix?:string
-  parameters?:string
-}
-
 export class MimeType extends Sys.StringType {
-  isForm(){
-    if (this.value()=="application/x-www-form-urlencoded"||this.value()=='multipart/form-data'){
-      return true
-    }
-
-    return false//more smart code here
-  }
-
-  isXML(){
-    if (this.value()=="application/xml"){
-      return true
-    }
-    return false//more smart code here
-  }
-
-  isJSON(){
-    if (this.value()=="application/json"){
-        return true
-    }
-    return false//more smart code here
-  }
-
+  
   $=[MetaModel.description("This sub type of the string represents mime types")]
 }
 

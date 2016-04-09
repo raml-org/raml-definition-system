@@ -2,11 +2,10 @@ import MetaModel = require("../metamodel")
 import DataModel = require("./datamodel")
 
 export class ValueType {
-  /**
-   * parses inner structure of value type if value type has invalid value you should throw error
-   * with descriptive message
-   */
-  parse():any{}
+
+  value():string {
+    return null
+  }
 }
 
 export class StringType extends ValueType {
@@ -14,22 +13,15 @@ export class StringType extends ValueType {
     MetaModel.nameAtRuntime("string"),
     MetaModel.alias("string")
   ]
-
-  value():string {
-    return null
-  }
 }
-
 export class AnyType extends ValueType {
   $=[
     MetaModel.nameAtRuntime("any"),
     MetaModel.alias("any")
   ]
 
-  value():any {
-    return null
-  }
 }
+
 
 export class NumberType extends ValueType {
   $=[
@@ -53,7 +45,7 @@ export class BooleanType extends ValueType {
  */
 export interface Referencable<T>{}
 
-export class Reference<T>  extends ValueType {
+export class Reference<T> extends ValueType {
   structuredValue: DataModel.TypeInstance
   $structuredValue=[
     MetaModel.customHandling(),
@@ -88,10 +80,6 @@ export class FullUriTemplateString extends UriTemplate {
     MetaModel.description("This  type describes absolute uri templates")
   ]
 
-  validate(){
-    var str=this.value();
-    //write something to validate Url here
-  }
 }
 
 export class FixedUriString extends StringType {
@@ -102,9 +90,7 @@ export class FixedUriString extends StringType {
 
 export class ContentType extends StringType {}
 
-export class ValidityExpression extends StringType {
-    //TODO SPECIFY WHAT CAN NOT BE HERE
-}
+
 
 export class MarkdownString extends  StringType{
   $=[
@@ -112,28 +98,14 @@ export class MarkdownString extends  StringType{
     MetaModel.description("[GitHub Flavored Markdown](https://help.github.com/articles/github-flavored-markdown/)")
   ]
 }
-export class DateFormatSpec extends StringType {}
 
-export class FunctionalInterface extends StringType {}
 
 export class SchemaString extends StringType {
   $=[MetaModel.description("Schema at this moment only two subtypes are supported (json schema and xsd)"),MetaModel.alias("schema")]
-
-  validate(){
-      var str=this.value();
-      //write something to validate schema here here
-      //in fact it should check that content is valid json or xsd schema
-  }
 }
 
 export class ExampleString extends StringType {
   $=[MetaModel.description("Examples at this moment only two subtypes are supported (json  and xml)")]
-
-  validate(){
-    var str=this.value();
-    //write something to validate schema here here
-    //in fact it should check that content is valid json or xsd schema
-  }
 }
 
 export class JSonSchemaString extends SchemaString {
@@ -149,4 +121,3 @@ export class XMLSchemaString extends SchemaString{
   ]
 }
 
-export class RAMLSelector extends StringType{}

@@ -13,7 +13,7 @@ export enum LocationKind{
 }
 
 export class ExampleSpec extends Common.RAMLLanguageElement {
-  content:string
+  value:any
   $content=[
     MetaModel.example(),
     MetaModel.selfNode(),
@@ -111,6 +111,13 @@ export class TypeDeclaration extends Common.RAMLLanguageElement{
     MetaModel.hide()
   ]
 
+  displayName:string
+  $displayName=[
+    MetaModel.description("The displayName attribute specifies the type display name. It is a friendly name used only for  " +
+        "display or documentation purposes. If displayName is not specified, it defaults to the element's key (the name of the " +
+        "property itself).")
+  ]
+
   facets:TypeDeclaration[];
   $facets=[
     MetaModel.declaringFields(),
@@ -172,7 +179,7 @@ export class TypeDeclaration extends Common.RAMLLanguageElement{
     MetaModel.hide()
   ]
 
-  example:string
+  example:any
   $example=[
     MetaModel.example(),
     MetaModel.selfNode(),
@@ -187,13 +194,7 @@ export class TypeDeclaration extends Common.RAMLLanguageElement{
     MetaModel.description("Returns object representation of example, if possible")
   ];
 
-  examples: ExampleSpec[]
-  $examples=[
-      MetaModel.description("An object containing named examples of instances of this type. This can be used, e.g., by " +
-        "documentation generators to generate sample values for an object of this type. Cannot be present if the examples property " +
-        "is present."),
-      MetaModel.valueDescription("An object whose properties map example names to Example objects; or an array of Example objects.")
-  ]
+
 
 
   repeat:boolean
@@ -233,6 +234,24 @@ export class TypeDeclaration extends Common.RAMLLanguageElement{
       "begins with \"(\" and ends with \")\" and whose name (the part between the beginning and ending parentheses) is a " +
       "declared annotation name.")
   ]
+
+  xml: XMLFacetInfo
+}
+export class XMLFacetInfo{
+  attribute:	boolean
+  $attribute=[MetaModel.description("If attribute is set to true, a type instance should be serialized as an XML attribute. It can only be true for scalar types.")]
+
+  wrapped:boolean
+  $wrapped=[MetaModel.description('If wrapped is set to true, a type instance should be wrapped in its own XML element. It can not be true for scalar types and it can not be true at the same moment when attribute is true.')]
+
+  name:	string
+  $name=[MetaModel.description("Allows to override the name of the XML element or XML attribute in it's XML representation.")]
+
+  $namespace: string
+  $namespace=[MetaModel.description("Allows to configure the name of the XML namespace.")]
+  prefix: string
+  $prefix=[MetaModel.description("Allows to configure the prefix which will be used during serialization to XML.")]
+
 }
 
 export class ScalarElement {
@@ -297,11 +316,6 @@ export class UnionTypeDeclaration extends TypeDeclaration {
     MetaModel.convertsToGlobalOfType("SchemaString"),
     MetaModel.requireValue("locationKind",LocationKind.MODELS),
     MetaModel.declaresSubTypeOf("TypeDeclaration")
-  ]
-
-  discriminator:string;//FIXME should be pointer at some moment
-  $discriminator=[
-    MetaModel.description("Type property name to be used as a discriminator or boolean")
   ]
 }
 export class ObjectTypeDeclaration extends TypeDeclaration{
@@ -405,13 +419,7 @@ export class BooleanTypeDeclaration extends TypeDeclaration{
   ]
 }
 
-export class ValueTypeDeclaration extends TypeDeclaration{
-  type="value"
-  $=[
-    MetaModel.description("Value must be a boolean"),
-    MetaModel.declaresSubTypeOf("TypeDeclaration")
-  ]
-}
+
 
 export class NumberTypeDeclaration extends TypeDeclaration{
   type="number"
@@ -470,22 +478,46 @@ export class IntegerTypeDeclaration extends NumberTypeDeclaration{
   ]
 }
 
-export class RAMLExpression extends TypeDeclaration{
-  type="ramlexpression"
+export class DateOnly extends TypeDeclaration{
+  type="date-only"
+
   $=[
-    MetaModel.requireValue("locationKind",LocationKind.APISTRUCTURE),
-    MetaModel.requireValue("location",
-    ModelLocation.ANNOTATION)
+    MetaModel.description(`the "full-date" notation of RFC3339, namely yyyy-mm-dd (no implications about time or timezone-offset)`),
+    MetaModel.declaresSubTypeOf("TypeDeclaration")
   ]
+
+
 }
-
-export class SchemaElement extends TypeDeclaration{
-  type="schema"
+export class TimeOnly extends TypeDeclaration{
+  type="time-only"
 
   $=[
-    MetaModel.requireValue("locationKind",LocationKind.APISTRUCTURE),
-    MetaModel.nameAtRuntime("SchemaString")
+    MetaModel.description(`the "partial-time" notation of RFC3339, namely hh:mm:ss[.ff...] (no implications about date or timezone-offset)`),
+    MetaModel.declaresSubTypeOf("TypeDeclaration")
   ]
+
+
+}
+export class DateTimeOnly extends TypeDeclaration{
+  type="datetime-only"
+
+  $=[
+    MetaModel.description(`combined date-only and time-only with a separator of "T", namely yyyy-mm-ddThh:mm:ss[.ff...] (no implications about timezone-offset)`),
+    MetaModel.declaresSubTypeOf("TypeDeclaration")
+  ]
+
+
+}
+export class DateTime extends TypeDeclaration{
+  type="datetime"
+
+  $=[
+    MetaModel.description(`a timestamp, either in the "date-time" notation of RFC3339, if format is omitted or is set to rfc3339, or in the format defined in RFC2616, if format is set to rfc2616.`),
+    MetaModel.declaresSubTypeOf("TypeDeclaration")
+  ]
+
+  format:string;
+  $format=[MetaModel.oneOf(['rfc3339','rfc2616']),MetaModel.description('Format used for this date time rfc3339 or rfc2616')]
 }
 
 export class DateTypeDeclaration extends TypeDeclaration{
@@ -497,7 +529,7 @@ export class DateTypeDeclaration extends TypeDeclaration{
     MetaModel.declaresSubTypeOf("TypeDeclaration")
   ]
 
-  dateFormat:Sys.DateFormatSpec;
+  format:string;
 }
 
 export class TypeInstance {
