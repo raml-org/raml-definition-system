@@ -124,21 +124,7 @@ export class OAuth2SecuritySchemeSettings extends SecuritySchemeSettings {
   ]
 }
 
-export class PassThroughSecuritySchemeSettings extends SecuritySchemeSettings {
-  $=[
-    MetaModel.allowAny()
-  ]
 
-  queryParameterName:string
-  $queryParameterName=[
-    MetaModel.description("Name of query parameter used to pass key")
-  ]
-
-  headerName:string
-  $headerName=[
-    MetaModel.description("Name of header used to pass key")
-  ]
-}
 
 export class SecuritySchemeRef extends Sys.Reference<AbstractSecurityScheme>{
   securitySchemeName:string
@@ -237,7 +223,7 @@ class OAuth1SecurityScheme extends AbstractSecurityScheme {
 class PassThroughSecurityScheme extends AbstractSecurityScheme {
   type="Pass Through"
 
-  settings:PassThroughSecuritySchemeSettings
+  settings:SecuritySchemeSettings
 
   $=[
     MetaModel.description("Declares globally referable security scheme definition"),
