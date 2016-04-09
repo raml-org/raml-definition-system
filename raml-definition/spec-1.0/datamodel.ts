@@ -11,10 +11,12 @@ export enum ModelLocation{
 export enum LocationKind{
   APISTRUCTURE,DECLARATIONS,MODELS
 }
-
-export class ExampleSpec extends Common.RAMLLanguageElement {
+/**
+ * never produced directly any more
+ */
+export class ExampleSpec  {
   value:any
-  $content=[
+  $value=[
     MetaModel.example(),
     MetaModel.selfNode(),
     MetaModel.description("String representation of example"),
