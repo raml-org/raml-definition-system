@@ -222,9 +222,7 @@ export class TypeDeclaration extends Common.RAMLLanguageElement{
     MetaModel.convertsToGlobalOfType("SchemaString"),MetaModel.canInherit("mediaType")
   ]
 
-  $displayName=[
-    MetaModel.description("An alternate, human-friendly name for the type")
-  ]
+
 
   $description=[
     MetaModel.description("A longer, human-friendly description of the type"),
@@ -249,7 +247,7 @@ export class XMLFacetInfo{
   name:	string
   $name=[MetaModel.description("Allows to override the name of the XML element or XML attribute in it's XML representation.")]
 
-  $namespace: string
+  namespace: string
   $namespace=[MetaModel.description("Allows to configure the name of the XML namespace.")]
   prefix: string
   $prefix=[MetaModel.description("Allows to configure the prefix which will be used during serialization to XML.")]
