@@ -121,7 +121,7 @@ export class SecuritySchemeRef extends Sys.Reference<AbstractSecurityScheme>{
   ]
 }
 
-export class AbstractSecurityScheme extends Common.RAMLLanguageElement implements Sys.Referencable<AbstractSecurityScheme> {
+export class AbstractSecurityScheme  implements Sys.Referencable<AbstractSecurityScheme> {
   $=[
     MetaModel.description("Declares globally referable security scheme definition"),
     MetaModel.actuallyExports("$self"),
@@ -466,51 +466,5 @@ export class Method extends MethodBase {
         "property itself).")
   ]
 
-
-
-  $description=[
-    MetaModel.description("A longer, human-friendly description of the method (in the resource's context)"),
-    MetaModel.valueDescription("Markdown string")
-  ]
-
-  $queryString=[
-    MetaModel.description("Specifies the query string needed by this method. Mutually exclusive with queryParameters."),
-    MetaModel.valueDescription("Type name or type declaration")
-  ]
-
-  $queryParameters=[
-    MetaModel.description("Detailed information about any query parameters needed by this method. Mutually exclusive with queryString."),
-    MetaModel.valueDescription("Object whose property names are the query parameter names and whose values describe the values.")
-  ]
-
-  $headers=[
-    MetaModel.description("Detailed information about any request headers needed by this method."),
-    MetaModel.valueDescription("Object whose property names are the request header names and whose values describe the values.")
-  ]
-
-  $body=[
-    MetaModel.description("Some methods admit request bodies, which are described by this property."),
-    MetaModel.valueDescription("Object whose properties are either<br>1) media types and whose values are type objects describing " +
-      "the request body for that media type, or<br>2) a type object describing the request body for the default media type specified " +
-      "in the root mediaType property")
-  ]
-
-  $is=[
-    MetaModel.description("A list of the traits to apply to this method."),
-    MetaModel.valueDescription("array, which can contain each of the following elements:<br>* name of unparametrized trait " +
-      "<br>* a key-value pair with trait name as key and a map of trait parameters as value<br>* inline trait declaration " +
-      "<br><br>(or a single element of any above kind)")
-  ]
-
-  $annotations=[
-    MetaModel.markdownDescription("Annotations to be applied to this method. Annotations are any property whose key " +
-      "begins with \"(\" and ends with \")\" and whose name (the part between the beginning and ending parentheses) is a " +
-      "declared annotation name.")
-  ]
-
-  $securedBy=[
-    MetaModel.description("The security schemes that apply to this method"),
-    MetaModel.valueDescription("Array of security scheme names or a  single security scheme name")
-  ]
 }
 
