@@ -6,7 +6,7 @@ import Params=require("./parameters")
 import Common=require("./common")
 import Bodies=require("./bodies")
 import DataModel=require("./datamodel")
-
+import Security=require("./security")
 ///////////////////
 //// Library
 //////////////////
@@ -70,7 +70,7 @@ export class LibraryBase extends Common.RAMLLanguageElement{
     MetaModel.valueDescription("An object whose properties map annotation type names to annotation type declarations; or an array of such objects")
   ]
 
-  securitySchemes:RM.AbstractSecurityScheme[];
+  securitySchemes:Security.AbstractSecurityScheme[];
   $securitySchemes=[
     MetaModel.embeddedInMaps(),
     MetaModel.description("Security schemas declarations"),
@@ -130,7 +130,7 @@ class Api extends LibraryBase {
     MetaModel.valueDescription("Media type string")
   ]
 
-  securedBy:RM.SecuritySchemeRef[]
+  securedBy:Security.SecuritySchemeRef[]
   $securedBy=[
     MetaModel.description(`The security schemes that apply to every resource and method in the API`)
   ]
