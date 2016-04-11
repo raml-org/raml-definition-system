@@ -5,7 +5,11 @@
   "scripts": {
     "compile": "rm -rf dist/ && ./node_modules/typescript/bin/tsc",
     "generateJSON": "node dist/builder.js",
-    "build": "npm run compile && npm run generateJSON"
+    "build": "npm run compile && npm run generateJSON",
+    "pullall" : "dev-env-installer pullall",
+    "buildall" : "dev-env-installer buildall",
+    "testall" : "dev-env-installer testall",
+    "devInstall": "dev-env-installer install"
   },
   "dependencies": {
     "know-your-http-well": "^0.2.0",
@@ -31,6 +35,7 @@
   },
   "devDependencies": {
     "typescript": "^1.8.9",
-    "typings": "^0.7.9"
+    "typings": "^0.7.9",
+    "dev-env-installer":"^0.0.1"
   }
 }
