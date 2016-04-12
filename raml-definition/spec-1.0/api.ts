@@ -61,7 +61,7 @@ export class LibraryBase extends Common.RAMLLanguageElement{
     MetaModel.valueDescription("An object whose properties map resource type names to resource type declarations; or an array of such objects")
   ]
 
-  annotationTypes:Decls.AnnotationTypeDeclaration[];
+  annotationTypes:DataModel.TypeDeclaration[];
   $annotationTypes=[
     MetaModel.setsContextValue("decls","true"),
     MetaModel.embeddedInMaps(),
