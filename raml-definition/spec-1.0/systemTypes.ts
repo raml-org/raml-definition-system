@@ -1,7 +1,7 @@
 import MetaModel = require("../metamodel")
 import DataModel = require("./datamodel")
 
-export class ValueType {
+export class ValueType extends Annotable{
 
   value():string {
     return null

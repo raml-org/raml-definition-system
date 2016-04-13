@@ -14,7 +14,7 @@ export enum LocationKind{
 /**
  * never produced directly any more
  */
-export class ExampleSpec  {
+export class ExampleSpec  extends Annotable{
   value:any
   $value=[
     MetaModel.example(),
@@ -61,7 +61,7 @@ export class ExampleSpec  {
 
 
 
-export class TypeDeclaration {
+export class TypeDeclaration extends Annotable{
   name:string
   $name=[
     MetaModel.key(),
@@ -225,7 +225,7 @@ export class TypeDeclaration {
   isAnnotation:boolean
   $isAnnotation = [ MetaModel.description("Whether the type represents annotation") ]
 }
-export class XMLFacetInfo{
+export class XMLFacetInfo extends Annotable{
   attribute:	boolean
   $attribute=[MetaModel.description("If attribute is set to true, a type instance should be serialized as an XML attribute. It can only be true for scalar types.")]
 
@@ -449,7 +449,7 @@ export class IntegerTypeDeclaration extends NumberTypeDeclaration{
   ]
 }
 
-export class DateOnly extends TypeDeclaration{
+export class DateOnlyTypeDeclaration extends TypeDeclaration{
   type="date-only"
 
   $=[
@@ -459,7 +459,7 @@ export class DateOnly extends TypeDeclaration{
 
 
 }
-export class TimeOnly extends TypeDeclaration{
+export class TimeOnlyTypeDeclaration extends TypeDeclaration{
   type="time-only"
 
   $=[
@@ -467,9 +467,8 @@ export class TimeOnly extends TypeDeclaration{
     MetaModel.declaresSubTypeOf("TypeDeclaration")
   ]
 
-
 }
-export class DateTimeOnly extends TypeDeclaration{
+export class DateTimeOnlyTypeDeclaration extends TypeDeclaration{
   type="datetime-only"
 
   $=[
@@ -479,7 +478,7 @@ export class DateTimeOnly extends TypeDeclaration{
 
 
 }
-export class DateTime extends TypeDeclaration{
+export class DateTimeTypeDeclaration extends TypeDeclaration{
   type="datetime"
 
   $=[
@@ -500,7 +499,7 @@ export class DateTypeDeclaration extends TypeDeclaration{
     MetaModel.declaresSubTypeOf("TypeDeclaration")
   ]
 
-  format:string;
+
 }
 
 export class TypeInstance {

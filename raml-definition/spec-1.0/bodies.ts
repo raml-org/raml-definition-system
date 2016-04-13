@@ -7,7 +7,7 @@ export class MimeType extends Sys.StringType {
   $=[MetaModel.description("This sub type of the string represents mime types")]
 }
 
-export class Response  {
+export class Response  extends Annotable{
   code:Sys.StatusCodeString
   $code=[
     MetaModel.key(),

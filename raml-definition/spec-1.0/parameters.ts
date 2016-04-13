@@ -32,7 +32,7 @@ export class FileTypeDeclaration extends DataModel.TypeDeclaration {
     ]
 }
 
-export class HasNormalParameters  {
+export class HasNormalParameters extends Annotable {
   queryParameters:DataModel.TypeDeclaration[]
   $queryParameters=[
     MetaModel.setsContextValue("fieldOrParam",true),

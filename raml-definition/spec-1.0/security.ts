@@ -6,6 +6,7 @@ import Common=require("./common")
 import Declarations=require("./declarations")
 import DataModel=require("./datamodel")
 import Api = require("./api")
+import {Annotable} from "./common";
 
 ///////////////////
 //// Security Scheme
@@ -29,7 +30,7 @@ export class SecuritySchemePart extends Params.HasNormalParameters {
   ]
 }
 
-export class SecuritySchemeSettings {
+export class SecuritySchemeSettings extends Annotable{
   $=[
     MetaModel.allowAny()
   ]
@@ -121,7 +122,7 @@ export class SecuritySchemeRef extends Sys.Reference<AbstractSecurityScheme>{
   ]
 }
 
-export class AbstractSecurityScheme  {
+export class AbstractSecurityScheme  extends Annotable{
   $=[
     MetaModel.description("Declares globally referable security scheme definition"),
     MetaModel.actuallyExports("$self"),
