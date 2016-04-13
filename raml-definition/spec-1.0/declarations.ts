@@ -25,8 +25,3 @@ export class AnnotationTarget extends Sys.ValueType{
   ]
 }
 
-//This type does not exist on RAML design level (basically it's design level counter part is AnnotationRef)
-export class Annotation<T> {
-  name:string
-  $name=[MetaModel.key()]
-}

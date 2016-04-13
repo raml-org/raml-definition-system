@@ -121,7 +121,7 @@ export class SecuritySchemeRef extends Sys.Reference<AbstractSecurityScheme>{
   ]
 }
 
-export class AbstractSecurityScheme  implements Sys.Referencable<AbstractSecurityScheme> {
+export class AbstractSecurityScheme  {
   $=[
     MetaModel.description("Declares globally referable security scheme definition"),
     MetaModel.actuallyExports("$self"),

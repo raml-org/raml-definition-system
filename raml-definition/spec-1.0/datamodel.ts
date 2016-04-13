@@ -59,50 +59,7 @@ export class ExampleSpec  {
   ]
 }
 
-export class DataElementProperty {
-  name:string
-  $name=[
-    MetaModel.key(),
-    MetaModel.description("name of the parameter"),
-    MetaModel.extraMetaKey("headers"),
-    MetaModel.hide()
-  ]
 
-  location:ModelLocation
-  $location=[
-    MetaModel.system(),MetaModel.description("Location of the parameter (can not be edited by user)"),
-    MetaModel.hide()
-  ]
-
-  locationKind:LocationKind;
-  $locationKind=[
-    MetaModel.system(),MetaModel.description("Kind of location"),
-    MetaModel.hide()
-  ]
-
-  default:string
-  $default=[
-    MetaModel.description("Provides default value for a property"),
-    MetaModel.valueDescription("any")
-  ]
-
-  //repeat:boolean
-  //$repeat=[MetaModel.requireValue("fieldOrParam",true),MetaModel.description("The repeat attribute specifies that the parameter can be repeated. " +
-  //    "If the parameter can be used multiple times, the repeat parameter value MUST be set to 'true'. Otherwise, the default value is 'false' and the parameter may not be repeated."),
-  //    MetaModel.issue("semantic of repeat " +
-  //        "is not clearly specified and actually multiple possible reasonable options exists at the same time "),MetaModel.issue("https://github.com/raml-org/raml-spec/issues/152"),
-  //    MetaModel.requireValue("locationKind",LocationKind.APISTRUCTURE),
-  //    MetaModel.hide()
-  //]
-
-  required: boolean
-  $required=[
-    MetaModel.requireValue("fieldOrParam",true),
-    MetaModel.description("Sets if property is optional or not"),
-    MetaModel.describesAnnotation("required"),
-    MetaModel.valueDescription("boolean = true")
-  ]
-}
 
 export class TypeDeclaration extends Common.RAMLLanguageElement{
   name:string
@@ -284,24 +241,7 @@ export class XMLFacetInfo{
 
 }
 
-export class ScalarElement {
 
-  facets:TypeDeclaration[];
-  $facets=[
-    MetaModel.declaringFields(),
-    MetaModel.description("When extending from a scalar type you can define new facets (which can then be set to concrete " +
-      "values by subtypes)."),
-    MetaModel.valueDescription("An object whose properties map facets names to their types.")
-  ]
-
-  enum:string[]
-  $enum=[
-    MetaModel.describesAnnotation("oneOf"),
-    MetaModel.description("Enumeration of possible values for this primitive type. Cannot be used with the file type."),
-    MetaModel.valueDescription("Array containing string representations of possible values, or a single string if " +
-      "there is only one possible value.")
-  ]
-}
 
 export class ArrayTypeDeclaration extends TypeDeclaration {
   type="array"

@@ -38,12 +38,6 @@ export class BooleanType extends ValueType {
   ]
 }//FIXME
 
-/**
- * Tag interface, types implementing this interface
- * are counted as global declarations, and their
- * instances may be referred
- */
-export interface Referencable<T>{}
 
 export class Reference<T> extends ValueType {
   structuredValue: DataModel.TypeInstance

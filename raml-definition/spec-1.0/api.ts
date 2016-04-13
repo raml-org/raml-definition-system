@@ -7,6 +7,7 @@ import Common=require("./common")
 import Bodies=require("./bodies")
 import DataModel=require("./datamodel")
 import Security=require("./security")
+import {TypeDeclaration} from "./datamodel";
 ///////////////////
 //// Library
 //////////////////
@@ -29,7 +30,7 @@ export class LibraryBase extends Common.RAMLLanguageElement{
     MetaModel.internalClass()
   ]
 
-  schemas:GlobalSchema[]
+  schemas:TypeDeclaration[]
   $schemas=[
     MetaModel.embeddedInMaps(),
     MetaModel.description("Alias for the equivalent \"types\" property, for compatibility with RAML 0.8. Deprecated - " +
@@ -205,31 +206,8 @@ class Extension extends Api{
   ]
 }
 
-///////////////////
-//// Others
-//////////////////
 
-export class GlobalSchema extends Common.RAMLSimpleElement implements Sys.Referencable<Sys.SchemaString> {
-  $=[
-    MetaModel.actuallyExports("value"),
-    MetaModel.description("Content of the schema")
-  ]
-
-  key:string
-  $key=[
-    MetaModel.key(),
-    MetaModel.description("Name of the global schema, used to refer on schema content")
-  ]
-
-  value:Sys.SchemaString
-  $value=[
-    MetaModel.description("Content of the schema"),
-    MetaModel.canBeValue(),
-    MetaModel.value()
-  ]//TODO FIXME
-}
-
-export class UsesDeclaration extends Common.RAMLSimpleElement {
+export class UsesDeclaration {
   key:string
   $key=[
     MetaModel.key(),
@@ -244,7 +222,7 @@ export class UsesDeclaration extends Common.RAMLSimpleElement {
   ]//TODO FIXME
 }
 
-export class FragmentDeclaration extends Common.RAMLSimpleElement{
+export class FragmentDeclaration {
 
   uses: UsesDeclaration[]
   $uses=[MetaModel.embeddedInMaps()]
