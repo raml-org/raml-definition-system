@@ -236,6 +236,36 @@ export class TypeDeclaration extends Common.RAMLLanguageElement{
   ]
 
   xml: XMLFacetInfo
+
+  allowedTargets:AnnotationTarget[]
+  $allowedTargets=[
+    MetaModel.oneOf([
+      "API",
+      "DocumentationItem",
+      "Resource",
+      "Method",
+      "Response",
+      "RequestBody",
+      "ResponseBody",
+      "TypeDeclaration",
+      "NamedExample",
+      "ResourceType",
+      "Trait",
+      "SecurityScheme",
+      "SecuritySchemeSettings",
+      "AnnotationTypeDeclaration",
+      "Library",
+      "Overlay",
+      "Extension"
+    ]),
+    MetaModel.description("Restrictions on where annotations of this type can be applied. If this property is specified, " +
+        "annotations of this type may only be applied on a property corresponding to one of the target names specified as the " +
+        "value of this property."),
+    MetaModel.valueDescription("An array, or single, of names allowed target nodes.")
+  ]
+  
+  isAnnotation:boolean
+  $isAnnotation = [ MetaModel.description("Whether the type represents annotation") ]
 }
 export class XMLFacetInfo{
   attribute:	boolean
