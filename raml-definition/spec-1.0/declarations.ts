@@ -3,7 +3,7 @@ import  Sys = require("./systemTypes")
 import  DataModel=require("./datamodel")
 import  Common=require("./common")
 
-export class AnnotationTypeDeclaration extends DataModel.TypeDeclaration implements Sys.DeclaresDynamicType<AnnotationTypeDeclaration> {
+export class AnnotationTypeDeclaration extends DataModel.TypeDeclaration {
 
   //On the design level every annotation usage is instantiation of subclass of particular AnnotationTypeDeclaration
   //on the runtime level it is just Annotation (which is abstract on  the design level)

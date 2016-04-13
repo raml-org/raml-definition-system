@@ -202,19 +202,35 @@ var Universes={
       "name": "RAMLSimpleElement",
       "properties": {}
     },
-    "ResourceTypeRef": {
-      "name": "ResourceTypeRef",
+    "Resource": {
+      "name": "Resource",
       "properties": {
-        "resourceType": {
-          "name": "resourceType"
-        }
-      }
-    },
-    "TraitRef": {
-      "name": "TraitRef",
-      "properties": {
-        "trait": {
-          "name": "trait"
+        "relativeUri": {
+          "name": "relativeUri"
+        },
+        "type": {
+          "name": "type"
+        },
+        "is": {
+          "name": "is"
+        },
+        "securedBy": {
+          "name": "securedBy"
+        },
+        "uriParameters": {
+          "name": "uriParameters"
+        },
+        "methods": {
+          "name": "methods"
+        },
+        "resources": {
+          "name": "resources"
+        },
+        "displayName": {
+          "name": "displayName"
+        },
+        "baseUriParameters": {
+          "name": "baseUriParameters"
         }
       }
     },
@@ -235,6 +251,23 @@ var Universes={
         }
       }
     },
+    "Method": {
+      "name": "Method",
+      "properties": {
+        "method": {
+          "name": "method"
+        },
+        "securedBy": {
+          "name": "securedBy"
+        },
+        "is": {
+          "name": "is"
+        },
+        "baseUriParameters": {
+          "name": "baseUriParameters"
+        }
+      }
+    },
     "Trait": {
       "name": "Trait",
       "properties": {
@@ -246,6 +279,22 @@ var Universes={
         },
         "parametrizedProperties": {
           "name": "parametrizedProperties"
+        }
+      }
+    },
+    "TraitRef": {
+      "name": "TraitRef",
+      "properties": {
+        "trait": {
+          "name": "trait"
+        }
+      }
+    },
+    "ResourceTypeRef": {
+      "name": "ResourceTypeRef",
+      "properties": {
+        "resourceType": {
+          "name": "resourceType"
         }
       }
     },
@@ -281,52 +330,6 @@ var Universes={
         },
         "parametrizedProperties": {
           "name": "parametrizedProperties"
-        }
-      }
-    },
-    "Method": {
-      "name": "Method",
-      "properties": {
-        "method": {
-          "name": "method"
-        },
-        "securedBy": {
-          "name": "securedBy"
-        },
-        "is": {
-          "name": "is"
-        }
-      }
-    },
-    "Resource": {
-      "name": "Resource",
-      "properties": {
-        "relativeUri": {
-          "name": "relativeUri"
-        },
-        "type": {
-          "name": "type"
-        },
-        "is": {
-          "name": "is"
-        },
-        "securedBy": {
-          "name": "securedBy"
-        },
-        "uriParameters": {
-          "name": "uriParameters"
-        },
-        "methods": {
-          "name": "methods"
-        },
-        "resources": {
-          "name": "resources"
-        },
-        "displayName": {
-          "name": "displayName"
-        },
-        "baseUriParameters": {
-          "name": "baseUriParameters"
         }
       }
     },
@@ -538,26 +541,6 @@ var Universes={
       "name": "ParameterLocation",
       "properties": {}
     },
-    "MimeTypeModel": {
-      "name": "MimeTypeModel",
-      "properties": {
-        "type": {
-          "name": "type"
-        },
-        "tree": {
-          "name": "tree"
-        },
-        "subtype": {
-          "name": "subtype"
-        },
-        "suffix": {
-          "name": "suffix"
-        },
-        "parameters": {
-          "name": "parameters"
-        }
-      }
-    },
     "MimeType": {
       "name": "MimeType",
       "properties": {}
@@ -614,28 +597,6 @@ var Universes={
     }
   },
   "Universe10": {
-    "GlobalSchema": {
-      "name": "GlobalSchema",
-      "properties": {
-        "key": {
-          "name": "key"
-        },
-        "value": {
-          "name": "value"
-        }
-      }
-    },
-    "ImportDeclaration": {
-      "name": "ImportDeclaration",
-      "properties": {
-        "key": {
-          "name": "key"
-        },
-        "value": {
-          "name": "value"
-        }
-      }
-    },
     "Library": {
       "name": "Library",
       "properties": {
@@ -667,37 +628,6 @@ var Universes={
         },
         "securitySchemes": {
           "name": "securitySchemes"
-        },
-        "uses": {
-          "name": "uses"
-        }
-      }
-    },
-    "Overlay": {
-      "name": "Overlay",
-      "properties": {
-        "usage": {
-          "name": "usage"
-        },
-        "masterRef": {
-          "name": "masterRef"
-        },
-        "title": {
-          "name": "title"
-        }
-      }
-    },
-    "Extension": {
-      "name": "Extension",
-      "properties": {
-        "usage": {
-          "name": "usage"
-        },
-        "masterRef": {
-          "name": "masterRef"
-        },
-        "title": {
-          "name": "title"
         }
       }
     },
@@ -731,9 +661,6 @@ var Universes={
         "documentation": {
           "name": "documentation"
         },
-        "displayName": {
-          "name": "displayName"
-        },
         "description": {
           "name": "description"
         },
@@ -742,6 +669,64 @@ var Universes={
         },
         "RAMLVersion": {
           "name": "RAMLVersion"
+        }
+      }
+    },
+    "Overlay": {
+      "name": "Overlay",
+      "properties": {
+        "usage": {
+          "name": "usage"
+        },
+        "extends": {
+          "name": "extends"
+        },
+        "title": {
+          "name": "title"
+        }
+      }
+    },
+    "Extension": {
+      "name": "Extension",
+      "properties": {
+        "usage": {
+          "name": "usage"
+        },
+        "extends": {
+          "name": "extends"
+        },
+        "title": {
+          "name": "title"
+        }
+      }
+    },
+    "GlobalSchema": {
+      "name": "GlobalSchema",
+      "properties": {
+        "key": {
+          "name": "key"
+        },
+        "value": {
+          "name": "value"
+        }
+      }
+    },
+    "UsesDeclaration": {
+      "name": "UsesDeclaration",
+      "properties": {
+        "key": {
+          "name": "key"
+        },
+        "value": {
+          "name": "value"
+        }
+      }
+    },
+    "FragmentDeclaration": {
+      "name": "FragmentDeclaration",
+      "properties": {
+        "uses": {
+          "name": "uses"
         }
       }
     },
@@ -819,20 +804,8 @@ var Universes={
       "name": "ContentType",
       "properties": {}
     },
-    "ValidityExpression": {
-      "name": "ValidityExpression",
-      "properties": {}
-    },
     "MarkdownString": {
       "name": "MarkdownString",
-      "properties": {}
-    },
-    "DateFormatSpec": {
-      "name": "DateFormatSpec",
-      "properties": {}
-    },
-    "FunctionalInterface": {
-      "name": "FunctionalInterface",
       "properties": {}
     },
     "SchemaString": {
@@ -851,30 +824,17 @@ var Universes={
       "name": "XMLSchemaString",
       "properties": {}
     },
-    "RAMLSelector": {
-      "name": "RAMLSelector",
-      "properties": {}
-    },
     "ExampleSpec": {
       "name": "ExampleSpec",
       "properties": {
-        "content": {
-          "name": "content"
+        "value": {
+          "name": "value"
         },
         "strict": {
           "name": "strict"
         },
         "name": {
           "name": "name"
-        },
-        "displayName": {
-          "name": "displayName"
-        },
-        "description": {
-          "name": "description"
-        },
-        "annotations": {
-          "name": "annotations"
         },
         "structuredContent": {
           "name": "structuredContent"
@@ -907,6 +867,9 @@ var Universes={
         "name": {
           "name": "name"
         },
+        "displayName": {
+          "name": "displayName"
+        },
         "facets": {
           "name": "facets"
         },
@@ -928,17 +891,14 @@ var Universes={
         "example": {
           "name": "example"
         },
-        "examples": {
-          "name": "examples"
-        },
         "repeat": {
           "name": "repeat"
         },
         "required": {
           "name": "required"
         },
-        "displayName": {
-          "name": "displayName"
+        "xml": {
+          "name": "xml"
         },
         "description": {
           "name": "description"
@@ -954,6 +914,26 @@ var Universes={
         },
         "structuredExample": {
           "name": "structuredExample"
+        }
+      }
+    },
+    "XMLFacetInfo": {
+      "name": "XMLFacetInfo",
+      "properties": {
+        "attribute": {
+          "name": "attribute"
+        },
+        "wrapped": {
+          "name": "wrapped"
+        },
+        "name": {
+          "name": "name"
+        },
+        "namespace": {
+          "name": "namespace"
+        },
+        "prefix": {
+          "name": "prefix"
         }
       }
     },
@@ -987,11 +967,7 @@ var Universes={
     },
     "UnionTypeDeclaration": {
       "name": "UnionTypeDeclaration",
-      "properties": {
-        "discriminator": {
-          "name": "discriminator"
-        }
-      }
+      "properties": {}
     },
     "ObjectTypeDeclaration": {
       "name": "ObjectTypeDeclaration",
@@ -1040,10 +1016,6 @@ var Universes={
       "name": "BooleanTypeDeclaration",
       "properties": {}
     },
-    "ValueTypeDeclaration": {
-      "name": "ValueTypeDeclaration",
-      "properties": {}
-    },
     "NumberTypeDeclaration": {
       "name": "NumberTypeDeclaration",
       "properties": {
@@ -1072,19 +1044,31 @@ var Universes={
         }
       }
     },
-    "RAMLExpression": {
-      "name": "RAMLExpression",
+    "DateOnly": {
+      "name": "DateOnly",
       "properties": {}
     },
-    "SchemaElement": {
-      "name": "SchemaElement",
+    "TimeOnly": {
+      "name": "TimeOnly",
       "properties": {}
+    },
+    "DateTimeOnly": {
+      "name": "DateTimeOnly",
+      "properties": {}
+    },
+    "DateTime": {
+      "name": "DateTime",
+      "properties": {
+        "format": {
+          "name": "format"
+        }
+      }
     },
     "DateTypeDeclaration": {
       "name": "DateTypeDeclaration",
       "properties": {
-        "dateFormat": {
-          "name": "dateFormat"
+        "format": {
+          "name": "format"
         }
       }
     },
@@ -1127,26 +1111,6 @@ var Universes={
       "name": "LocationKind",
       "properties": {}
     },
-    "MimeTypeModel": {
-      "name": "MimeTypeModel",
-      "properties": {
-        "type": {
-          "name": "type"
-        },
-        "tree": {
-          "name": "tree"
-        },
-        "subtype": {
-          "name": "subtype"
-        },
-        "suffix": {
-          "name": "suffix"
-        },
-        "parameters": {
-          "name": "parameters"
-        }
-      }
-    },
     "MimeType": {
       "name": "MimeType",
       "properties": {}
@@ -1163,9 +1127,6 @@ var Universes={
         "body": {
           "name": "body"
         },
-        "displayName": {
-          "name": "displayName"
-        },
         "description": {
           "name": "description"
         },
@@ -1177,9 +1138,6 @@ var Universes={
     "RAMLLanguageElement": {
       "name": "RAMLLanguageElement",
       "properties": {
-        "displayName": {
-          "name": "displayName"
-        },
         "description": {
           "name": "description"
         },
@@ -1195,9 +1153,6 @@ var Universes={
     "AnnotationTypeDeclaration": {
       "name": "AnnotationTypeDeclaration",
       "properties": {
-        "allowMultiple": {
-          "name": "allowMultiple"
-        },
         "allowedTargets": {
           "name": "allowedTargets"
         },
@@ -1246,29 +1201,13 @@ var Universes={
       "name": "BooleanAnnotationTypeDeclaration",
       "properties": {}
     },
-    "ValueAnnotationTypeDeclaration": {
-      "name": "ValueAnnotationTypeDeclaration",
-      "properties": {}
-    },
     "NumberAnnotationTypeDeclaration": {
       "name": "NumberAnnotationTypeDeclaration",
-      "properties": {}
-    },
-    "RAMLExpressionAnnotation": {
-      "name": "RAMLExpressionAnnotation",
       "properties": {}
     },
     "DateTypeAnnotationDeclaration": {
       "name": "DateTypeAnnotationDeclaration",
       "properties": {}
-    },
-    "ResourceTypeRef": {
-      "name": "ResourceTypeRef",
-      "properties": {
-        "resourceType": {
-          "name": "resourceType"
-        }
-      }
     },
     "TraitRef": {
       "name": "TraitRef",
@@ -1278,32 +1217,152 @@ var Universes={
         }
       }
     },
-    "SecuritySchemePart": {
-      "name": "SecuritySchemePart",
+    "Trait": {
+      "name": "Trait",
       "properties": {
-        "headers": {
-          "name": "headers"
+        "name": {
+          "name": "name"
         },
-        "queryParameters": {
-          "name": "queryParameters"
+        "displayName": {
+          "name": "displayName"
         },
-        "queryString": {
-          "name": "queryString"
+        "usage": {
+          "name": "usage"
         },
+        "parametrizedProperties": {
+          "name": "parametrizedProperties"
+        }
+      }
+    },
+    "ResourceTypeRef": {
+      "name": "ResourceTypeRef",
+      "properties": {
+        "resourceType": {
+          "name": "resourceType"
+        }
+      }
+    },
+    "ResourceType": {
+      "name": "ResourceType",
+      "properties": {
+        "displayName": {
+          "name": "displayName"
+        },
+        "name": {
+          "name": "name"
+        },
+        "usage": {
+          "name": "usage"
+        },
+        "parametrizedProperties": {
+          "name": "parametrizedProperties"
+        }
+      }
+    },
+    "ResourceBase": {
+      "name": "ResourceBase",
+      "properties": {
+        "methods": {
+          "name": "methods"
+        },
+        "is": {
+          "name": "is"
+        },
+        "type": {
+          "name": "type"
+        },
+        "securedBy": {
+          "name": "securedBy"
+        },
+        "uriParameters": {
+          "name": "uriParameters"
+        }
+      }
+    },
+    "Resource": {
+      "name": "Resource",
+      "properties": {
+        "relativeUri": {
+          "name": "relativeUri"
+        },
+        "displayName": {
+          "name": "displayName"
+        },
+        "resources": {
+          "name": "resources"
+        },
+        "description": {
+          "name": "description"
+        },
+        "annotations": {
+          "name": "annotations"
+        }
+      }
+    },
+    "MethodBase": {
+      "name": "MethodBase",
+      "properties": {
         "responses": {
           "name": "responses"
+        },
+        "body": {
+          "name": "body"
+        },
+        "protocols": {
+          "name": "protocols"
         },
         "is": {
           "name": "is"
         },
         "securedBy": {
           "name": "securedBy"
+        }
+      }
+    },
+    "Method": {
+      "name": "Method",
+      "properties": {
+        "method": {
+          "name": "method"
         },
         "displayName": {
           "name": "displayName"
+        }
+      }
+    },
+    "FileTypeDeclaration": {
+      "name": "FileTypeDeclaration",
+      "properties": {
+        "fileTypes": {
+          "name": "fileTypes"
         },
-        "description": {
-          "name": "description"
+        "minLength": {
+          "name": "minLength"
+        },
+        "maxLength": {
+          "name": "maxLength"
+        }
+      }
+    },
+    "HasNormalParameters": {
+      "name": "HasNormalParameters",
+      "properties": {
+        "queryParameters": {
+          "name": "queryParameters"
+        },
+        "headers": {
+          "name": "headers"
+        },
+        "queryString": {
+          "name": "queryString"
+        }
+      }
+    },
+    "SecuritySchemePart": {
+      "name": "SecuritySchemePart",
+      "properties": {
+        "responses": {
+          "name": "responses"
         },
         "annotations": {
           "name": "annotations"
@@ -1348,17 +1407,6 @@ var Universes={
         }
       }
     },
-    "PassThroughSecuritySchemeSettings": {
-      "name": "PassThroughSecuritySchemeSettings",
-      "properties": {
-        "queryParameterName": {
-          "name": "queryParameterName"
-        },
-        "headerName": {
-          "name": "headerName"
-        }
-      }
-    },
     "SecuritySchemeRef": {
       "name": "SecuritySchemeRef",
       "properties": {
@@ -1384,6 +1432,9 @@ var Universes={
         },
         "describedBy": {
           "name": "describedBy"
+        },
+        "displayName": {
+          "name": "displayName"
         },
         "settings": {
           "name": "settings"
@@ -1424,267 +1475,6 @@ var Universes={
     },
     "CustomSecurityScheme": {
       "name": "CustomSecurityScheme",
-      "properties": {}
-    },
-    "MethodBase": {
-      "name": "MethodBase",
-      "properties": {
-        "responses": {
-          "name": "responses"
-        },
-        "body": {
-          "name": "body"
-        },
-        "protocols": {
-          "name": "protocols"
-        },
-        "is": {
-          "name": "is"
-        },
-        "securedBy": {
-          "name": "securedBy"
-        }
-      }
-    },
-    "Trait": {
-      "name": "Trait",
-      "properties": {
-        "name": {
-          "name": "name"
-        },
-        "usage": {
-          "name": "usage"
-        },
-        "uses": {
-          "name": "uses"
-        },
-        "parametrizedProperties": {
-          "name": "parametrizedProperties"
-        }
-      }
-    },
-    "ResourceBase": {
-      "name": "ResourceBase",
-      "properties": {
-        "methods": {
-          "name": "methods"
-        },
-        "is": {
-          "name": "is"
-        },
-        "type": {
-          "name": "type"
-        },
-        "securedBy": {
-          "name": "securedBy"
-        },
-        "uriParameters": {
-          "name": "uriParameters"
-        }
-      }
-    },
-    "ResourceType": {
-      "name": "ResourceType",
-      "properties": {
-        "name": {
-          "name": "name"
-        },
-        "usage": {
-          "name": "usage"
-        },
-        "uses": {
-          "name": "uses"
-        },
-        "parametrizedProperties": {
-          "name": "parametrizedProperties"
-        }
-      }
-    },
-    "ResourceTypeOrTrait": {
-      "name": "ResourceTypeOrTrait",
-      "properties": {
-        "usage": {
-          "name": "usage"
-        },
-        "uses": {
-          "name": "uses"
-        },
-        "parameters": {
-          "name": "parameters"
-        }
-      }
-    },
-    "Method": {
-      "name": "Method",
-      "properties": {
-        "method": {
-          "name": "method"
-        },
-        "displayName": {
-          "name": "displayName"
-        },
-        "description": {
-          "name": "description"
-        },
-        "queryString": {
-          "name": "queryString"
-        },
-        "queryParameters": {
-          "name": "queryParameters"
-        },
-        "headers": {
-          "name": "headers"
-        },
-        "body": {
-          "name": "body"
-        },
-        "is": {
-          "name": "is"
-        },
-        "annotations": {
-          "name": "annotations"
-        },
-        "securedBy": {
-          "name": "securedBy"
-        }
-      }
-    },
-    "Resource": {
-      "name": "Resource",
-      "properties": {
-        "relativeUri": {
-          "name": "relativeUri"
-        },
-        "resources": {
-          "name": "resources"
-        },
-        "displayName": {
-          "name": "displayName"
-        },
-        "description": {
-          "name": "description"
-        },
-        "annotations": {
-          "name": "annotations"
-        }
-      }
-    },
-    "FileTypeDeclaration": {
-      "name": "FileTypeDeclaration",
-      "properties": {
-        "fileTypes": {
-          "name": "fileTypes"
-        },
-        "minLength": {
-          "name": "minLength"
-        },
-        "maxLength": {
-          "name": "maxLength"
-        }
-      }
-    },
-    "HasNormalParameters": {
-      "name": "HasNormalParameters",
-      "properties": {
-        "queryParameters": {
-          "name": "queryParameters"
-        },
-        "headers": {
-          "name": "headers"
-        },
-        "queryString": {
-          "name": "queryString"
-        }
-      }
-    },
-    "Status": {
-      "name": "Status",
-      "properties": {
-        "code": {
-          "name": "code"
-        },
-        "message": {
-          "name": "message"
-        }
-      }
-    },
-    "AuthentificationState": {
-      "name": "AuthentificationState",
-      "properties": {}
-    },
-    "AuthentificationParameters": {
-      "name": "AuthentificationParameters",
-      "properties": {}
-    },
-    "AuthData": {
-      "name": "AuthData",
-      "properties": {
-        "authentificationParameters": {
-          "name": "authentificationParameters"
-        }
-      }
-    },
-    "ParameterSpec": {
-      "name": "ParameterSpec",
-      "properties": {}
-    },
-    "PromptSpec": {
-      "name": "PromptSpec",
-      "properties": {}
-    },
-    "UserResponse": {
-      "name": "UserResponse",
-      "properties": {}
-    },
-    "QueryListener": {
-      "name": "QueryListener",
-      "properties": {}
-    },
-    "EndPoint": {
-      "name": "EndPoint",
-      "properties": {}
-    },
-    "EndPointSpec": {
-      "name": "EndPointSpec",
-      "properties": {
-        "url": {
-          "name": "url"
-        },
-        "needToSendResponse": {
-          "name": "needToSendResponse"
-        }
-      }
-    },
-    "SecurityEnvironment": {
-      "name": "SecurityEnvironment",
-      "properties": {}
-    },
-    "AuthentificationManager": {
-      "name": "AuthentificationManager",
-      "properties": {}
-    },
-    "SchemeInfo": {
-      "name": "SchemeInfo",
-      "properties": {
-        "parameterSpec": {
-          "name": "parameterSpec"
-        }
-      }
-    },
-    "SecurityScheme": {
-      "name": "SecurityScheme",
-      "properties": {}
-    },
-    "SecurityAwareApiClient": {
-      "name": "SecurityAwareApiClient",
-      "properties": {}
-    },
-    "SecuritySchemeHook": {
-      "name": "SecuritySchemeHook",
-      "properties": {}
-    },
-    "StatusCode": {
-      "name": "StatusCode",
       "properties": {}
     }
   }

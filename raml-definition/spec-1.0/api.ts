@@ -229,17 +229,25 @@ export class GlobalSchema extends Common.RAMLSimpleElement implements Sys.Refere
   ]//TODO FIXME
 }
 
-export class ImportDeclaration extends Common.RAMLSimpleElement {
+export class UsesDeclaration extends Common.RAMLSimpleElement {
   key:string
   $key=[
     MetaModel.key(),
     MetaModel.description("Name prefix (without dot) used to refer imported declarations")
   ]
 
-  value:Library
+  value:string
   $value=[
-    MetaModel.description("Content of the declared namespace")
-  ]
+    MetaModel.description("Content of the schema"),
+    MetaModel.canBeValue(),
+    MetaModel.value()
+  ]//TODO FIXME
+}
+
+export class FragmentDeclaration extends Common.RAMLSimpleElement{
+
+  uses: UsesDeclaration[]
+  $uses=[MetaModel.embeddedInMaps()]
 }
 
 //This is actually not tested//TODO

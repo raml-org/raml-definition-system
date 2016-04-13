@@ -59,7 +59,6 @@ export class Reference<T> extends ValueType {
   ]
 }//this is not true ...FIXME
 
-export interface DeclaresDynamicType<T> extends Referencable<T>{}//For now your still required to put declaresSubtype or inlinedTemplates annotation on the classs
 
 export class UriTemplate extends StringType {
   $=[
