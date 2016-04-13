@@ -92,7 +92,7 @@ export class ResourceType extends ResourceBase  {
 //// Resource
 //////////////////
 
-export class ResourceBase extends Common.RAMLLanguageElement {
+export class ResourceBase {
   methods:Method[];
   $methods=[
     MetaModel.description("Methods that are part of this resource type definition"),
@@ -116,6 +116,8 @@ export class ResourceBase extends Common.RAMLLanguageElement {
     MetaModel.valueDescription("one of the following elements:<br>* name of unparametrized resource type<br>* a key-value pair " +
       "with resource type name as key and a map of its parameters as value<br>* inline resource type declaration")
   ]
+
+  description: string
 
   //TODO FIXME
   securedBy:Security.SecuritySchemeRef[]

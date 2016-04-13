@@ -25,7 +25,7 @@ export class Library extends LibraryBase {
   ]
 }
 
-export class LibraryBase extends Common.RAMLLanguageElement{
+export class LibraryBase {
   $=[
     MetaModel.internalClass()
   ]
@@ -228,8 +228,7 @@ export class FragmentDeclaration {
   $uses=[MetaModel.embeddedInMaps()]
 }
 
-//This is actually not tested//TODO
-class DocumentationItem extends Common.RAMLLanguageElement {
+class DocumentationItem  {
   title:string
   $title=[
     MetaModel.description("Title of documentation section"),
