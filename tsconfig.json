@@ -12,6 +12,7 @@
   "files":[
     "src/builder.ts",
     "src/index.ts",
+    "src/enumGen.ts",
     "src/definitionSystem.ts",
     "src/annotationHandlers.ts",
     "src/tsStruct2Def.ts",

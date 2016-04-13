@@ -11,8 +11,8 @@ function generateJSONDumpOfDefSystem( ){
     var Universe10={};
     universe10.types().forEach(x=>{
         var props={};
-        x.properties().forEach(y=>props[y.nameId()]={name:y.nameId()});
-        (<def.NodeClass>x).customProperties().forEach(y=>props[y.nameId()]={name:y.nameId()});
+        x.allProperties().forEach(y=>props[y.nameId()]={name:y.nameId()});
+        (<def.NodeClass>x).customProperties().forEach(y=>props[y.nameId()]={name:y.nameId(),range:y.range().nameId(),domain:y.domain().nameId()});
         Universe10[x.nameId()]={
 
             name:x.nameId(),
@@ -23,7 +23,7 @@ function generateJSONDumpOfDefSystem( ){
     var Universe08={};
     universe08.types().forEach(x=>{
         var props={};
-        x.properties().forEach(y=>props[y.nameId()]={name:y.nameId()});
+        x.allProperties().forEach(y=>props[y.nameId()]={name:y.nameId(),range:y.range().nameId(),domain:y.domain().nameId()});
         (<def.NodeClass>x).customProperties().forEach(y=>props[y.nameId()]={name:y.nameId()});
         Universe08[x.nameId()]={
 
@@ -33,6 +33,6 @@ function generateJSONDumpOfDefSystem( ){
         }
     })
     var Universes={Universe08:Universe08,Universe10:Universe10}
-    //fs.writeFileSync( path.resolve(__dirname, 'universe.ts' ), "var Universes="+JSON.stringify( Universes, null, 2 )+";export=Universes")
+    fs.writeFileSync( path.resolve(__dirname, 'universe.ts' ), "var Universes="+JSON.stringify( Universes, null, 2 )+";export=Universes")
 }
 generateJSONDumpOfDefSystem();

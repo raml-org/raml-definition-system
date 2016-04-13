@@ -21,7 +21,7 @@ export class TraitRef extends Sys.Reference<Trait>{
   ]
 }
 
-export class Trait extends MethodBase implements Sys.DeclaresDynamicType<Trait>{
+export class Trait extends MethodBase{
   name:string
   $name=[MetaModel.key(),MetaModel.description("Name of the trait")]
 
@@ -58,7 +58,7 @@ export class ResourceTypeRef extends Sys.Reference<ResourceType>{
   ]
 }
 
-export class ResourceType extends ResourceBase implements Sys.DeclaresDynamicType<ResourceType> {
+export class ResourceType extends ResourceBase  {
   $=[MetaModel.inlinedTemplates(),MetaModel.allowQuestion()]
 
   displayName:string

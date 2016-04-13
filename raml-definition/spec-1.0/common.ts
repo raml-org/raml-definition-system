@@ -25,4 +25,3 @@ export class RAMLLanguageElement {
   //TODO FIX DESCRIPTION
 }
 
-export class RAMLSimpleElement {}
