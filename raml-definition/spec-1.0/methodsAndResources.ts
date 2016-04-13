@@ -92,7 +92,7 @@ export class ResourceType extends ResourceBase  {
 //// Resource
 //////////////////
 
-export class ResourceBase {
+export class ResourceBase extends Annotable{
   methods:Method[];
   $methods=[
     MetaModel.description("Methods that are part of this resource type definition"),

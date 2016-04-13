@@ -14,7 +14,7 @@ export enum LocationKind{
 /**
  * never produced directly any more
  */
-export class ExampleSpec  {
+export class ExampleSpec  extends Annotable{
   value:any
   $value=[
     MetaModel.example(),
@@ -61,7 +61,7 @@ export class ExampleSpec  {
 
 
 
-export class TypeDeclaration {
+export class TypeDeclaration extends Annotable{
   name:string
   $name=[
     MetaModel.key(),
@@ -225,7 +225,7 @@ export class TypeDeclaration {
   isAnnotation:boolean
   $isAnnotation = [ MetaModel.description("Whether the type represents annotation") ]
 }
-export class XMLFacetInfo{
+export class XMLFacetInfo extends Annotable{
   attribute:	boolean
   $attribute=[MetaModel.description("If attribute is set to true, a type instance should be serialized as an XML attribute. It can only be true for scalar types.")]
 

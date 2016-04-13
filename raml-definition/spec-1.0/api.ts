@@ -25,7 +25,7 @@ export class Library extends LibraryBase {
   ]
 }
 
-export class LibraryBase {
+export class LibraryBase extends Annotable{
   $=[
     MetaModel.internalClass()
   ]
@@ -207,7 +207,7 @@ class Extension extends Api{
 }
 
 
-export class UsesDeclaration {
+export class UsesDeclaration extends Annotable{
   key:string
   $key=[
     MetaModel.key(),
@@ -222,13 +222,13 @@ export class UsesDeclaration {
   ]//TODO FIXME
 }
 
-export class FragmentDeclaration {
+export class FragmentDeclaration extends Annotable{
 
   uses: UsesDeclaration[]
   $uses=[MetaModel.embeddedInMaps()]
 }
 
-class DocumentationItem  {
+class DocumentationItem extends Annotable{
   title:string
   $title=[
     MetaModel.description("Title of documentation section"),
