@@ -7,7 +7,7 @@ export class MimeType extends Sys.StringType {
   $=[MetaModel.description("This sub type of the string represents mime types")]
 }
 
-export class Response extends Common.RAMLLanguageElement {
+export class Response  {
   code:Sys.StatusCodeString
   $code=[
     MetaModel.key(),
@@ -39,6 +39,7 @@ export class Response extends Common.RAMLLanguageElement {
   $displayName=[
     MetaModel.description("An alternate, human-friendly name for the response")
   ]
+  description: string
 
   $description=[
     MetaModel.description("A longer, human-friendly description of the response"),

@@ -22,7 +22,6 @@ export class AnyType extends ValueType {
 
 }
 
-
 export class NumberType extends ValueType {
   $=[
     MetaModel.nameAtRuntime("number"),
@@ -83,8 +82,6 @@ export class FixedUriString extends StringType {
 
 export class ContentType extends StringType {}
 
-
-
 export class MarkdownString extends  StringType{
   $=[
     MetaModel.innerType("markdown"),
@@ -92,25 +89,9 @@ export class MarkdownString extends  StringType{
   ]
 }
 
-
 export class SchemaString extends StringType {
   $=[MetaModel.description("Schema at this moment only two subtypes are supported (json schema and xsd)"),MetaModel.alias("schema")]
 }
 
-export class ExampleString extends StringType {
-  $=[MetaModel.description("Examples at this moment only two subtypes are supported (json  and xml)")]
-}
 
-export class JSonSchemaString extends SchemaString {
-  $=[
-    MetaModel.innerType("json"),
-    MetaModel.description("JSON schema")
-  ]
-}
-export class XMLSchemaString extends SchemaString{
-  $=[
-    MetaModel.innerType("xsd"),
-    MetaModel.description("XSD schema")
-  ]
-}
 

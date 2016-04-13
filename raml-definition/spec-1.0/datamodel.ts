@@ -61,7 +61,7 @@ export class ExampleSpec  {
 
 
 
-export class TypeDeclaration extends Common.RAMLLanguageElement{
+export class TypeDeclaration {
   name:string
   $name=[
     MetaModel.key(),
@@ -180,6 +180,7 @@ export class TypeDeclaration extends Common.RAMLLanguageElement{
   ]
 
 
+  description: string
 
   $description=[
     MetaModel.description("A longer, human-friendly description of the type"),

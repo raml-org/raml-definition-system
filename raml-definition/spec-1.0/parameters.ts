@@ -32,7 +32,7 @@ export class FileTypeDeclaration extends DataModel.TypeDeclaration {
     ]
 }
 
-export class HasNormalParameters extends Common.RAMLLanguageElement {
+export class HasNormalParameters  {
   queryParameters:DataModel.TypeDeclaration[]
   $queryParameters=[
     MetaModel.setsContextValue("fieldOrParam",true),
@@ -57,4 +57,6 @@ export class HasNormalParameters extends Common.RAMLLanguageElement {
   $queryString=[
     MetaModel.description("Specifies the query string needed by this method. Mutually exclusive with queryParameters.")
   ]
+
+  description: string
 }
