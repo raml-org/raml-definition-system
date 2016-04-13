@@ -138,7 +138,7 @@ export class TypeDeclaration extends Annotable{
     MetaModel.hide()
   ]
 
-  example:any
+  example:ExampleSpec[]
   $example=[
     MetaModel.example(),
     MetaModel.selfNode(),
