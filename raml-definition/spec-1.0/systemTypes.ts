@@ -1,7 +1,8 @@
 import MetaModel = require("../metamodel")
 import DataModel = require("./datamodel")
+import Common = require("./common")
 
-export class ValueType extends Annotable{
+export class ValueType extends Common.Annotable{
 
   value():string {
     return null

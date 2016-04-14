@@ -1,6 +1,5 @@
 import  MetaModel = require("../metamodel")
 import  Sys = require("./systemTypes")
-import  Common=require("./common")
 import  DataModel=require("./datamodel")
 
 //////////////////////////////////////
@@ -32,31 +31,4 @@ export class FileTypeDeclaration extends DataModel.TypeDeclaration {
     ]
 }
 
-export class HasNormalParameters extends Annotable {
-  queryParameters:DataModel.TypeDeclaration[]
-  $queryParameters=[
-    MetaModel.setsContextValue("fieldOrParam",true),
-    MetaModel.setsContextValue("location",DataModel.ModelLocation.QUERY),
-    MetaModel.setsContextValue("locationKind",DataModel.LocationKind.APISTRUCTURE),
-    MetaModel.newInstanceName("New query parameter"),
-    MetaModel.description("An APIs resources MAY be filtered (to return a subset of results) or altered (such as transforming " +
-      " a response body from JSON to XML format) by the use of query strings. If the resource or its method supports a query " +
-      "string, the query string MUST be defined by the queryParameters property")
-  ]
 
-  headers:DataModel.TypeDeclaration[];
-  $headers=[
-    MetaModel.setsContextValue("fieldOrParam",true),
-    MetaModel.setsContextValue("location",DataModel.ModelLocation.HEADERS),
-    MetaModel.setsContextValue("locationKind",DataModel.LocationKind.APISTRUCTURE),
-    MetaModel.description("Headers that allowed at this position"),
-    MetaModel.newInstanceName("New Header")
-  ]
-
-  queryString:DataModel.TypeDeclaration
-  $queryString=[
-    MetaModel.description("Specifies the query string needed by this method. Mutually exclusive with queryParameters.")
-  ]
-
-  description: string
-}

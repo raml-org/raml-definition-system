@@ -1,27 +1,13 @@
 import MetaModel = require("../metamodel")
 import Sys = require("./systemTypes")
-import Params=require("./parameters")
-import Bodies=require("./bodies")
-import Common=require("./common")
-import Declarations=require("./declarations")
-import DataModel=require("./datamodel")
-import Api = require("./api")
 import {Annotable} from "./common";
+import Methods = require("./methods")
 
 ///////////////////
 //// Security Scheme
 //////////////////
 
-export class SecuritySchemePart extends Params.HasNormalParameters {
-
-  responses:Bodies.Response[]
-  $responses=[
-    MetaModel.setsContextValue("response","true"),
-    MetaModel.newInstanceName("New Response"),
-    MetaModel.description("Information about the expected responses to a request"),
-    MetaModel.valueDescription("An object whose keys are the HTTP status codes of the responses and whose values describe the responses.")
-  ]
-
+export class SecuritySchemePart extends Methods.Operation {
 
   $annotations=[
     MetaModel.description("Annotations to be applied to this security scheme part. Annotations are any property whose " +
