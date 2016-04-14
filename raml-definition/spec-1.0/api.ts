@@ -1,6 +1,8 @@
 import MetaModel = require("../metamodel")
 import Sys = require("./systemTypes")
-import RM=require("./methodsAndResources")
+
+import Methods=require("./methods")
+import Resources=require("./resources")
 import Decls=require("./declarations")
 import Params=require("./parameters")
 import Common=require("./common")
@@ -46,7 +48,7 @@ export class LibraryBase extends Annotable{
     MetaModel.valueDescription("An object whose properties map type names to type declarations; or an array of such objects")
   ]
 
-  traits:RM.Trait[]
+  traits:Methods.Trait[]
   $traits=[
     MetaModel.embeddedInMaps(),MetaModel.description("Declarations of traits used in this API"),
     MetaModel.description("Declarations of traits for use within this API"),
@@ -54,7 +56,7 @@ export class LibraryBase extends Annotable{
     MetaModel.valueDescription("An object whose properties map trait names to trait declarations; or an array of such objects")
   ]
 
-  resourceTypes:RM.ResourceType[]
+  resourceTypes:Resources.ResourceType[]
   $resourceTypes=[
     MetaModel.embeddedInMaps(),MetaModel.description("Declaration of resource types used in this API"),
     MetaModel.description("Declarations of resource types for use within this API"),
@@ -136,7 +138,7 @@ class Api extends LibraryBase {
     MetaModel.description(`The security schemes that apply to every resource and method in the API`)
   ]
 
-  resources:RM.Resource[]
+  resources:Resources.Resource[]
   $resources=[ MetaModel.documentationTableLabel("/&lt;relativeUri&gt;"),
     MetaModel.newInstanceName("New Resource"),
     MetaModel.description(`The resources of the API, identified as relative URIs that begin with a slash (/). Every property whose key begins with a slash (/), and is either at the root of the API definition or is the child property of a resource property, is a resource property, e.g.: /users, /{groupId}, etc`)

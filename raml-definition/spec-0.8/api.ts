@@ -1,9 +1,11 @@
 import MetaModel = require("../metamodel")
 import Sys = require("./systemTypes")
-import RM = require("./methodsAndResources")
 import Params = require("./parameters")
 import Common = require("./common")
 import Bodies = require("./bodies")
+import Resources=require("./resources")
+import Methods=require("./methods")
+import Security=require("./security")
 
 module RAMLSpec {
 
@@ -107,31 +109,31 @@ module RAMLSpec {
       "be included inline or by using the RAML !include user-defined data type.")
     ]
 
-    traits:RM.Trait[]
+    traits:Methods.Trait[]
     $traits=[
       MetaModel.embeddedInMaps(),
       MetaModel.description("Declarations of traits used in this API")
     ]
 
-    securedBy:RM.SecuritySchemeRef[]
+    securedBy:Security.SecuritySchemeRef[]
     $securedBy=[
       MetaModel.allowNull(),
       MetaModel.description("A list of the security schemes to apply to all methods, these must be defined in the " +
       "securitySchemes declaration.")
     ]
 
-    securitySchemes:RM.AbstractSecurityScheme[];
+    securitySchemes:Security.AbstractSecurityScheme[];
     $securitySchemes=[
       MetaModel.embeddedInMaps(),
       MetaModel.description("Security schemes that can be applied using securedBy")]
 
-    resourceTypes:RM.ResourceType[]
+    resourceTypes:Resources.ResourceType[]
     $resourceTypes=[
       MetaModel.embeddedInMaps(),
       MetaModel.description("Declaration of resource types used in this API")
     ]
 
-    resources:RM.Resource[]
+    resources:Resources.Resource[]
     $resources=[
       MetaModel.newInstanceName("New Resource"),
       MetaModel.description("Resources are identified by their relative URI, which MUST begin with a slash (/). A resource " +
