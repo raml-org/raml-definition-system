@@ -9,7 +9,7 @@ import Security=require("./security")
 //// Method
 //////////////////
 
-export class MethodBase extends Params.HasNormalParameters {
+export class MethodBase extends Common.RAMLLanguageElement {
     $=[
         MetaModel.description("Method object allows description of http methods")
     ]
@@ -46,6 +46,31 @@ export class MethodBase extends Params.HasNormalParameters {
             "schemas to all methods that may be declared, explicitly or implicitly, by defining the resourceTypes or traits property for " +
             "that resource.")
     ]
+
+    baseUriParameters:Params.Parameter[]
+    $baseUriParameters=[
+        MetaModel.setsContextValue("fieldOrParam",true),
+        MetaModel.setsContextValue("location",Params.ParameterLocation.BURI),
+        MetaModel.description("A resource or a method can override a base URI template's values. This is useful to restrict or " +
+            "change the default or parameter selection in the base URI. The baseUriParameters property MAY be used to override any or " +
+            "all parameters defined at the root level baseUriParameters property, as well as base URI parameters not specified at the root level.")
+    ]
+
+    queryParameters:Params.Parameter[]
+    $queryParameters=[
+        MetaModel.setsContextValue("location",ParameterLocation.QUERY),
+        MetaModel.newInstanceName("New query parameter"),
+        MetaModel.description("An APIs resources MAY be filtered (to return a subset of results) or altered (such as transforming " +
+            "a response body from JSON to XML format) by the use of query strings. If the resource or its method supports a query " +
+            "string, the query string MUST be defined by the queryParameters property")
+    ]
+
+    headers:Params.Parameter[];
+    $headers=[
+        MetaModel.setsContextValue("location",ParameterLocation.HEADERS),
+        MetaModel.description("Headers that allowed at this position"),
+        MetaModel.newInstanceName("New Header"),
+    ]
 }
 
 export class Method extends MethodBase {
@@ -56,27 +81,10 @@ export class Method extends MethodBase {
         MetaModel.oneOf(["get","put","post","delete","patch","options","head","trace","connect"]),
         MetaModel.description("Method that can be called")]
 
-    securedBy:SecuritySchemeRef[]
-    $securedBy=[
-        MetaModel.allowNull(),
-        MetaModel.description("securityScheme may also be applied to a resource by using the securedBy key, which is " +
-            "equivalent to applying the securityScheme to all methods that may be declared, explicitly or implicitly, by defining the " +
-            "resourceTypes or traits property for that resource. To indicate that the method may be called without applying any " +
-            "securityScheme, the method may be annotated with the null securityScheme.")
-    ]
 
     is:TraitRef[]
     $is=[
         MetaModel.description("Instantiation of applyed traits")
-    ]
-
-    baseUriParameters:Params.Parameter[]
-    $baseUriParameters=[
-        MetaModel.setsContextValue("fieldOrParam",true),
-        MetaModel.setsContextValue("location",Params.ParameterLocation.BURI),
-        MetaModel.description("A resource or a method can override a base URI template's values. This is useful to restrict or " +
-            "change the default or parameter selection in the base URI. The baseUriParameters property MAY be used to override any or " +
-            "all parameters defined at the root level baseUriParameters property, as well as base URI parameters not specified at the root level.")
     ]
 }
 

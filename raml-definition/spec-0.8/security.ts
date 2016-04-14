@@ -28,15 +28,17 @@ export class SecuritySchemePart extends Methods.MethodBase {
     $responses=[
         MetaModel.description("Optional array of responses, describing the possible responses that could be sent.")
     ]
+    //
+    // $is=[
+    //     MetaModel.hide()
+    // ]
+    //
+    // $securedBy=[
+    //     MetaModel.hide()
+    // ]
 
-    $is=[
-        MetaModel.hide()
-    ]
 
-    $securedBy=[
-        MetaModel.hide()
-    ]
-
+    displayName:string
     $displayName=[
         MetaModel.description("An alternate, human-friendly name for the security scheme part")
     ]
@@ -44,6 +46,11 @@ export class SecuritySchemePart extends Methods.MethodBase {
     $description=[
         MetaModel.description("A longer, human-friendly description of the security scheme part"),
         MetaModel.valueDescription("Markdown string")
+    ]
+
+    is:TraitRef[]
+    $is=[
+        MetaModel.description("Instantiation of applyed traits")
     ]
 }
 

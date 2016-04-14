@@ -151,25 +151,3 @@ export class FileTypeDeclaration extends Parameter {
     ]
 }
 
-export class HasNormalParameters extends Common.RAMLLanguageElement{
-    queryParameters:Parameter[]
-    $queryParameters=[
-      MetaModel.setsContextValue("location",ParameterLocation.QUERY),
-      MetaModel.newInstanceName("New query parameter"),
-      MetaModel.description("An APIs resources MAY be filtered (to return a subset of results) or altered (such as transforming " +
-        "a response body from JSON to XML format) by the use of query strings. If the resource or its method supports a query " +
-        "string, the query string MUST be defined by the queryParameters property")
-    ]
-
-    displayName:string
-    $displayName=[
-      MetaModel.description("An alternate, human-readable name of the object")
-    ]
-
-    headers:Parameter[];
-    $headers=[
-      MetaModel.setsContextValue("location",ParameterLocation.HEADERS),
-      MetaModel.description("Headers that allowed at this position"),
-      MetaModel.newInstanceName("New Header"),
-    ]
-}
