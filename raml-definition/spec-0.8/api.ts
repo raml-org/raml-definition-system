@@ -29,7 +29,7 @@ module RAMLSpec {
     ]
   }
 
-  class Api extends Common.RAMLLanguageElement {
+  class Api {
 
     title:string
     $title=[

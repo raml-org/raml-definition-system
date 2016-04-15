@@ -10,7 +10,7 @@ export class MimeType extends Sys.StringType {
 
 /////////////////////////////////////////////////////////
 // This section is related to bodies
-export class BodyLike extends Common.RAMLLanguageElement {
+export class BodyLike {
   $=[MetaModel.canInherit("mediaType")]
 
   name:string

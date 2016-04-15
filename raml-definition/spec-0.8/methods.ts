@@ -114,6 +114,11 @@ export class Trait extends MethodBase implements Sys.DeclaresDynamicType<Trait> 
         MetaModel.customHandling(),
         MetaModel.description("Returns object representation of parametrized properties of the trait")
     ]
+
+    displayName:string
+    $displayName=[
+        MetaModel.description("An alternate, human-friendly name for the trait")
+    ]
 }
 
 export class TraitRef extends Sys.Reference<Trait> {
