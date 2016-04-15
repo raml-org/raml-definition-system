@@ -147,6 +147,7 @@ class Api extends LibraryBase {
     MetaModel.description(`Additional overall documentation for the API`)
   ]
 
+  description: string
   
 
   $description=[
@@ -164,6 +165,8 @@ class Api extends LibraryBase {
     MetaModel.customHandling(),
     MetaModel.description("Returns RAML version. \"RAML10\" string is returned for RAML 1.0. \"RAML08\" string is returned for RAML 0.8.")
   ]
+
+
 }
 
 ///////////////////
@@ -216,10 +219,10 @@ export class UsesDeclaration extends Annotable{
 
   value:string
   $value=[
-    MetaModel.description("Content of the schema"),
+    MetaModel.description("Pass to the used library"),
     MetaModel.canBeValue(),
     MetaModel.value()
-  ]//TODO FIXME
+  ]
 }
 
 export class FragmentDeclaration extends Annotable{

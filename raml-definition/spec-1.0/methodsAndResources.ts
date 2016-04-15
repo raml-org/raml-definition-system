@@ -164,16 +164,7 @@ export class Resource extends ResourceBase {
 
 
 
-  $description=[
-    MetaModel.description("A longer, human-friendly description of the resource."),
-    MetaModel.valueDescription("Markdown string")
-  ]
-
-  $annotations=[
-    MetaModel.markdownDescription("Annotations to be applied to this resource. Annotations are any property whose key begins " +
-      "with \"(\" and ends with \")\" and whose name (the part between the beginning and ending parentheses) is a declared " +
-      "annotation name.")
-  ]
+  
 }
 
 ///////////////////

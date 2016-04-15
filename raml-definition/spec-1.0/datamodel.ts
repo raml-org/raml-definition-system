@@ -24,11 +24,11 @@ export class ExampleSpec  extends Annotable{
     MetaModel.valueDescription("* Valid value for this type<br>* String representing the serialized version of a valid value")
   ]
 
-  structuredContent:TypeInstance;
-  $structuredContent=[
-    MetaModel.customHandling(),
-    MetaModel.description("Returns object representation of example, if possible")
-  ]
+  // structuredContent:TypeInstance;
+  // $structuredContent=[
+  //   MetaModel.customHandling(),
+  //   MetaModel.description("Returns object representation of example, if possible")
+  // ]
 
   strict:boolean
   $strict=[
