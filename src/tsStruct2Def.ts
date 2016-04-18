@@ -351,6 +351,10 @@ var registerClasses = function (m:ModuleWrapper, u:def.Universe) {
                         if (bas.basicName == 'Reference') {
                             var of = bas.typeArguments[0];
                             refTo = (<tsModel.BasicType>of).typeName;
+                            var di=refTo.indexOf('.');
+                            if (di!=-1){
+                                refTo=refTo.substring(di+1);
+                            }
                         }
 
                     }
