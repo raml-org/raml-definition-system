@@ -63,6 +63,10 @@ export class BodyLike {
     MetaModel.description("Returns schema content for the cases when schema is inlined, when schema is included, and when " +
       "schema is a reference.")
   ]
+
+  description:Sys.MarkdownString;
+  $description = [MetaModel.description("Human readable description of the body")];
+
 }
 
 //Later we will attach functionality which is specific for XMLBody and JSONBody at this moment they are the same

@@ -38,7 +38,6 @@ export class SecuritySchemePart extends Methods.MethodBase {
     // ]
 
 
-    displayName:string
     $displayName=[
         MetaModel.description("An alternate, human-friendly name for the security scheme part")
     ]

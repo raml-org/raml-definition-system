@@ -24,8 +24,8 @@ export class ExampleSpec  extends Annotable{
     MetaModel.valueDescription("* Valid value for this type<br>* String representing the serialized version of a valid value")
   ]
 
-  structuredContent:TypeInstance;
-  $structuredContent=[
+  structuredValue:TypeInstance;
+  $structuredValue=[
     MetaModel.customHandling(),
     MetaModel.description("Returns object representation of example, if possible")
   ]
@@ -146,15 +146,6 @@ export class TypeDeclaration extends Annotable{
       "generators to generate sample values for an object of this type. Cannot be present if the examples property is present."),
     MetaModel.valueDescription("* Valid value for this type<br>* String representing the serialized version of a valid value")
   ]
-
-  structuredExample:TypeInstance;
-  $structuredExample=[
-    MetaModel.customHandling(),
-    MetaModel.description("Returns object representation of example, if possible")
-  ];
-
-
-
 
   repeat:boolean
   $repeat=[

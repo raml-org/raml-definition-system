@@ -71,6 +71,8 @@ export class MethodBase extends Common.RAMLLanguageElement {
         MetaModel.description("Headers that allowed at this position"),
         MetaModel.newInstanceName("New Header"),
     ]
+
+    displayName:string
 }
 
 export class Method extends MethodBase {
@@ -85,6 +87,10 @@ export class Method extends MethodBase {
     is:TraitRef[]
     $is=[
         MetaModel.description("Instantiation of applyed traits")
+    ]
+
+    $displayName=[
+        MetaModel.description("An alternate, human-friendly name for the method")
     ]
 }
 
@@ -115,7 +121,6 @@ export class Trait extends MethodBase implements Sys.DeclaresDynamicType<Trait> 
         MetaModel.description("Returns object representation of parametrized properties of the trait")
     ]
 
-    displayName:string
     $displayName=[
         MetaModel.description("An alternate, human-friendly name for the trait")
     ]
