@@ -33,6 +33,6 @@ function generateJSONDumpOfDefSystem( ){
         }
     })
     var Universes={Universe08:Universe08,Universe10:Universe10}
-    //fs.writeFileSync( path.resolve(__dirname, 'universe.ts' ), "var Universes="+JSON.stringify( Universes, null, 2 )+";export=Universes")
+    fs.writeFileSync( path.join(__dirname, '../src/universe.ts' ), "var Universes="+JSON.stringify( Universes, null, 2 )+";export=Universes")
 }
 generateJSONDumpOfDefSystem();
