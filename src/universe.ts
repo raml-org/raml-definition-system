@@ -916,9 +916,6 @@ var Universes={
         "fixedFacets": {
           "name": "fixedFacets"
         },
-        "schemaContent": {
-          "name": "schemaContent"
-        },
         "structuredExample": {
           "name": "structuredExample"
         }
