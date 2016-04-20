@@ -657,6 +657,8 @@ export class RAMLPropertyService extends RAMLPropertyParserService{
         super();
     }
 
+    private _meta:{[key:string]:any} = {};
+
     valueDocProvider(){
         return (<Property>this._property).valueDocProvider();
     }
@@ -738,6 +740,14 @@ export class RAMLPropertyService extends RAMLPropertyParserService{
 
     isDescriminating(){
         return this._property.isDescriminator();
+    }
+
+    putMeta(key:string,value:any){
+        this._meta[key] = value;
+    }
+
+    meta(key:string){
+        return this._meta[key];
     }
 
 }
