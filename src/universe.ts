@@ -891,6 +891,9 @@ var Universes={
         "example": {
           "name": "example"
         },
+        "examples": {
+          "name": "examples"
+        },
         "repeat": {
           "name": "repeat"
         },

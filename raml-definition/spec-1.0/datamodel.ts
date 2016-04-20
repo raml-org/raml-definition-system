@@ -142,8 +142,17 @@ export class TypeDeclaration extends Annotable{
   $example=[
     MetaModel.example(),
     MetaModel.selfNode(),
-    MetaModel.description("An example of this type instance represented as string. This can be used, e.g., by documentation " +
+    MetaModel.description("An example of this type instance represented as string or yaml map/sequence. This can be used, e.g., by documentation " +
       "generators to generate sample values for an object of this type. Cannot be present if the examples property is present."),
+    MetaModel.valueDescription("* Valid value for this type<br>* String representing the serialized version of a valid value")
+  ]
+
+  examples:ExampleSpec[]
+  $examples=[
+    MetaModel.example(),
+    MetaModel.selfNode(),
+    MetaModel.description("An example of this type instance represented as string. This can be used, e.g., by documentation " +
+        "generators to generate sample values for an object of this type. Cannot be present if the example property is present."),
     MetaModel.valueDescription("* Valid value for this type<br>* String representing the serialized version of a valid value")
   ]
 
