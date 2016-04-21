@@ -42,6 +42,8 @@ export class ExampleSpec  extends Annotable{
     MetaModel.hide(),
     MetaModel.description("Example identifier, if specified")
   ]
+  displayName: string
+  description: string
 
   $displayName=[
     MetaModel.description("An alternate, human-friendly name for the example")
@@ -214,7 +216,8 @@ export class TypeDeclaration extends Annotable{
       "AnnotationTypeDeclaration",
       "Library",
       "Overlay",
-      "Extension"
+      "Extension",
+      "Scalar"
     ]),
     MetaModel.description("Restrictions on where annotations of this type can be applied. If this property is specified, " +
         "annotations of this type may only be applied on a property corresponding to one of the target names specified as the " +
