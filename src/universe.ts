@@ -240,16 +240,6 @@ var Universes={
         }
       }
     },
-    "RAMLLanguageElement": {
-      "name": "RAMLLanguageElement",
-      "properties": {
-        "description": {
-          "name": "description",
-          "range": "MarkdownString",
-          "domain": "RAMLLanguageElement"
-        }
-      }
-    },
     "RAMLSimpleElement": {
       "name": "RAMLSimpleElement",
       "properties": {}
@@ -257,11 +247,6 @@ var Universes={
     "Parameter": {
       "name": "Parameter",
       "properties": {
-        "description": {
-          "name": "description",
-          "range": "MarkdownString",
-          "domain": "RAMLLanguageElement"
-        },
         "name": {
           "name": "name",
           "range": "StringType",
@@ -300,6 +285,11 @@ var Universes={
         "repeat": {
           "name": "repeat",
           "range": "BooleanType",
+          "domain": "Parameter"
+        },
+        "description": {
+          "name": "description",
+          "range": "MarkdownString",
           "domain": "Parameter"
         }
       }
@@ -307,11 +297,6 @@ var Universes={
     "StringTypeDeclaration": {
       "name": "StringTypeDeclaration",
       "properties": {
-        "description": {
-          "name": "description",
-          "range": "MarkdownString",
-          "domain": "RAMLLanguageElement"
-        },
         "name": {
           "name": "name",
           "range": "StringType",
@@ -350,6 +335,11 @@ var Universes={
         "repeat": {
           "name": "repeat",
           "range": "BooleanType",
+          "domain": "Parameter"
+        },
+        "description": {
+          "name": "description",
+          "range": "MarkdownString",
           "domain": "Parameter"
         },
         "pattern": {
@@ -377,11 +367,6 @@ var Universes={
     "BooleanTypeDeclaration": {
       "name": "BooleanTypeDeclaration",
       "properties": {
-        "description": {
-          "name": "description",
-          "range": "MarkdownString",
-          "domain": "RAMLLanguageElement"
-        },
         "name": {
           "name": "name",
           "range": "StringType",
@@ -420,6 +405,11 @@ var Universes={
         "repeat": {
           "name": "repeat",
           "range": "BooleanType",
+          "domain": "Parameter"
+        },
+        "description": {
+          "name": "description",
+          "range": "MarkdownString",
           "domain": "Parameter"
         }
       }
@@ -427,11 +417,6 @@ var Universes={
     "NumberTypeDeclaration": {
       "name": "NumberTypeDeclaration",
       "properties": {
-        "description": {
-          "name": "description",
-          "range": "MarkdownString",
-          "domain": "RAMLLanguageElement"
-        },
         "name": {
           "name": "name",
           "range": "StringType",
@@ -470,6 +455,11 @@ var Universes={
         "repeat": {
           "name": "repeat",
           "range": "BooleanType",
+          "domain": "Parameter"
+        },
+        "description": {
+          "name": "description",
+          "range": "MarkdownString",
           "domain": "Parameter"
         },
         "minimum": {
@@ -487,11 +477,6 @@ var Universes={
     "IntegerTypeDeclaration": {
       "name": "IntegerTypeDeclaration",
       "properties": {
-        "description": {
-          "name": "description",
-          "range": "MarkdownString",
-          "domain": "RAMLLanguageElement"
-        },
         "name": {
           "name": "name",
           "range": "StringType",
@@ -530,6 +515,11 @@ var Universes={
         "repeat": {
           "name": "repeat",
           "range": "BooleanType",
+          "domain": "Parameter"
+        },
+        "description": {
+          "name": "description",
+          "range": "MarkdownString",
           "domain": "Parameter"
         },
         "minimum": {
@@ -547,11 +537,6 @@ var Universes={
     "DateTypeDeclaration": {
       "name": "DateTypeDeclaration",
       "properties": {
-        "description": {
-          "name": "description",
-          "range": "MarkdownString",
-          "domain": "RAMLLanguageElement"
-        },
         "name": {
           "name": "name",
           "range": "StringType",
@@ -590,6 +575,11 @@ var Universes={
         "repeat": {
           "name": "repeat",
           "range": "BooleanType",
+          "domain": "Parameter"
+        },
+        "description": {
+          "name": "description",
+          "range": "MarkdownString",
           "domain": "Parameter"
         }
       }
@@ -597,11 +587,6 @@ var Universes={
     "FileTypeDeclaration": {
       "name": "FileTypeDeclaration",
       "properties": {
-        "description": {
-          "name": "description",
-          "range": "MarkdownString",
-          "domain": "RAMLLanguageElement"
-        },
         "name": {
           "name": "name",
           "range": "StringType",
@@ -640,6 +625,11 @@ var Universes={
         "repeat": {
           "name": "repeat",
           "range": "BooleanType",
+          "domain": "Parameter"
+        },
+        "description": {
+          "name": "description",
+          "range": "MarkdownString",
           "domain": "Parameter"
         }
       }
@@ -748,11 +738,6 @@ var Universes={
     "Response": {
       "name": "Response",
       "properties": {
-        "description": {
-          "name": "description",
-          "range": "MarkdownString",
-          "domain": "RAMLLanguageElement"
-        },
         "code": {
           "name": "code",
           "range": "StatusCodeString",
@@ -767,17 +752,17 @@ var Universes={
           "name": "body",
           "range": "BodyLike",
           "domain": "Response"
+        },
+        "description": {
+          "name": "description",
+          "range": "MarkdownString",
+          "domain": "Response"
         }
       }
     },
     "Resource": {
       "name": "Resource",
       "properties": {
-        "description": {
-          "name": "description",
-          "range": "MarkdownString",
-          "domain": "RAMLLanguageElement"
-        },
         "relativeUri": {
           "name": "relativeUri",
           "range": "RelativeUriString",
@@ -822,6 +807,11 @@ var Universes={
           "name": "baseUriParameters",
           "range": "Parameter",
           "domain": "Resource"
+        },
+        "description": {
+          "name": "description",
+          "range": "MarkdownString",
+          "domain": "Resource"
         }
       }
     },
@@ -836,11 +826,6 @@ var Universes={
     "ResourceType": {
       "name": "ResourceType",
       "properties": {
-        "description": {
-          "name": "description",
-          "range": "MarkdownString",
-          "domain": "RAMLLanguageElement"
-        },
         "name": {
           "name": "name",
           "range": "StringType",
@@ -886,6 +871,11 @@ var Universes={
           "range": "Parameter",
           "domain": "ResourceType"
         },
+        "description": {
+          "name": "description",
+          "range": "MarkdownString",
+          "domain": "ResourceType"
+        },
         "parametrizedProperties": {
           "name": "parametrizedProperties"
         }
@@ -894,11 +884,6 @@ var Universes={
     "MethodBase": {
       "name": "MethodBase",
       "properties": {
-        "description": {
-          "name": "description",
-          "range": "MarkdownString",
-          "domain": "RAMLLanguageElement"
-        },
         "responses": {
           "name": "responses",
           "range": "Response",
@@ -934,9 +919,9 @@ var Universes={
           "range": "Parameter",
           "domain": "MethodBase"
         },
-        "displayName": {
-          "name": "displayName",
-          "range": "StringType",
+        "description": {
+          "name": "description",
+          "range": "MarkdownString",
           "domain": "MethodBase"
         }
       }
@@ -944,11 +929,6 @@ var Universes={
     "Method": {
       "name": "Method",
       "properties": {
-        "description": {
-          "name": "description",
-          "range": "MarkdownString",
-          "domain": "RAMLLanguageElement"
-        },
         "responses": {
           "name": "responses",
           "range": "Response",
@@ -984,10 +964,10 @@ var Universes={
           "range": "Parameter",
           "domain": "MethodBase"
         },
-        "displayName": {
-          "name": "displayName",
-          "range": "StringType",
-          "domain": "Method"
+        "description": {
+          "name": "description",
+          "range": "MarkdownString",
+          "domain": "MethodBase"
         },
         "method": {
           "name": "method",
@@ -1004,11 +984,6 @@ var Universes={
     "Trait": {
       "name": "Trait",
       "properties": {
-        "description": {
-          "name": "description",
-          "range": "MarkdownString",
-          "domain": "RAMLLanguageElement"
-        },
         "responses": {
           "name": "responses",
           "range": "Response",
@@ -1044,10 +1019,10 @@ var Universes={
           "range": "Parameter",
           "domain": "MethodBase"
         },
-        "displayName": {
-          "name": "displayName",
-          "range": "StringType",
-          "domain": "Trait"
+        "description": {
+          "name": "description",
+          "range": "MarkdownString",
+          "domain": "MethodBase"
         },
         "name": {
           "name": "name",
@@ -1056,6 +1031,11 @@ var Universes={
         },
         "usage": {
           "name": "usage",
+          "range": "StringType",
+          "domain": "Trait"
+        },
+        "displayName": {
+          "name": "displayName",
           "range": "StringType",
           "domain": "Trait"
         },
@@ -1075,11 +1055,6 @@ var Universes={
     "SecuritySchemePart": {
       "name": "SecuritySchemePart",
       "properties": {
-        "description": {
-          "name": "description",
-          "range": "MarkdownString",
-          "domain": "SecuritySchemePart"
-        },
         "responses": {
           "name": "responses",
           "range": "Response",
@@ -1113,6 +1088,11 @@ var Universes={
         "headers": {
           "name": "headers",
           "range": "Parameter",
+          "domain": "SecuritySchemePart"
+        },
+        "description": {
+          "name": "description",
+          "range": "MarkdownString",
           "domain": "SecuritySchemePart"
         },
         "displayName": {
@@ -1134,11 +1114,6 @@ var Universes={
     "AbstractSecurityScheme": {
       "name": "AbstractSecurityScheme",
       "properties": {
-        "description": {
-          "name": "description",
-          "range": "MarkdownString",
-          "domain": "AbstractSecurityScheme"
-        },
         "name": {
           "name": "name",
           "range": "StringType",
@@ -1147,6 +1122,11 @@ var Universes={
         "type": {
           "name": "type",
           "range": "StringType",
+          "domain": "AbstractSecurityScheme"
+        },
+        "description": {
+          "name": "description",
+          "range": "MarkdownString",
           "domain": "AbstractSecurityScheme"
         },
         "describedBy": {
@@ -1220,11 +1200,6 @@ var Universes={
     "OAuth2SecurityScheme": {
       "name": "OAuth2SecurityScheme",
       "properties": {
-        "description": {
-          "name": "description",
-          "range": "MarkdownString",
-          "domain": "AbstractSecurityScheme"
-        },
         "name": {
           "name": "name",
           "range": "StringType",
@@ -1233,6 +1208,11 @@ var Universes={
         "type": {
           "name": "type",
           "range": "StringType",
+          "domain": "AbstractSecurityScheme"
+        },
+        "description": {
+          "name": "description",
+          "range": "MarkdownString",
           "domain": "AbstractSecurityScheme"
         },
         "describedBy": {
@@ -1250,11 +1230,6 @@ var Universes={
     "OAuth1SecurityScheme": {
       "name": "OAuth1SecurityScheme",
       "properties": {
-        "description": {
-          "name": "description",
-          "range": "MarkdownString",
-          "domain": "AbstractSecurityScheme"
-        },
         "name": {
           "name": "name",
           "range": "StringType",
@@ -1263,6 +1238,11 @@ var Universes={
         "type": {
           "name": "type",
           "range": "StringType",
+          "domain": "AbstractSecurityScheme"
+        },
+        "description": {
+          "name": "description",
+          "range": "MarkdownString",
           "domain": "AbstractSecurityScheme"
         },
         "describedBy": {
@@ -1280,11 +1260,6 @@ var Universes={
     "BasicSecurityScheme": {
       "name": "BasicSecurityScheme",
       "properties": {
-        "description": {
-          "name": "description",
-          "range": "MarkdownString",
-          "domain": "AbstractSecurityScheme"
-        },
         "name": {
           "name": "name",
           "range": "StringType",
@@ -1293,6 +1268,11 @@ var Universes={
         "type": {
           "name": "type",
           "range": "StringType",
+          "domain": "AbstractSecurityScheme"
+        },
+        "description": {
+          "name": "description",
+          "range": "MarkdownString",
           "domain": "AbstractSecurityScheme"
         },
         "describedBy": {
@@ -1310,11 +1290,6 @@ var Universes={
     "DigestSecurityScheme": {
       "name": "DigestSecurityScheme",
       "properties": {
-        "description": {
-          "name": "description",
-          "range": "MarkdownString",
-          "domain": "AbstractSecurityScheme"
-        },
         "name": {
           "name": "name",
           "range": "StringType",
@@ -1323,6 +1298,11 @@ var Universes={
         "type": {
           "name": "type",
           "range": "StringType",
+          "domain": "AbstractSecurityScheme"
+        },
+        "description": {
+          "name": "description",
+          "range": "MarkdownString",
           "domain": "AbstractSecurityScheme"
         },
         "describedBy": {
@@ -1340,11 +1320,6 @@ var Universes={
     "CustomSecurityScheme": {
       "name": "CustomSecurityScheme",
       "properties": {
-        "description": {
-          "name": "description",
-          "range": "MarkdownString",
-          "domain": "AbstractSecurityScheme"
-        },
         "name": {
           "name": "name",
           "range": "StringType",
@@ -1353,6 +1328,11 @@ var Universes={
         "type": {
           "name": "type",
           "range": "StringType",
+          "domain": "AbstractSecurityScheme"
+        },
+        "description": {
+          "name": "description",
+          "range": "MarkdownString",
           "domain": "AbstractSecurityScheme"
         },
         "describedBy": {
