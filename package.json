@@ -38,6 +38,7 @@
     "typescript": "^1.8.9",
     "typings": "^0.7.9",
     "dev-env-installer":"^0.0.2",
+    "json-loader": "^0.5.1",
     "rimraf":"*"
   }
 }
