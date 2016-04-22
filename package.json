@@ -5,7 +5,11 @@
   "scripts": {
     "compile": "rimraf dist && tsc",
     "generateJSON": "node dist/builder.js",
-    "build": "npm run compile && npm run generateJSON"
+    "build": "npm run compile && npm run generateJSON",
+    "pullall": "dev-env-installer pullall",
+    "buildall": "dev-env-installer buildall",
+    "testall": "dev-env-installer testall",
+    "devInstall": "dev-env-installer install"
   },
   "dependencies": {
     "know-your-http-well": "^0.2.0",
