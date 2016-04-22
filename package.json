@@ -3,7 +3,7 @@
   "version": "0.0.14",
   "main": "dist/definitionSystem.js",
   "scripts": {
-    "compile": "rm -rf dist/ && ./node_modules/typescript/bin/tsc",
+    "compile": "rimraf dist && tsc",
     "generateJSON": "node dist/builder.js",
     "build": "npm run compile && npm run generateJSON"
   },
@@ -31,6 +31,7 @@
   },
   "devDependencies": {
     "typescript": "^1.8.9",
-    "typings": "^0.7.9"
+    "typings": "^0.7.9",
+    "dev-env-installer": "^0.0.2"
   }
 }
