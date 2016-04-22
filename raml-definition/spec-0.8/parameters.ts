@@ -10,7 +10,7 @@ export enum ParameterLocation{
   QUERY,HEADERS,URI,FORM,BURI
 }
 
-export class Parameter extends Common.RAMLLanguageElement {
+export class Parameter {
   name:string
   $name=[
     MetaModel.key(),
@@ -65,6 +65,12 @@ export class Parameter extends Common.RAMLLanguageElement {
       "used multiple times, the repeat parameter value MUST be set to 'true'. Otherwise, the default value is 'false' and " +
       "the parameter may not be repeated."),
     MetaModel.defaultBooleanValue(false)
+  ]
+
+  description:Sys.MarkdownString
+  $description=[
+    MetaModel.description("The description attribute describes the intended use or " +
+        "meaning of the $self. This value MAY be formatted using Markdown.")
   ]
 }
 

@@ -9,7 +9,7 @@ import Security=require("./security")
 //// Method
 //////////////////
 
-export class MethodBase extends Common.RAMLLanguageElement {
+export class MethodBase {
     $=[
         MetaModel.description("Method object allows description of http methods")
     ]
@@ -72,7 +72,7 @@ export class MethodBase extends Common.RAMLLanguageElement {
         MetaModel.newInstanceName("New Header"),
     ]
 
-    displayName:string
+    description:Sys.MarkdownString
 }
 
 export class Method extends MethodBase {
@@ -87,10 +87,6 @@ export class Method extends MethodBase {
     is:TraitRef[]
     $is=[
         MetaModel.description("Instantiation of applyed traits")
-    ]
-
-    $displayName=[
-        MetaModel.description("An alternate, human-friendly name for the method")
     ]
 }
 
@@ -121,6 +117,7 @@ export class Trait extends MethodBase implements Sys.DeclaresDynamicType<Trait> 
         MetaModel.description("Returns object representation of parametrized properties of the trait")
     ]
 
+    displayName:string
     $displayName=[
         MetaModel.description("An alternate, human-friendly name for the trait")
     ]

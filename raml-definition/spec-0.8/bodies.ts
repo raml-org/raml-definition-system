@@ -93,7 +93,7 @@ export class JSONBody extends BodyLike {
 }
 
 //TODO CHECK if it all actually extends RAML Language element
-export class Response extends Common.RAMLLanguageElement {
+export class Response {
   code:Sys.StatusCodeString
   $code=[
     MetaModel.key(),
@@ -120,5 +120,11 @@ export class Response extends Common.RAMLLanguageElement {
     "For APIs without a priori knowledge of the response types for their responses, `*/*` MAY be used to indicate that responses " +
     "that do not matching other defined data types MUST be accepted. Processing applications MUST match the most descriptive " +
     "media type first if `*/*` is used.")
+  ]
+
+  description:Sys.MarkdownString
+  $description=[
+    MetaModel.description("The description attribute describes the intended use or " +
+        "meaning of the $self. This value MAY be formatted using Markdown.")
   ]
 }

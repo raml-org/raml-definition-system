@@ -37,7 +37,7 @@ export class SecuritySchemePart extends Methods.MethodBase {
     //     MetaModel.hide()
     // ]
 
-
+    displayName:string
     $displayName=[
         MetaModel.description("An alternate, human-friendly name for the security scheme part")
     ]
@@ -60,7 +60,7 @@ export class SecuritySchemeSettings {
     ]
 }
 
-export class AbstractSecurityScheme extends Common.RAMLLanguageElement implements Sys.Referencable<AbstractSecurityScheme> {
+export class AbstractSecurityScheme implements Sys.Referencable<AbstractSecurityScheme> {
     $=[
         MetaModel.description("Declares globally referable security schema definition"),
         MetaModel.actuallyExports("$self"),
