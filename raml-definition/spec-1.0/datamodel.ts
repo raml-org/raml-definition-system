@@ -101,17 +101,11 @@ export class TypeDeclaration extends Annotable{
   schema: string
   $schema=[
     MetaModel.typeExpression(),
+    MetaModel.allowMultiple(),
     MetaModel.description("Alias for the equivalent \"type\" property, for compatibility with RAML 0.8. Deprecated - API " +
       "definitions should use the \"type\" property, as the \"schema\" alias for that property name may be removed in a " +
       "future RAML version. The \"type\" property allows for XML and JSON schemas."),
     MetaModel.valueDescription("Single string denoting the base type or type expression")
-  ]
-
-  schemaContent:string
-  $schemaContent = [
-    MetaModel.customHandling(),
-    MetaModel.description("Returns schema content for the cases when schema is " +
-      "inlined, when schema is included, and when schema is a reference.")
   ]
 
   type:string;
