@@ -10,7 +10,7 @@ import Security=require("./security")
 //// Resource
 //////////////////
 
-export class Resource extends Common.RAMLLanguageElement {
+export class Resource {
     relativeUri:Sys.RelativeUriString
     $relativeUri=[
         MetaModel.key(),
@@ -69,6 +69,12 @@ export class Resource extends Common.RAMLLanguageElement {
             "the default or parameter selection in the base URI. The baseUriParameters property MAY be used to override any or all " +
             "parameters defined at the root level baseUriParameters property, as well as base URI parameters not specified at the root level.")
     ]
+
+    description:Sys.MarkdownString
+    $description=[
+        MetaModel.description("The description attribute describes the intended use or " +
+            "meaning of the $self. This value MAY be formatted using Markdown.")
+    ]
 }
 
 
@@ -84,7 +90,7 @@ export class ResourceTypeRef extends Sys.Reference<ResourceType> {
     ]
 }
 
-export class ResourceType extends Common.RAMLLanguageElement implements Sys.DeclaresDynamicType<ResourceType> {
+export class ResourceType implements Sys.DeclaresDynamicType<ResourceType> {
     $=[
         MetaModel.inlinedTemplates(),
         MetaModel.allowQuestion()
@@ -154,5 +160,11 @@ export class ResourceType extends Common.RAMLLanguageElement implements Sys.Decl
     $parametrizedProperties = [
         MetaModel.customHandling(),
         MetaModel.description("Returns object representation of parametrized properties of the resource type")
+    ]
+
+    description:Sys.MarkdownString
+    $description=[
+        MetaModel.description("The description attribute describes the intended use or " +
+            "meaning of the $self. This value MAY be formatted using Markdown.")
     ]
 }
