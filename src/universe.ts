@@ -4,10 +4,14 @@ var Universes={
       "name": "GlobalSchema",
       "properties": {
         "key": {
-          "name": "key"
+          "name": "key",
+          "range": "StringType",
+          "domain": "GlobalSchema"
         },
         "value": {
-          "name": "value"
+          "name": "value",
+          "range": "SchemaString",
+          "domain": "GlobalSchema"
         }
       }
     },
@@ -15,46 +19,74 @@ var Universes={
       "name": "Api",
       "properties": {
         "title": {
-          "name": "title"
+          "name": "title",
+          "range": "StringType",
+          "domain": "Api"
         },
         "version": {
-          "name": "version"
+          "name": "version",
+          "range": "StringType",
+          "domain": "Api"
         },
         "baseUri": {
-          "name": "baseUri"
+          "name": "baseUri",
+          "range": "FullUriTemplateString",
+          "domain": "Api"
         },
         "baseUriParameters": {
-          "name": "baseUriParameters"
+          "name": "baseUriParameters",
+          "range": "Parameter",
+          "domain": "Api"
         },
         "uriParameters": {
-          "name": "uriParameters"
+          "name": "uriParameters",
+          "range": "Parameter",
+          "domain": "Api"
         },
         "protocols": {
-          "name": "protocols"
+          "name": "protocols",
+          "range": "StringType",
+          "domain": "Api"
         },
         "mediaType": {
-          "name": "mediaType"
+          "name": "mediaType",
+          "range": "MimeType",
+          "domain": "Api"
         },
         "schemas": {
-          "name": "schemas"
+          "name": "schemas",
+          "range": "GlobalSchema",
+          "domain": "Api"
         },
         "traits": {
-          "name": "traits"
+          "name": "traits",
+          "range": "Trait",
+          "domain": "Api"
         },
         "securedBy": {
-          "name": "securedBy"
+          "name": "securedBy",
+          "range": "SecuritySchemeRef",
+          "domain": "Api"
         },
         "securitySchemes": {
-          "name": "securitySchemes"
+          "name": "securitySchemes",
+          "range": "AbstractSecurityScheme",
+          "domain": "Api"
         },
         "resourceTypes": {
-          "name": "resourceTypes"
+          "name": "resourceTypes",
+          "range": "ResourceType",
+          "domain": "Api"
         },
         "resources": {
-          "name": "resources"
+          "name": "resources",
+          "range": "Resource",
+          "domain": "Api"
         },
         "documentation": {
-          "name": "documentation"
+          "name": "documentation",
+          "range": "DocumentationItem",
+          "domain": "Api"
         },
         "RAMLVersion": {
           "name": "RAMLVersion"
@@ -65,10 +97,14 @@ var Universes={
       "name": "DocumentationItem",
       "properties": {
         "title": {
-          "name": "title"
+          "name": "title",
+          "range": "StringType",
+          "domain": "DocumentationItem"
         },
         "content": {
-          "name": "content"
+          "name": "content",
+          "range": "MarkdownString",
+          "domain": "DocumentationItem"
         }
       }
     },
@@ -163,13 +199,19 @@ var Universes={
       "name": "TypeInstance",
       "properties": {
         "properties": {
-          "name": "properties"
+          "name": "properties",
+          "range": "TypeInstanceProperty",
+          "domain": "TypeInstance"
         },
         "isScalar": {
-          "name": "isScalar"
+          "name": "isScalar",
+          "range": "BooleanType",
+          "domain": "TypeInstance"
         },
         "value": {
-          "name": "value"
+          "name": "value",
+          "range": "AnyType",
+          "domain": "TypeInstance"
         }
       }
     },
@@ -177,16 +219,24 @@ var Universes={
       "name": "TypeInstanceProperty",
       "properties": {
         "name": {
-          "name": "name"
+          "name": "name",
+          "range": "StringType",
+          "domain": "TypeInstanceProperty"
         },
         "value": {
-          "name": "value"
+          "name": "value",
+          "range": "TypeInstance",
+          "domain": "TypeInstanceProperty"
         },
         "values": {
-          "name": "values"
+          "name": "values",
+          "range": "TypeInstance",
+          "domain": "TypeInstanceProperty"
         },
         "isArray": {
-          "name": "isArray"
+          "name": "isArray",
+          "range": "BooleanType",
+          "domain": "TypeInstanceProperty"
         }
       }
     },
@@ -194,7 +244,9 @@ var Universes={
       "name": "RAMLLanguageElement",
       "properties": {
         "description": {
-          "name": "description"
+          "name": "description",
+          "range": "MarkdownString",
+          "domain": "RAMLLanguageElement"
         }
       }
     },
@@ -202,91 +254,574 @@ var Universes={
       "name": "RAMLSimpleElement",
       "properties": {}
     },
+    "Parameter": {
+      "name": "Parameter",
+      "properties": {
+        "description": {
+          "name": "description",
+          "range": "MarkdownString",
+          "domain": "RAMLLanguageElement"
+        },
+        "name": {
+          "name": "name",
+          "range": "StringType",
+          "domain": "Parameter"
+        },
+        "displayName": {
+          "name": "displayName",
+          "range": "StringType",
+          "domain": "Parameter"
+        },
+        "type": {
+          "name": "type",
+          "range": "StringType",
+          "domain": "Parameter"
+        },
+        "location": {
+          "name": "location",
+          "range": "ParameterLocation",
+          "domain": "Parameter"
+        },
+        "required": {
+          "name": "required",
+          "range": "BooleanType",
+          "domain": "Parameter"
+        },
+        "default": {
+          "name": "default",
+          "range": "AnyType",
+          "domain": "Parameter"
+        },
+        "example": {
+          "name": "example",
+          "range": "StringType",
+          "domain": "Parameter"
+        },
+        "repeat": {
+          "name": "repeat",
+          "range": "BooleanType",
+          "domain": "Parameter"
+        }
+      }
+    },
+    "StringTypeDeclaration": {
+      "name": "StringTypeDeclaration",
+      "properties": {
+        "description": {
+          "name": "description",
+          "range": "MarkdownString",
+          "domain": "RAMLLanguageElement"
+        },
+        "name": {
+          "name": "name",
+          "range": "StringType",
+          "domain": "Parameter"
+        },
+        "displayName": {
+          "name": "displayName",
+          "range": "StringType",
+          "domain": "Parameter"
+        },
+        "type": {
+          "name": "type",
+          "range": "StringType",
+          "domain": "Parameter"
+        },
+        "location": {
+          "name": "location",
+          "range": "ParameterLocation",
+          "domain": "Parameter"
+        },
+        "required": {
+          "name": "required",
+          "range": "BooleanType",
+          "domain": "Parameter"
+        },
+        "default": {
+          "name": "default",
+          "range": "AnyType",
+          "domain": "Parameter"
+        },
+        "example": {
+          "name": "example",
+          "range": "StringType",
+          "domain": "Parameter"
+        },
+        "repeat": {
+          "name": "repeat",
+          "range": "BooleanType",
+          "domain": "Parameter"
+        },
+        "pattern": {
+          "name": "pattern",
+          "range": "StringType",
+          "domain": "StringTypeDeclaration"
+        },
+        "enum": {
+          "name": "enum",
+          "range": "StringType",
+          "domain": "StringTypeDeclaration"
+        },
+        "minLength": {
+          "name": "minLength",
+          "range": "NumberType",
+          "domain": "StringTypeDeclaration"
+        },
+        "maxLength": {
+          "name": "maxLength",
+          "range": "NumberType",
+          "domain": "StringTypeDeclaration"
+        }
+      }
+    },
+    "BooleanTypeDeclaration": {
+      "name": "BooleanTypeDeclaration",
+      "properties": {
+        "description": {
+          "name": "description",
+          "range": "MarkdownString",
+          "domain": "RAMLLanguageElement"
+        },
+        "name": {
+          "name": "name",
+          "range": "StringType",
+          "domain": "Parameter"
+        },
+        "displayName": {
+          "name": "displayName",
+          "range": "StringType",
+          "domain": "Parameter"
+        },
+        "type": {
+          "name": "type",
+          "range": "StringType",
+          "domain": "Parameter"
+        },
+        "location": {
+          "name": "location",
+          "range": "ParameterLocation",
+          "domain": "Parameter"
+        },
+        "required": {
+          "name": "required",
+          "range": "BooleanType",
+          "domain": "Parameter"
+        },
+        "default": {
+          "name": "default",
+          "range": "AnyType",
+          "domain": "Parameter"
+        },
+        "example": {
+          "name": "example",
+          "range": "StringType",
+          "domain": "Parameter"
+        },
+        "repeat": {
+          "name": "repeat",
+          "range": "BooleanType",
+          "domain": "Parameter"
+        }
+      }
+    },
+    "NumberTypeDeclaration": {
+      "name": "NumberTypeDeclaration",
+      "properties": {
+        "description": {
+          "name": "description",
+          "range": "MarkdownString",
+          "domain": "RAMLLanguageElement"
+        },
+        "name": {
+          "name": "name",
+          "range": "StringType",
+          "domain": "Parameter"
+        },
+        "displayName": {
+          "name": "displayName",
+          "range": "StringType",
+          "domain": "Parameter"
+        },
+        "type": {
+          "name": "type",
+          "range": "StringType",
+          "domain": "Parameter"
+        },
+        "location": {
+          "name": "location",
+          "range": "ParameterLocation",
+          "domain": "Parameter"
+        },
+        "required": {
+          "name": "required",
+          "range": "BooleanType",
+          "domain": "Parameter"
+        },
+        "default": {
+          "name": "default",
+          "range": "AnyType",
+          "domain": "Parameter"
+        },
+        "example": {
+          "name": "example",
+          "range": "StringType",
+          "domain": "Parameter"
+        },
+        "repeat": {
+          "name": "repeat",
+          "range": "BooleanType",
+          "domain": "Parameter"
+        },
+        "minimum": {
+          "name": "minimum",
+          "range": "NumberType",
+          "domain": "NumberTypeDeclaration"
+        },
+        "maximum": {
+          "name": "maximum",
+          "range": "NumberType",
+          "domain": "NumberTypeDeclaration"
+        }
+      }
+    },
+    "IntegerTypeDeclaration": {
+      "name": "IntegerTypeDeclaration",
+      "properties": {
+        "description": {
+          "name": "description",
+          "range": "MarkdownString",
+          "domain": "RAMLLanguageElement"
+        },
+        "name": {
+          "name": "name",
+          "range": "StringType",
+          "domain": "Parameter"
+        },
+        "displayName": {
+          "name": "displayName",
+          "range": "StringType",
+          "domain": "Parameter"
+        },
+        "type": {
+          "name": "type",
+          "range": "StringType",
+          "domain": "Parameter"
+        },
+        "location": {
+          "name": "location",
+          "range": "ParameterLocation",
+          "domain": "Parameter"
+        },
+        "required": {
+          "name": "required",
+          "range": "BooleanType",
+          "domain": "Parameter"
+        },
+        "default": {
+          "name": "default",
+          "range": "AnyType",
+          "domain": "Parameter"
+        },
+        "example": {
+          "name": "example",
+          "range": "StringType",
+          "domain": "Parameter"
+        },
+        "repeat": {
+          "name": "repeat",
+          "range": "BooleanType",
+          "domain": "Parameter"
+        },
+        "minimum": {
+          "name": "minimum",
+          "range": "NumberType",
+          "domain": "NumberTypeDeclaration"
+        },
+        "maximum": {
+          "name": "maximum",
+          "range": "NumberType",
+          "domain": "NumberTypeDeclaration"
+        }
+      }
+    },
+    "DateTypeDeclaration": {
+      "name": "DateTypeDeclaration",
+      "properties": {
+        "description": {
+          "name": "description",
+          "range": "MarkdownString",
+          "domain": "RAMLLanguageElement"
+        },
+        "name": {
+          "name": "name",
+          "range": "StringType",
+          "domain": "Parameter"
+        },
+        "displayName": {
+          "name": "displayName",
+          "range": "StringType",
+          "domain": "Parameter"
+        },
+        "type": {
+          "name": "type",
+          "range": "StringType",
+          "domain": "Parameter"
+        },
+        "location": {
+          "name": "location",
+          "range": "ParameterLocation",
+          "domain": "Parameter"
+        },
+        "required": {
+          "name": "required",
+          "range": "BooleanType",
+          "domain": "Parameter"
+        },
+        "default": {
+          "name": "default",
+          "range": "AnyType",
+          "domain": "Parameter"
+        },
+        "example": {
+          "name": "example",
+          "range": "StringType",
+          "domain": "Parameter"
+        },
+        "repeat": {
+          "name": "repeat",
+          "range": "BooleanType",
+          "domain": "Parameter"
+        }
+      }
+    },
+    "FileTypeDeclaration": {
+      "name": "FileTypeDeclaration",
+      "properties": {
+        "description": {
+          "name": "description",
+          "range": "MarkdownString",
+          "domain": "RAMLLanguageElement"
+        },
+        "name": {
+          "name": "name",
+          "range": "StringType",
+          "domain": "Parameter"
+        },
+        "displayName": {
+          "name": "displayName",
+          "range": "StringType",
+          "domain": "Parameter"
+        },
+        "type": {
+          "name": "type",
+          "range": "StringType",
+          "domain": "Parameter"
+        },
+        "location": {
+          "name": "location",
+          "range": "ParameterLocation",
+          "domain": "Parameter"
+        },
+        "required": {
+          "name": "required",
+          "range": "BooleanType",
+          "domain": "Parameter"
+        },
+        "default": {
+          "name": "default",
+          "range": "AnyType",
+          "domain": "Parameter"
+        },
+        "example": {
+          "name": "example",
+          "range": "StringType",
+          "domain": "Parameter"
+        },
+        "repeat": {
+          "name": "repeat",
+          "range": "BooleanType",
+          "domain": "Parameter"
+        }
+      }
+    },
+    "ParameterLocation": {
+      "name": "ParameterLocation",
+      "properties": {}
+    },
+    "MimeType": {
+      "name": "MimeType",
+      "properties": {}
+    },
+    "BodyLike": {
+      "name": "BodyLike",
+      "properties": {
+        "name": {
+          "name": "name",
+          "range": "StringType",
+          "domain": "BodyLike"
+        },
+        "schema": {
+          "name": "schema",
+          "range": "SchemaString",
+          "domain": "BodyLike"
+        },
+        "example": {
+          "name": "example",
+          "range": "ExampleString",
+          "domain": "BodyLike"
+        },
+        "formParameters": {
+          "name": "formParameters",
+          "range": "Parameter",
+          "domain": "BodyLike"
+        },
+        "description": {
+          "name": "description",
+          "range": "MarkdownString",
+          "domain": "BodyLike"
+        },
+        "schemaContent": {
+          "name": "schemaContent"
+        }
+      }
+    },
+    "XMLBody": {
+      "name": "XMLBody",
+      "properties": {
+        "name": {
+          "name": "name",
+          "range": "StringType",
+          "domain": "BodyLike"
+        },
+        "schema": {
+          "name": "schema",
+          "range": "XMLSchemaString",
+          "domain": "XMLBody"
+        },
+        "example": {
+          "name": "example",
+          "range": "ExampleString",
+          "domain": "BodyLike"
+        },
+        "formParameters": {
+          "name": "formParameters",
+          "range": "Parameter",
+          "domain": "BodyLike"
+        },
+        "description": {
+          "name": "description",
+          "range": "MarkdownString",
+          "domain": "BodyLike"
+        }
+      }
+    },
+    "JSONBody": {
+      "name": "JSONBody",
+      "properties": {
+        "name": {
+          "name": "name",
+          "range": "StringType",
+          "domain": "BodyLike"
+        },
+        "schema": {
+          "name": "schema",
+          "range": "JSonSchemaString",
+          "domain": "JSONBody"
+        },
+        "example": {
+          "name": "example",
+          "range": "ExampleString",
+          "domain": "BodyLike"
+        },
+        "formParameters": {
+          "name": "formParameters",
+          "range": "Parameter",
+          "domain": "BodyLike"
+        },
+        "description": {
+          "name": "description",
+          "range": "MarkdownString",
+          "domain": "BodyLike"
+        }
+      }
+    },
+    "Response": {
+      "name": "Response",
+      "properties": {
+        "description": {
+          "name": "description",
+          "range": "MarkdownString",
+          "domain": "RAMLLanguageElement"
+        },
+        "code": {
+          "name": "code",
+          "range": "StatusCodeString",
+          "domain": "Response"
+        },
+        "headers": {
+          "name": "headers",
+          "range": "Parameter",
+          "domain": "Response"
+        },
+        "body": {
+          "name": "body",
+          "range": "BodyLike",
+          "domain": "Response"
+        }
+      }
+    },
     "Resource": {
       "name": "Resource",
       "properties": {
+        "description": {
+          "name": "description",
+          "range": "MarkdownString",
+          "domain": "RAMLLanguageElement"
+        },
         "relativeUri": {
-          "name": "relativeUri"
+          "name": "relativeUri",
+          "range": "RelativeUriString",
+          "domain": "Resource"
         },
         "type": {
-          "name": "type"
+          "name": "type",
+          "range": "ResourceTypeRef",
+          "domain": "Resource"
         },
         "is": {
-          "name": "is"
+          "name": "is",
+          "range": "TraitRef",
+          "domain": "Resource"
         },
         "securedBy": {
-          "name": "securedBy"
+          "name": "securedBy",
+          "range": "SecuritySchemeRef",
+          "domain": "Resource"
         },
         "uriParameters": {
-          "name": "uriParameters"
+          "name": "uriParameters",
+          "range": "Parameter",
+          "domain": "Resource"
         },
         "methods": {
-          "name": "methods"
+          "name": "methods",
+          "range": "Method",
+          "domain": "Resource"
         },
         "resources": {
-          "name": "resources"
+          "name": "resources",
+          "range": "Resource",
+          "domain": "Resource"
         },
         "displayName": {
-          "name": "displayName"
+          "name": "displayName",
+          "range": "StringType",
+          "domain": "Resource"
         },
         "baseUriParameters": {
-          "name": "baseUriParameters"
-        }
-      }
-    },
-    "MethodBase": {
-      "name": "MethodBase",
-      "properties": {
-        "responses": {
-          "name": "responses"
-        },
-        "body": {
-          "name": "body"
-        },
-        "protocols": {
-          "name": "protocols"
-        },
-        "securedBy": {
-          "name": "securedBy"
-        }
-      }
-    },
-    "Method": {
-      "name": "Method",
-      "properties": {
-        "method": {
-          "name": "method"
-        },
-        "securedBy": {
-          "name": "securedBy"
-        },
-        "is": {
-          "name": "is"
-        },
-        "baseUriParameters": {
-          "name": "baseUriParameters"
-        }
-      }
-    },
-    "Trait": {
-      "name": "Trait",
-      "properties": {
-        "name": {
-          "name": "name"
-        },
-        "usage": {
-          "name": "usage"
-        },
-        "parametrizedProperties": {
-          "name": "parametrizedProperties"
-        }
-      }
-    },
-    "TraitRef": {
-      "name": "TraitRef",
-      "properties": {
-        "trait": {
-          "name": "trait"
+          "name": "baseUriParameters",
+          "range": "Parameter",
+          "domain": "Resource"
         }
       }
     },
@@ -301,58 +836,294 @@ var Universes={
     "ResourceType": {
       "name": "ResourceType",
       "properties": {
+        "description": {
+          "name": "description",
+          "range": "MarkdownString",
+          "domain": "RAMLLanguageElement"
+        },
         "name": {
-          "name": "name"
+          "name": "name",
+          "range": "StringType",
+          "domain": "ResourceType"
         },
         "usage": {
-          "name": "usage"
+          "name": "usage",
+          "range": "StringType",
+          "domain": "ResourceType"
         },
         "methods": {
-          "name": "methods"
+          "name": "methods",
+          "range": "Method",
+          "domain": "ResourceType"
         },
         "is": {
-          "name": "is"
+          "name": "is",
+          "range": "TraitRef",
+          "domain": "ResourceType"
         },
         "type": {
-          "name": "type"
+          "name": "type",
+          "range": "ResourceTypeRef",
+          "domain": "ResourceType"
         },
         "securedBy": {
-          "name": "securedBy"
+          "name": "securedBy",
+          "range": "SecuritySchemeRef",
+          "domain": "ResourceType"
         },
         "uriParameters": {
-          "name": "uriParameters"
+          "name": "uriParameters",
+          "range": "Parameter",
+          "domain": "ResourceType"
         },
         "displayName": {
-          "name": "displayName"
+          "name": "displayName",
+          "range": "StringType",
+          "domain": "ResourceType"
         },
         "baseUriParameters": {
-          "name": "baseUriParameters"
+          "name": "baseUriParameters",
+          "range": "Parameter",
+          "domain": "ResourceType"
         },
         "parametrizedProperties": {
           "name": "parametrizedProperties"
         }
       }
     },
+    "MethodBase": {
+      "name": "MethodBase",
+      "properties": {
+        "description": {
+          "name": "description",
+          "range": "MarkdownString",
+          "domain": "RAMLLanguageElement"
+        },
+        "responses": {
+          "name": "responses",
+          "range": "Response",
+          "domain": "MethodBase"
+        },
+        "body": {
+          "name": "body",
+          "range": "BodyLike",
+          "domain": "MethodBase"
+        },
+        "protocols": {
+          "name": "protocols",
+          "range": "StringType",
+          "domain": "MethodBase"
+        },
+        "securedBy": {
+          "name": "securedBy",
+          "range": "SecuritySchemeRef",
+          "domain": "MethodBase"
+        },
+        "baseUriParameters": {
+          "name": "baseUriParameters",
+          "range": "Parameter",
+          "domain": "MethodBase"
+        },
+        "queryParameters": {
+          "name": "queryParameters",
+          "range": "Parameter",
+          "domain": "MethodBase"
+        },
+        "headers": {
+          "name": "headers",
+          "range": "Parameter",
+          "domain": "MethodBase"
+        },
+        "displayName": {
+          "name": "displayName",
+          "range": "StringType",
+          "domain": "MethodBase"
+        }
+      }
+    },
+    "Method": {
+      "name": "Method",
+      "properties": {
+        "description": {
+          "name": "description",
+          "range": "MarkdownString",
+          "domain": "RAMLLanguageElement"
+        },
+        "responses": {
+          "name": "responses",
+          "range": "Response",
+          "domain": "MethodBase"
+        },
+        "body": {
+          "name": "body",
+          "range": "BodyLike",
+          "domain": "MethodBase"
+        },
+        "protocols": {
+          "name": "protocols",
+          "range": "StringType",
+          "domain": "MethodBase"
+        },
+        "securedBy": {
+          "name": "securedBy",
+          "range": "SecuritySchemeRef",
+          "domain": "MethodBase"
+        },
+        "baseUriParameters": {
+          "name": "baseUriParameters",
+          "range": "Parameter",
+          "domain": "MethodBase"
+        },
+        "queryParameters": {
+          "name": "queryParameters",
+          "range": "Parameter",
+          "domain": "MethodBase"
+        },
+        "headers": {
+          "name": "headers",
+          "range": "Parameter",
+          "domain": "MethodBase"
+        },
+        "displayName": {
+          "name": "displayName",
+          "range": "StringType",
+          "domain": "Method"
+        },
+        "method": {
+          "name": "method",
+          "range": "StringType",
+          "domain": "Method"
+        },
+        "is": {
+          "name": "is",
+          "range": "TraitRef",
+          "domain": "Method"
+        }
+      }
+    },
+    "Trait": {
+      "name": "Trait",
+      "properties": {
+        "description": {
+          "name": "description",
+          "range": "MarkdownString",
+          "domain": "RAMLLanguageElement"
+        },
+        "responses": {
+          "name": "responses",
+          "range": "Response",
+          "domain": "MethodBase"
+        },
+        "body": {
+          "name": "body",
+          "range": "BodyLike",
+          "domain": "MethodBase"
+        },
+        "protocols": {
+          "name": "protocols",
+          "range": "StringType",
+          "domain": "MethodBase"
+        },
+        "securedBy": {
+          "name": "securedBy",
+          "range": "SecuritySchemeRef",
+          "domain": "MethodBase"
+        },
+        "baseUriParameters": {
+          "name": "baseUriParameters",
+          "range": "Parameter",
+          "domain": "MethodBase"
+        },
+        "queryParameters": {
+          "name": "queryParameters",
+          "range": "Parameter",
+          "domain": "MethodBase"
+        },
+        "headers": {
+          "name": "headers",
+          "range": "Parameter",
+          "domain": "MethodBase"
+        },
+        "displayName": {
+          "name": "displayName",
+          "range": "StringType",
+          "domain": "Trait"
+        },
+        "name": {
+          "name": "name",
+          "range": "StringType",
+          "domain": "Trait"
+        },
+        "usage": {
+          "name": "usage",
+          "range": "StringType",
+          "domain": "Trait"
+        },
+        "parametrizedProperties": {
+          "name": "parametrizedProperties"
+        }
+      }
+    },
+    "TraitRef": {
+      "name": "TraitRef",
+      "properties": {
+        "trait": {
+          "name": "trait"
+        }
+      }
+    },
     "SecuritySchemePart": {
       "name": "SecuritySchemePart",
       "properties": {
-        "headers": {
-          "name": "headers"
-        },
-        "queryParameters": {
-          "name": "queryParameters"
+        "description": {
+          "name": "description",
+          "range": "MarkdownString",
+          "domain": "SecuritySchemePart"
         },
         "responses": {
-          "name": "responses"
+          "name": "responses",
+          "range": "Response",
+          "domain": "SecuritySchemePart"
+        },
+        "body": {
+          "name": "body",
+          "range": "BodyLike",
+          "domain": "MethodBase"
+        },
+        "protocols": {
+          "name": "protocols",
+          "range": "StringType",
+          "domain": "MethodBase"
         },
         "securedBy": {
-          "name": "securedBy"
+          "name": "securedBy",
+          "range": "SecuritySchemeRef",
+          "domain": "MethodBase"
+        },
+        "baseUriParameters": {
+          "name": "baseUriParameters",
+          "range": "Parameter",
+          "domain": "MethodBase"
+        },
+        "queryParameters": {
+          "name": "queryParameters",
+          "range": "Parameter",
+          "domain": "SecuritySchemePart"
+        },
+        "headers": {
+          "name": "headers",
+          "range": "Parameter",
+          "domain": "SecuritySchemePart"
         },
         "displayName": {
-          "name": "displayName"
+          "name": "displayName",
+          "range": "StringType",
+          "domain": "SecuritySchemePart"
         },
-        "description": {
-          "name": "description"
+        "is": {
+          "name": "is",
+          "range": "TraitRef",
+          "domain": "SecuritySchemePart"
         }
       }
     },
@@ -363,20 +1134,30 @@ var Universes={
     "AbstractSecurityScheme": {
       "name": "AbstractSecurityScheme",
       "properties": {
+        "description": {
+          "name": "description",
+          "range": "MarkdownString",
+          "domain": "AbstractSecurityScheme"
+        },
         "name": {
-          "name": "name"
+          "name": "name",
+          "range": "StringType",
+          "domain": "AbstractSecurityScheme"
         },
         "type": {
-          "name": "type"
-        },
-        "description": {
-          "name": "description"
+          "name": "type",
+          "range": "StringType",
+          "domain": "AbstractSecurityScheme"
         },
         "describedBy": {
-          "name": "describedBy"
+          "name": "describedBy",
+          "range": "SecuritySchemePart",
+          "domain": "AbstractSecurityScheme"
         },
         "settings": {
-          "name": "settings"
+          "name": "settings",
+          "range": "SecuritySchemeSettings",
+          "domain": "AbstractSecurityScheme"
         }
       }
     },
@@ -395,13 +1176,19 @@ var Universes={
       "name": "OAuth1SecuritySchemeSettings",
       "properties": {
         "requestTokenUri": {
-          "name": "requestTokenUri"
+          "name": "requestTokenUri",
+          "range": "FixedUri",
+          "domain": "OAuth1SecuritySchemeSettings"
         },
         "authorizationUri": {
-          "name": "authorizationUri"
+          "name": "authorizationUri",
+          "range": "FixedUri",
+          "domain": "OAuth1SecuritySchemeSettings"
         },
         "tokenCredentialsUri": {
-          "name": "tokenCredentialsUri"
+          "name": "tokenCredentialsUri",
+          "range": "FixedUri",
+          "domain": "OAuth1SecuritySchemeSettings"
         }
       }
     },
@@ -409,189 +1196,174 @@ var Universes={
       "name": "OAuth2SecuritySchemeSettings",
       "properties": {
         "accessTokenUri": {
-          "name": "accessTokenUri"
+          "name": "accessTokenUri",
+          "range": "FixedUri",
+          "domain": "OAuth2SecuritySchemeSettings"
         },
         "authorizationUri": {
-          "name": "authorizationUri"
+          "name": "authorizationUri",
+          "range": "FixedUri",
+          "domain": "OAuth2SecuritySchemeSettings"
         },
         "authorizationGrants": {
-          "name": "authorizationGrants"
+          "name": "authorizationGrants",
+          "range": "StringType",
+          "domain": "OAuth2SecuritySchemeSettings"
         },
         "scopes": {
-          "name": "scopes"
+          "name": "scopes",
+          "range": "StringType",
+          "domain": "OAuth2SecuritySchemeSettings"
         }
       }
     },
     "OAuth2SecurityScheme": {
       "name": "OAuth2SecurityScheme",
       "properties": {
+        "description": {
+          "name": "description",
+          "range": "MarkdownString",
+          "domain": "AbstractSecurityScheme"
+        },
+        "name": {
+          "name": "name",
+          "range": "StringType",
+          "domain": "AbstractSecurityScheme"
+        },
+        "type": {
+          "name": "type",
+          "range": "StringType",
+          "domain": "AbstractSecurityScheme"
+        },
+        "describedBy": {
+          "name": "describedBy",
+          "range": "SecuritySchemePart",
+          "domain": "AbstractSecurityScheme"
+        },
         "settings": {
-          "name": "settings"
+          "name": "settings",
+          "range": "OAuth2SecuritySchemeSettings",
+          "domain": "OAuth2SecurityScheme"
         }
       }
     },
     "OAuth1SecurityScheme": {
       "name": "OAuth1SecurityScheme",
       "properties": {
+        "description": {
+          "name": "description",
+          "range": "MarkdownString",
+          "domain": "AbstractSecurityScheme"
+        },
+        "name": {
+          "name": "name",
+          "range": "StringType",
+          "domain": "AbstractSecurityScheme"
+        },
+        "type": {
+          "name": "type",
+          "range": "StringType",
+          "domain": "AbstractSecurityScheme"
+        },
+        "describedBy": {
+          "name": "describedBy",
+          "range": "SecuritySchemePart",
+          "domain": "AbstractSecurityScheme"
+        },
         "settings": {
-          "name": "settings"
+          "name": "settings",
+          "range": "OAuth1SecuritySchemeSettings",
+          "domain": "OAuth1SecurityScheme"
         }
       }
     },
     "BasicSecurityScheme": {
       "name": "BasicSecurityScheme",
-      "properties": {}
+      "properties": {
+        "description": {
+          "name": "description",
+          "range": "MarkdownString",
+          "domain": "AbstractSecurityScheme"
+        },
+        "name": {
+          "name": "name",
+          "range": "StringType",
+          "domain": "AbstractSecurityScheme"
+        },
+        "type": {
+          "name": "type",
+          "range": "StringType",
+          "domain": "AbstractSecurityScheme"
+        },
+        "describedBy": {
+          "name": "describedBy",
+          "range": "SecuritySchemePart",
+          "domain": "AbstractSecurityScheme"
+        },
+        "settings": {
+          "name": "settings",
+          "range": "SecuritySchemeSettings",
+          "domain": "AbstractSecurityScheme"
+        }
+      }
     },
     "DigestSecurityScheme": {
       "name": "DigestSecurityScheme",
-      "properties": {}
+      "properties": {
+        "description": {
+          "name": "description",
+          "range": "MarkdownString",
+          "domain": "AbstractSecurityScheme"
+        },
+        "name": {
+          "name": "name",
+          "range": "StringType",
+          "domain": "AbstractSecurityScheme"
+        },
+        "type": {
+          "name": "type",
+          "range": "StringType",
+          "domain": "AbstractSecurityScheme"
+        },
+        "describedBy": {
+          "name": "describedBy",
+          "range": "SecuritySchemePart",
+          "domain": "AbstractSecurityScheme"
+        },
+        "settings": {
+          "name": "settings",
+          "range": "SecuritySchemeSettings",
+          "domain": "AbstractSecurityScheme"
+        }
+      }
     },
     "CustomSecurityScheme": {
       "name": "CustomSecurityScheme",
-      "properties": {}
-    },
-    "Parameter": {
-      "name": "Parameter",
       "properties": {
-        "name": {
-          "name": "name"
+        "description": {
+          "name": "description",
+          "range": "MarkdownString",
+          "domain": "AbstractSecurityScheme"
         },
-        "displayName": {
-          "name": "displayName"
+        "name": {
+          "name": "name",
+          "range": "StringType",
+          "domain": "AbstractSecurityScheme"
         },
         "type": {
-          "name": "type"
+          "name": "type",
+          "range": "StringType",
+          "domain": "AbstractSecurityScheme"
         },
-        "location": {
-          "name": "location"
+        "describedBy": {
+          "name": "describedBy",
+          "range": "SecuritySchemePart",
+          "domain": "AbstractSecurityScheme"
         },
-        "required": {
-          "name": "required"
-        },
-        "default": {
-          "name": "default"
-        },
-        "example": {
-          "name": "example"
-        },
-        "repeat": {
-          "name": "repeat"
-        }
-      }
-    },
-    "StringTypeDeclaration": {
-      "name": "StringTypeDeclaration",
-      "properties": {
-        "pattern": {
-          "name": "pattern"
-        },
-        "enum": {
-          "name": "enum"
-        },
-        "minLength": {
-          "name": "minLength"
-        },
-        "maxLength": {
-          "name": "maxLength"
-        }
-      }
-    },
-    "BooleanTypeDeclaration": {
-      "name": "BooleanTypeDeclaration",
-      "properties": {}
-    },
-    "NumberTypeDeclaration": {
-      "name": "NumberTypeDeclaration",
-      "properties": {
-        "minimum": {
-          "name": "minimum"
-        },
-        "maximum": {
-          "name": "maximum"
-        }
-      }
-    },
-    "IntegerTypeDeclaration": {
-      "name": "IntegerTypeDeclaration",
-      "properties": {}
-    },
-    "DateTypeDeclaration": {
-      "name": "DateTypeDeclaration",
-      "properties": {}
-    },
-    "FileTypeDeclaration": {
-      "name": "FileTypeDeclaration",
-      "properties": {}
-    },
-    "HasNormalParameters": {
-      "name": "HasNormalParameters",
-      "properties": {
-        "queryParameters": {
-          "name": "queryParameters"
-        },
-        "displayName": {
-          "name": "displayName"
-        },
-        "headers": {
-          "name": "headers"
-        }
-      }
-    },
-    "ParameterLocation": {
-      "name": "ParameterLocation",
-      "properties": {}
-    },
-    "MimeType": {
-      "name": "MimeType",
-      "properties": {}
-    },
-    "BodyLike": {
-      "name": "BodyLike",
-      "properties": {
-        "name": {
-          "name": "name"
-        },
-        "schema": {
-          "name": "schema"
-        },
-        "example": {
-          "name": "example"
-        },
-        "formParameters": {
-          "name": "formParameters"
-        },
-        "schemaContent": {
-          "name": "schemaContent"
-        }
-      }
-    },
-    "XMLBody": {
-      "name": "XMLBody",
-      "properties": {
-        "schema": {
-          "name": "schema"
-        }
-      }
-    },
-    "JSONBody": {
-      "name": "JSONBody",
-      "properties": {
-        "schema": {
-          "name": "schema"
-        }
-      }
-    },
-    "Response": {
-      "name": "Response",
-      "properties": {
-        "code": {
-          "name": "code"
-        },
-        "headers": {
-          "name": "headers"
-        },
-        "body": {
-          "name": "body"
+        "settings": {
+          "name": "settings",
+          "range": "SecuritySchemeSettings",
+          "domain": "AbstractSecurityScheme"
         }
       }
     }
@@ -600,6 +1372,27 @@ var Universes={
     "Library": {
       "name": "Library",
       "properties": {
+        "annotations": {
+          "name": "annotations"
+        },
+        "schemas": {
+          "name": "schemas"
+        },
+        "types": {
+          "name": "types"
+        },
+        "traits": {
+          "name": "traits"
+        },
+        "resourceTypes": {
+          "name": "resourceTypes"
+        },
+        "annotationTypes": {
+          "name": "annotationTypes"
+        },
+        "securitySchemes": {
+          "name": "securitySchemes"
+        },
         "usage": {
           "name": "usage"
         },
@@ -611,6 +1404,9 @@ var Universes={
     "LibraryBase": {
       "name": "LibraryBase",
       "properties": {
+        "annotations": {
+          "name": "annotations"
+        },
         "schemas": {
           "name": "schemas"
         },
@@ -634,6 +1430,27 @@ var Universes={
     "Api": {
       "name": "Api",
       "properties": {
+        "annotations": {
+          "name": "annotations"
+        },
+        "schemas": {
+          "name": "schemas"
+        },
+        "types": {
+          "name": "types"
+        },
+        "traits": {
+          "name": "traits"
+        },
+        "resourceTypes": {
+          "name": "resourceTypes"
+        },
+        "annotationTypes": {
+          "name": "annotationTypes"
+        },
+        "securitySchemes": {
+          "name": "securitySchemes"
+        },
         "title": {
           "name": "title"
         },
@@ -661,59 +1478,137 @@ var Universes={
         "documentation": {
           "name": "documentation"
         },
-        "description": {
-          "name": "description"
-        },
-        "annotations": {
-          "name": "annotations"
-        },
         "RAMLVersion": {
-          "name": "RAMLVersion"
+          "name": "RAMLVersion",
+          "range": "StringType",
+          "domain": "Api"
         }
       }
     },
     "Overlay": {
       "name": "Overlay",
       "properties": {
+        "annotations": {
+          "name": "annotations"
+        },
+        "schemas": {
+          "name": "schemas"
+        },
+        "types": {
+          "name": "types"
+        },
+        "traits": {
+          "name": "traits"
+        },
+        "resourceTypes": {
+          "name": "resourceTypes"
+        },
+        "annotationTypes": {
+          "name": "annotationTypes"
+        },
+        "securitySchemes": {
+          "name": "securitySchemes"
+        },
+        "title": {
+          "name": "title"
+        },
+        "version": {
+          "name": "version"
+        },
+        "baseUri": {
+          "name": "baseUri"
+        },
+        "baseUriParameters": {
+          "name": "baseUriParameters"
+        },
+        "protocols": {
+          "name": "protocols"
+        },
+        "mediaType": {
+          "name": "mediaType"
+        },
+        "securedBy": {
+          "name": "securedBy"
+        },
+        "resources": {
+          "name": "resources"
+        },
+        "documentation": {
+          "name": "documentation"
+        },
         "usage": {
           "name": "usage"
         },
         "extends": {
           "name": "extends"
-        },
-        "title": {
-          "name": "title"
         }
       }
     },
     "Extension": {
       "name": "Extension",
       "properties": {
+        "annotations": {
+          "name": "annotations"
+        },
+        "schemas": {
+          "name": "schemas"
+        },
+        "types": {
+          "name": "types"
+        },
+        "traits": {
+          "name": "traits"
+        },
+        "resourceTypes": {
+          "name": "resourceTypes"
+        },
+        "annotationTypes": {
+          "name": "annotationTypes"
+        },
+        "securitySchemes": {
+          "name": "securitySchemes"
+        },
+        "title": {
+          "name": "title"
+        },
+        "version": {
+          "name": "version"
+        },
+        "baseUri": {
+          "name": "baseUri"
+        },
+        "baseUriParameters": {
+          "name": "baseUriParameters"
+        },
+        "protocols": {
+          "name": "protocols"
+        },
+        "mediaType": {
+          "name": "mediaType"
+        },
+        "securedBy": {
+          "name": "securedBy"
+        },
+        "resources": {
+          "name": "resources"
+        },
+        "documentation": {
+          "name": "documentation"
+        },
         "usage": {
           "name": "usage"
         },
         "extends": {
           "name": "extends"
-        },
-        "title": {
-          "name": "title"
-        }
-      }
-    },
-    "GlobalSchema": {
-      "name": "GlobalSchema",
-      "properties": {
-        "key": {
-          "name": "key"
-        },
-        "value": {
-          "name": "value"
         }
       }
     },
     "UsesDeclaration": {
       "name": "UsesDeclaration",
       "properties": {
+        "annotations": {
+          "name": "annotations"
+        },
         "key": {
           "name": "key"
         },
@@ -725,6 +1620,9 @@ var Universes={
     "FragmentDeclaration": {
       "name": "FragmentDeclaration",
       "properties": {
+        "annotations": {
+          "name": "annotations"
+        },
         "uses": {
           "name": "uses"
         }
@@ -733,6 +1631,9 @@ var Universes={
     "DocumentationItem": {
       "name": "DocumentationItem",
       "properties": {
+        "annotations": {
+          "name": "annotations"
+        },
         "title": {
           "name": "title"
         },
@@ -743,90 +1644,132 @@ var Universes={
     },
     "ValueType": {
       "name": "ValueType",
-      "properties": {}
+      "properties": {
+        "annotations": {
+          "name": "annotations"
+        }
+      }
     },
     "StringType": {
       "name": "StringType",
-      "properties": {}
+      "properties": {
+        "annotations": {
+          "name": "annotations"
+        }
+      }
     },
     "AnyType": {
       "name": "AnyType",
-      "properties": {}
+      "properties": {
+        "annotations": {
+          "name": "annotations"
+        }
+      }
     },
     "NumberType": {
       "name": "NumberType",
-      "properties": {}
+      "properties": {
+        "annotations": {
+          "name": "annotations"
+        }
+      }
     },
     "BooleanType": {
       "name": "BooleanType",
-      "properties": {}
-    },
-    "Referencable": {
-      "name": "Referencable",
-      "properties": {}
+      "properties": {
+        "annotations": {
+          "name": "annotations"
+        }
+      }
     },
     "Reference": {
       "name": "Reference",
       "properties": {
+        "annotations": {
+          "name": "annotations"
+        },
         "structuredValue": {
-          "name": "structuredValue"
+          "name": "structuredValue",
+          "range": "TypeInstance",
+          "domain": "Reference"
         },
         "name": {
-          "name": "name"
+          "name": "name",
+          "range": "StringType",
+          "domain": "Reference"
         }
       }
     },
-    "DeclaresDynamicType": {
-      "name": "DeclaresDynamicType",
-      "properties": {}
-    },
     "UriTemplate": {
       "name": "UriTemplate",
-      "properties": {}
+      "properties": {
+        "annotations": {
+          "name": "annotations"
+        }
+      }
     },
     "StatusCodeString": {
       "name": "StatusCodeString",
-      "properties": {}
+      "properties": {
+        "annotations": {
+          "name": "annotations"
+        }
+      }
     },
     "RelativeUriString": {
       "name": "RelativeUriString",
-      "properties": {}
+      "properties": {
+        "annotations": {
+          "name": "annotations"
+        }
+      }
     },
     "FullUriTemplateString": {
       "name": "FullUriTemplateString",
-      "properties": {}
+      "properties": {
+        "annotations": {
+          "name": "annotations"
+        }
+      }
     },
     "FixedUriString": {
       "name": "FixedUriString",
-      "properties": {}
+      "properties": {
+        "annotations": {
+          "name": "annotations"
+        }
+      }
     },
     "ContentType": {
       "name": "ContentType",
-      "properties": {}
+      "properties": {
+        "annotations": {
+          "name": "annotations"
+        }
+      }
     },
     "MarkdownString": {
       "name": "MarkdownString",
-      "properties": {}
+      "properties": {
+        "annotations": {
+          "name": "annotations"
+        }
+      }
     },
     "SchemaString": {
       "name": "SchemaString",
-      "properties": {}
-    },
-    "ExampleString": {
-      "name": "ExampleString",
-      "properties": {}
-    },
-    "JSonSchemaString": {
-      "name": "JSonSchemaString",
-      "properties": {}
-    },
-    "XMLSchemaString": {
-      "name": "XMLSchemaString",
-      "properties": {}
+      "properties": {
+        "annotations": {
+          "name": "annotations"
+        }
+      }
     },
     "ExampleSpec": {
       "name": "ExampleSpec",
       "properties": {
+        "annotations": {
+          "name": "annotations"
+        },
         "value": {
           "name": "value"
         },
@@ -836,34 +1779,25 @@ var Universes={
         "name": {
           "name": "name"
         },
-        "structuredContent": {
-          "name": "structuredContent"
-        }
-      }
-    },
-    "DataElementProperty": {
-      "name": "DataElementProperty",
-      "properties": {
-        "name": {
-          "name": "name"
+        "displayName": {
+          "name": "displayName"
         },
-        "location": {
-          "name": "location"
+        "description": {
+          "name": "description"
         },
-        "locationKind": {
-          "name": "locationKind"
-        },
-        "default": {
-          "name": "default"
-        },
-        "required": {
-          "name": "required"
+        "structuredValue": {
+          "name": "structuredValue",
+          "range": "TypeInstance",
+          "domain": "ExampleSpec"
         }
       }
     },
     "TypeDeclaration": {
       "name": "TypeDeclaration",
       "properties": {
+        "annotations": {
+          "name": "annotations"
+        },
         "name": {
           "name": "name"
         },
@@ -900,29 +1834,31 @@ var Universes={
         "required": {
           "name": "required"
         },
-        "xml": {
-          "name": "xml"
-        },
         "description": {
           "name": "description"
         },
-        "annotations": {
-          "name": "annotations"
+        "xml": {
+          "name": "xml"
+        },
+        "allowedTargets": {
+          "name": "allowedTargets"
+        },
+        "isAnnotation": {
+          "name": "isAnnotation"
         },
         "fixedFacets": {
-          "name": "fixedFacets"
-        },
-        "schemaContent": {
-          "name": "schemaContent"
-        },
-        "structuredExample": {
-          "name": "structuredExample"
+          "name": "fixedFacets",
+          "range": "TypeInstance",
+          "domain": "TypeDeclaration"
         }
       }
     },
     "XMLFacetInfo": {
       "name": "XMLFacetInfo",
       "properties": {
+        "annotations": {
+          "name": "annotations"
+        },
         "attribute": {
           "name": "attribute"
         },
@@ -940,20 +1876,60 @@ var Universes={
         }
       }
     },
-    "ScalarElement": {
-      "name": "ScalarElement",
-      "properties": {
-        "facets": {
-          "name": "facets"
-        },
-        "enum": {
-          "name": "enum"
-        }
-      }
-    },
     "ArrayTypeDeclaration": {
       "name": "ArrayTypeDeclaration",
       "properties": {
+        "annotations": {
+          "name": "annotations"
+        },
+        "name": {
+          "name": "name"
+        },
+        "displayName": {
+          "name": "displayName"
+        },
+        "facets": {
+          "name": "facets"
+        },
+        "schema": {
+          "name": "schema"
+        },
+        "type": {
+          "name": "type"
+        },
+        "location": {
+          "name": "location"
+        },
+        "locationKind": {
+          "name": "locationKind"
+        },
+        "default": {
+          "name": "default"
+        },
+        "example": {
+          "name": "example"
+        },
+        "examples": {
+          "name": "examples"
+        },
+        "repeat": {
+          "name": "repeat"
+        },
+        "required": {
+          "name": "required"
+        },
+        "description": {
+          "name": "description"
+        },
+        "xml": {
+          "name": "xml"
+        },
+        "allowedTargets": {
+          "name": "allowedTargets"
+        },
+        "isAnnotation": {
+          "name": "isAnnotation"
+        },
         "uniqueItems": {
           "name": "uniqueItems"
         },
@@ -970,11 +1946,114 @@ var Universes={
     },
     "UnionTypeDeclaration": {
       "name": "UnionTypeDeclaration",
-      "properties": {}
+      "properties": {
+        "annotations": {
+          "name": "annotations"
+        },
+        "name": {
+          "name": "name"
+        },
+        "displayName": {
+          "name": "displayName"
+        },
+        "facets": {
+          "name": "facets"
+        },
+        "schema": {
+          "name": "schema"
+        },
+        "type": {
+          "name": "type"
+        },
+        "location": {
+          "name": "location"
+        },
+        "locationKind": {
+          "name": "locationKind"
+        },
+        "default": {
+          "name": "default"
+        },
+        "example": {
+          "name": "example"
+        },
+        "examples": {
+          "name": "examples"
+        },
+        "repeat": {
+          "name": "repeat"
+        },
+        "required": {
+          "name": "required"
+        },
+        "description": {
+          "name": "description"
+        },
+        "xml": {
+          "name": "xml"
+        },
+        "allowedTargets": {
+          "name": "allowedTargets"
+        },
+        "isAnnotation": {
+          "name": "isAnnotation"
+        }
+      }
     },
     "ObjectTypeDeclaration": {
       "name": "ObjectTypeDeclaration",
       "properties": {
+        "annotations": {
+          "name": "annotations"
+        },
+        "name": {
+          "name": "name"
+        },
+        "displayName": {
+          "name": "displayName"
+        },
+        "facets": {
+          "name": "facets"
+        },
+        "schema": {
+          "name": "schema"
+        },
+        "type": {
+          "name": "type"
+        },
+        "location": {
+          "name": "location"
+        },
+        "locationKind": {
+          "name": "locationKind"
+        },
+        "default": {
+          "name": "default"
+        },
+        "example": {
+          "name": "example"
+        },
+        "examples": {
+          "name": "examples"
+        },
+        "repeat": {
+          "name": "repeat"
+        },
+        "required": {
+          "name": "required"
+        },
+        "description": {
+          "name": "description"
+        },
+        "xml": {
+          "name": "xml"
+        },
+        "allowedTargets": {
+          "name": "allowedTargets"
+        },
+        "isAnnotation": {
+          "name": "isAnnotation"
+        },
         "properties": {
           "name": "properties"
         },
@@ -1001,6 +2080,57 @@ var Universes={
     "StringTypeDeclaration": {
       "name": "StringTypeDeclaration",
       "properties": {
+        "annotations": {
+          "name": "annotations"
+        },
+        "name": {
+          "name": "name"
+        },
+        "displayName": {
+          "name": "displayName"
+        },
+        "facets": {
+          "name": "facets"
+        },
+        "schema": {
+          "name": "schema"
+        },
+        "type": {
+          "name": "type"
+        },
+        "location": {
+          "name": "location"
+        },
+        "locationKind": {
+          "name": "locationKind"
+        },
+        "default": {
+          "name": "default"
+        },
+        "example": {
+          "name": "example"
+        },
+        "examples": {
+          "name": "examples"
+        },
+        "repeat": {
+          "name": "repeat"
+        },
+        "required": {
+          "name": "required"
+        },
+        "description": {
+          "name": "description"
+        },
+        "xml": {
+          "name": "xml"
+        },
+        "allowedTargets": {
+          "name": "allowedTargets"
+        },
+        "isAnnotation": {
+          "name": "isAnnotation"
+        },
         "pattern": {
           "name": "pattern"
         },
@@ -1017,11 +2147,114 @@ var Universes={
     },
     "BooleanTypeDeclaration": {
       "name": "BooleanTypeDeclaration",
-      "properties": {}
+      "properties": {
+        "annotations": {
+          "name": "annotations"
+        },
+        "name": {
+          "name": "name"
+        },
+        "displayName": {
+          "name": "displayName"
+        },
+        "facets": {
+          "name": "facets"
+        },
+        "schema": {
+          "name": "schema"
+        },
+        "type": {
+          "name": "type"
+        },
+        "location": {
+          "name": "location"
+        },
+        "locationKind": {
+          "name": "locationKind"
+        },
+        "default": {
+          "name": "default"
+        },
+        "example": {
+          "name": "example"
+        },
+        "examples": {
+          "name": "examples"
+        },
+        "repeat": {
+          "name": "repeat"
+        },
+        "required": {
+          "name": "required"
+        },
+        "description": {
+          "name": "description"
+        },
+        "xml": {
+          "name": "xml"
+        },
+        "allowedTargets": {
+          "name": "allowedTargets"
+        },
+        "isAnnotation": {
+          "name": "isAnnotation"
+        }
+      }
     },
     "NumberTypeDeclaration": {
       "name": "NumberTypeDeclaration",
       "properties": {
+        "annotations": {
+          "name": "annotations"
+        },
+        "name": {
+          "name": "name"
+        },
+        "displayName": {
+          "name": "displayName"
+        },
+        "facets": {
+          "name": "facets"
+        },
+        "schema": {
+          "name": "schema"
+        },
+        "type": {
+          "name": "type"
+        },
+        "location": {
+          "name": "location"
+        },
+        "locationKind": {
+          "name": "locationKind"
+        },
+        "default": {
+          "name": "default"
+        },
+        "example": {
+          "name": "example"
+        },
+        "examples": {
+          "name": "examples"
+        },
+        "repeat": {
+          "name": "repeat"
+        },
+        "required": {
+          "name": "required"
+        },
+        "description": {
+          "name": "description"
+        },
+        "xml": {
+          "name": "xml"
+        },
+        "allowedTargets": {
+          "name": "allowedTargets"
+        },
+        "isAnnotation": {
+          "name": "isAnnotation"
+        },
         "minimum": {
           "name": "minimum"
         },
@@ -1042,26 +2275,296 @@ var Universes={
     "IntegerTypeDeclaration": {
       "name": "IntegerTypeDeclaration",
       "properties": {
+        "annotations": {
+          "name": "annotations"
+        },
+        "name": {
+          "name": "name"
+        },
+        "displayName": {
+          "name": "displayName"
+        },
+        "facets": {
+          "name": "facets"
+        },
+        "schema": {
+          "name": "schema"
+        },
+        "type": {
+          "name": "type"
+        },
+        "location": {
+          "name": "location"
+        },
+        "locationKind": {
+          "name": "locationKind"
+        },
+        "default": {
+          "name": "default"
+        },
+        "example": {
+          "name": "example"
+        },
+        "examples": {
+          "name": "examples"
+        },
+        "repeat": {
+          "name": "repeat"
+        },
+        "required": {
+          "name": "required"
+        },
+        "description": {
+          "name": "description"
+        },
+        "xml": {
+          "name": "xml"
+        },
+        "allowedTargets": {
+          "name": "allowedTargets"
+        },
+        "isAnnotation": {
+          "name": "isAnnotation"
+        },
+        "minimum": {
+          "name": "minimum"
+        },
+        "maximum": {
+          "name": "maximum"
+        },
+        "enum": {
+          "name": "enum"
+        },
         "format": {
           "name": "format"
+        },
+        "multipleOf": {
+          "name": "multipleOf"
         }
       }
     },
-    "DateOnly": {
-      "name": "DateOnly",
-      "properties": {}
-    },
-    "TimeOnly": {
-      "name": "TimeOnly",
-      "properties": {}
-    },
-    "DateTimeOnly": {
-      "name": "DateTimeOnly",
-      "properties": {}
-    },
-    "DateTime": {
-      "name": "DateTime",
+    "DateOnlyTypeDeclaration": {
+      "name": "DateOnlyTypeDeclaration",
       "properties": {
+        "annotations": {
+          "name": "annotations"
+        },
+        "name": {
+          "name": "name"
+        },
+        "displayName": {
+          "name": "displayName"
+        },
+        "facets": {
+          "name": "facets"
+        },
+        "schema": {
+          "name": "schema"
+        },
+        "type": {
+          "name": "type"
+        },
+        "location": {
+          "name": "location"
+        },
+        "locationKind": {
+          "name": "locationKind"
+        },
+        "default": {
+          "name": "default"
+        },
+        "example": {
+          "name": "example"
+        },
+        "examples": {
+          "name": "examples"
+        },
+        "repeat": {
+          "name": "repeat"
+        },
+        "required": {
+          "name": "required"
+        },
+        "description": {
+          "name": "description"
+        },
+        "xml": {
+          "name": "xml"
+        },
+        "allowedTargets": {
+          "name": "allowedTargets"
+        },
+        "isAnnotation": {
+          "name": "isAnnotation"
+        }
+      }
+    },
+    "TimeOnlyTypeDeclaration": {
+      "name": "TimeOnlyTypeDeclaration",
+      "properties": {
+        "annotations": {
+          "name": "annotations"
+        },
+        "name": {
+          "name": "name"
+        },
+        "displayName": {
+          "name": "displayName"
+        },
+        "facets": {
+          "name": "facets"
+        },
+        "schema": {
+          "name": "schema"
+        },
+        "type": {
+          "name": "type"
+        },
+        "location": {
+          "name": "location"
+        },
+        "locationKind": {
+          "name": "locationKind"
+        },
+        "default": {
+          "name": "default"
+        },
+        "example": {
+          "name": "example"
+        },
+        "examples": {
+          "name": "examples"
+        },
+        "repeat": {
+          "name": "repeat"
+        },
+        "required": {
+          "name": "required"
+        },
+        "description": {
+          "name": "description"
+        },
+        "xml": {
+          "name": "xml"
+        },
+        "allowedTargets": {
+          "name": "allowedTargets"
+        },
+        "isAnnotation": {
+          "name": "isAnnotation"
+        }
+      }
+    },
+    "DateTimeOnlyTypeDeclaration": {
+      "name": "DateTimeOnlyTypeDeclaration",
+      "properties": {
+        "annotations": {
+          "name": "annotations"
+        },
+        "name": {
+          "name": "name"
+        },
+        "displayName": {
+          "name": "displayName"
+        },
+        "facets": {
+          "name": "facets"
+        },
+        "schema": {
+          "name": "schema"
+        },
+        "type": {
+          "name": "type"
+        },
+        "location": {
+          "name": "location"
+        },
+        "locationKind": {
+          "name": "locationKind"
+        },
+        "default": {
+          "name": "default"
+        },
+        "example": {
+          "name": "example"
+        },
+        "examples": {
+          "name": "examples"
+        },
+        "repeat": {
+          "name": "repeat"
+        },
+        "required": {
+          "name": "required"
+        },
+        "description": {
+          "name": "description"
+        },
+        "xml": {
+          "name": "xml"
+        },
+        "allowedTargets": {
+          "name": "allowedTargets"
+        },
+        "isAnnotation": {
+          "name": "isAnnotation"
+        }
+      }
+    },
+    "DateTimeTypeDeclaration": {
+      "name": "DateTimeTypeDeclaration",
+      "properties": {
+        "annotations": {
+          "name": "annotations"
+        },
+        "name": {
+          "name": "name"
+        },
+        "displayName": {
+          "name": "displayName"
+        },
+        "facets": {
+          "name": "facets"
+        },
+        "schema": {
+          "name": "schema"
+        },
+        "type": {
+          "name": "type"
+        },
+        "location": {
+          "name": "location"
+        },
+        "locationKind": {
+          "name": "locationKind"
+        },
+        "default": {
+          "name": "default"
+        },
+        "example": {
+          "name": "example"
+        },
+        "examples": {
+          "name": "examples"
+        },
+        "repeat": {
+          "name": "repeat"
+        },
+        "required": {
+          "name": "required"
+        },
+        "description": {
+          "name": "description"
+        },
+        "xml": {
+          "name": "xml"
+        },
+        "allowedTargets": {
+          "name": "allowedTargets"
+        },
+        "isAnnotation": {
+          "name": "isAnnotation"
+        },
         "format": {
           "name": "format"
         }
@@ -1070,8 +2573,56 @@ var Universes={
     "DateTypeDeclaration": {
       "name": "DateTypeDeclaration",
       "properties": {
-        "format": {
-          "name": "format"
+        "annotations": {
+          "name": "annotations"
+        },
+        "name": {
+          "name": "name"
+        },
+        "displayName": {
+          "name": "displayName"
+        },
+        "facets": {
+          "name": "facets"
+        },
+        "schema": {
+          "name": "schema"
+        },
+        "type": {
+          "name": "type"
+        },
+        "location": {
+          "name": "location"
+        },
+        "locationKind": {
+          "name": "locationKind"
+        },
+        "default": {
+          "name": "default"
+        },
+        "example": {
+          "name": "example"
+        },
+        "examples": {
+          "name": "examples"
+        },
+        "repeat": {
+          "name": "repeat"
+        },
+        "required": {
+          "name": "required"
+        },
+        "description": {
+          "name": "description"
+        },
+        "xml": {
+          "name": "xml"
+        },
+        "allowedTargets": {
+          "name": "allowedTargets"
+        },
+        "isAnnotation": {
+          "name": "isAnnotation"
         }
       }
     },
@@ -1116,11 +2667,18 @@ var Universes={
     },
     "MimeType": {
       "name": "MimeType",
-      "properties": {}
+      "properties": {
+        "annotations": {
+          "name": "annotations"
+        }
+      }
     },
     "Response": {
       "name": "Response",
       "properties": {
+        "annotations": {
+          "name": "annotations"
+        },
         "code": {
           "name": "code"
         },
@@ -1132,179 +2690,66 @@ var Universes={
         },
         "description": {
           "name": "description"
-        },
-        "annotations": {
-          "name": "annotations"
         }
       }
     },
-    "RAMLLanguageElement": {
-      "name": "RAMLLanguageElement",
+    "Annotable": {
+      "name": "Annotable",
       "properties": {
-        "description": {
-          "name": "description"
-        },
         "annotations": {
           "name": "annotations"
-        }
-      }
-    },
-    "RAMLSimpleElement": {
-      "name": "RAMLSimpleElement",
-      "properties": {}
-    },
-    "AnnotationTypeDeclaration": {
-      "name": "AnnotationTypeDeclaration",
-      "properties": {
-        "allowedTargets": {
-          "name": "allowedTargets"
-        },
-        "usage": {
-          "name": "usage"
         }
       }
     },
     "AnnotationRef": {
       "name": "AnnotationRef",
       "properties": {
+        "annotations": {
+          "name": "annotations"
+        },
         "annotation": {
-          "name": "annotation"
+          "name": "annotation",
+          "range": "TypeDeclaration",
+          "domain": "AnnotationRef"
         }
       }
     },
     "AnnotationTarget": {
       "name": "AnnotationTarget",
-      "properties": {}
-    },
-    "Annotation": {
-      "name": "Annotation",
       "properties": {
-        "name": {
-          "name": "name"
+        "annotations": {
+          "name": "annotations"
         }
       }
-    },
-    "ArrayAnnotationTypeDeclaration": {
-      "name": "ArrayAnnotationTypeDeclaration",
-      "properties": {}
-    },
-    "UnionAnnotationTypeDeclaration": {
-      "name": "UnionAnnotationTypeDeclaration",
-      "properties": {}
-    },
-    "ObjectAnnotationTypeDeclaration": {
-      "name": "ObjectAnnotationTypeDeclaration",
-      "properties": {}
-    },
-    "StringAnnotationTypeDeclaration": {
-      "name": "StringAnnotationTypeDeclaration",
-      "properties": {}
-    },
-    "BooleanAnnotationTypeDeclaration": {
-      "name": "BooleanAnnotationTypeDeclaration",
-      "properties": {}
-    },
-    "NumberAnnotationTypeDeclaration": {
-      "name": "NumberAnnotationTypeDeclaration",
-      "properties": {}
-    },
-    "DateTypeAnnotationDeclaration": {
-      "name": "DateTypeAnnotationDeclaration",
-      "properties": {}
     },
     "TraitRef": {
       "name": "TraitRef",
       "properties": {
+        "annotations": {
+          "name": "annotations"
+        },
         "trait": {
-          "name": "trait"
+          "name": "trait",
+          "range": "Trait",
+          "domain": "TraitRef"
         }
       }
     },
     "Trait": {
       "name": "Trait",
       "properties": {
-        "name": {
-          "name": "name"
-        },
-        "displayName": {
-          "name": "displayName"
-        },
-        "usage": {
-          "name": "usage"
-        },
-        "parametrizedProperties": {
-          "name": "parametrizedProperties"
-        }
-      }
-    },
-    "ResourceTypeRef": {
-      "name": "ResourceTypeRef",
-      "properties": {
-        "resourceType": {
-          "name": "resourceType"
-        }
-      }
-    },
-    "ResourceType": {
-      "name": "ResourceType",
-      "properties": {
-        "displayName": {
-          "name": "displayName"
-        },
-        "name": {
-          "name": "name"
-        },
-        "usage": {
-          "name": "usage"
-        },
-        "parametrizedProperties": {
-          "name": "parametrizedProperties"
-        }
-      }
-    },
-    "ResourceBase": {
-      "name": "ResourceBase",
-      "properties": {
-        "methods": {
-          "name": "methods"
-        },
-        "is": {
-          "name": "is"
-        },
-        "type": {
-          "name": "type"
-        },
-        "securedBy": {
-          "name": "securedBy"
-        },
-        "uriParameters": {
-          "name": "uriParameters"
-        }
-      }
-    },
-    "Resource": {
-      "name": "Resource",
-      "properties": {
-        "relativeUri": {
-          "name": "relativeUri"
-        },
-        "displayName": {
-          "name": "displayName"
-        },
-        "resources": {
-          "name": "resources"
-        },
-        "description": {
-          "name": "description"
-        },
         "annotations": {
           "name": "annotations"
-        }
-      }
-    },
-    "MethodBase": {
-      "name": "MethodBase",
-      "properties": {
+        },
+        "queryParameters": {
+          "name": "queryParameters"
+        },
+        "headers": {
+          "name": "headers"
+        },
+        "queryString": {
+          "name": "queryString"
+        },
         "responses": {
           "name": "responses"
         },
@@ -1319,37 +2764,32 @@ var Universes={
         },
         "securedBy": {
           "name": "securedBy"
-        }
-      }
-    },
-    "Method": {
-      "name": "Method",
-      "properties": {
-        "method": {
-          "name": "method"
+        },
+        "description": {
+          "name": "description"
         },
         "displayName": {
           "name": "displayName"
+        },
+        "name": {
+          "name": "name"
+        },
+        "usage": {
+          "name": "usage"
+        },
+        "parametrizedProperties": {
+          "name": "parametrizedProperties",
+          "range": "TypeInstance",
+          "domain": "Trait"
         }
       }
     },
-    "FileTypeDeclaration": {
-      "name": "FileTypeDeclaration",
+    "MethodBase": {
+      "name": "MethodBase",
       "properties": {
-        "fileTypes": {
-          "name": "fileTypes"
+        "annotations": {
+          "name": "annotations"
         },
-        "minLength": {
-          "name": "minLength"
-        },
-        "maxLength": {
-          "name": "maxLength"
-        }
-      }
-    },
-    "HasNormalParameters": {
-      "name": "HasNormalParameters",
-      "properties": {
         "queryParameters": {
           "name": "queryParameters"
         },
@@ -1358,27 +2798,125 @@ var Universes={
         },
         "queryString": {
           "name": "queryString"
+        },
+        "responses": {
+          "name": "responses"
+        },
+        "body": {
+          "name": "body"
+        },
+        "protocols": {
+          "name": "protocols"
+        },
+        "is": {
+          "name": "is"
+        },
+        "securedBy": {
+          "name": "securedBy"
+        },
+        "description": {
+          "name": "description"
+        },
+        "displayName": {
+          "name": "displayName"
+        }
+      }
+    },
+    "Method": {
+      "name": "Method",
+      "properties": {
+        "annotations": {
+          "name": "annotations"
+        },
+        "queryParameters": {
+          "name": "queryParameters"
+        },
+        "headers": {
+          "name": "headers"
+        },
+        "queryString": {
+          "name": "queryString"
+        },
+        "responses": {
+          "name": "responses"
+        },
+        "body": {
+          "name": "body"
+        },
+        "protocols": {
+          "name": "protocols"
+        },
+        "is": {
+          "name": "is"
+        },
+        "securedBy": {
+          "name": "securedBy"
+        },
+        "description": {
+          "name": "description"
+        },
+        "displayName": {
+          "name": "displayName"
+        },
+        "method": {
+          "name": "method"
+        }
+      }
+    },
+    "Operation": {
+      "name": "Operation",
+      "properties": {
+        "annotations": {
+          "name": "annotations"
+        },
+        "queryParameters": {
+          "name": "queryParameters"
+        },
+        "headers": {
+          "name": "headers"
+        },
+        "queryString": {
+          "name": "queryString"
+        },
+        "responses": {
+          "name": "responses"
         }
       }
     },
     "SecuritySchemePart": {
       "name": "SecuritySchemePart",
       "properties": {
-        "responses": {
-          "name": "responses"
-        },
         "annotations": {
           "name": "annotations"
+        },
+        "queryParameters": {
+          "name": "queryParameters"
+        },
+        "headers": {
+          "name": "headers"
+        },
+        "queryString": {
+          "name": "queryString"
+        },
+        "responses": {
+          "name": "responses"
         }
       }
     },
     "SecuritySchemeSettings": {
       "name": "SecuritySchemeSettings",
-      "properties": {}
+      "properties": {
+        "annotations": {
+          "name": "annotations"
+        }
+      }
     },
     "OAuth1SecuritySchemeSettings": {
       "name": "OAuth1SecuritySchemeSettings",
       "properties": {
+        "annotations": {
+          "name": "annotations"
+        },
         "requestTokenUri": {
           "name": "requestTokenUri"
         },
@@ -1396,6 +2934,9 @@ var Universes={
     "OAuth2SecuritySchemeSettings": {
       "name": "OAuth2SecuritySchemeSettings",
       "properties": {
+        "annotations": {
+          "name": "annotations"
+        },
         "accessTokenUri": {
           "name": "accessTokenUri"
         },
@@ -1413,17 +2954,27 @@ var Universes={
     "SecuritySchemeRef": {
       "name": "SecuritySchemeRef",
       "properties": {
+        "annotations": {
+          "name": "annotations"
+        },
         "securitySchemeName": {
-          "name": "securitySchemeName"
+          "name": "securitySchemeName",
+          "range": "StringType",
+          "domain": "SecuritySchemeRef"
         },
         "securityScheme": {
-          "name": "securityScheme"
+          "name": "securityScheme",
+          "range": "AbstractSecurityScheme",
+          "domain": "SecuritySchemeRef"
         }
       }
     },
     "AbstractSecurityScheme": {
       "name": "AbstractSecurityScheme",
       "properties": {
+        "annotations": {
+          "name": "annotations"
+        },
         "name": {
           "name": "name"
         },
@@ -1447,6 +2998,24 @@ var Universes={
     "OAuth2SecurityScheme": {
       "name": "OAuth2SecurityScheme",
       "properties": {
+        "annotations": {
+          "name": "annotations"
+        },
+        "name": {
+          "name": "name"
+        },
+        "type": {
+          "name": "type"
+        },
+        "description": {
+          "name": "description"
+        },
+        "describedBy": {
+          "name": "describedBy"
+        },
+        "displayName": {
+          "name": "displayName"
+        },
         "settings": {
           "name": "settings"
         }
@@ -1455,6 +3024,24 @@ var Universes={
     "OAuth1SecurityScheme": {
       "name": "OAuth1SecurityScheme",
       "properties": {
+        "annotations": {
+          "name": "annotations"
+        },
+        "name": {
+          "name": "name"
+        },
+        "type": {
+          "name": "type"
+        },
+        "description": {
+          "name": "description"
+        },
+        "describedBy": {
+          "name": "describedBy"
+        },
+        "displayName": {
+          "name": "displayName"
+        },
         "settings": {
           "name": "settings"
         }
@@ -1463,6 +3050,24 @@ var Universes={
     "PassThroughSecurityScheme": {
       "name": "PassThroughSecurityScheme",
       "properties": {
+        "annotations": {
+          "name": "annotations"
+        },
+        "name": {
+          "name": "name"
+        },
+        "type": {
+          "name": "type"
+        },
+        "description": {
+          "name": "description"
+        },
+        "describedBy": {
+          "name": "describedBy"
+        },
+        "displayName": {
+          "name": "displayName"
+        },
         "settings": {
           "name": "settings"
         }
@@ -1470,15 +3075,260 @@ var Universes={
     },
     "BasicSecurityScheme": {
       "name": "BasicSecurityScheme",
-      "properties": {}
+      "properties": {
+        "annotations": {
+          "name": "annotations"
+        },
+        "name": {
+          "name": "name"
+        },
+        "type": {
+          "name": "type"
+        },
+        "description": {
+          "name": "description"
+        },
+        "describedBy": {
+          "name": "describedBy"
+        },
+        "displayName": {
+          "name": "displayName"
+        },
+        "settings": {
+          "name": "settings"
+        }
+      }
     },
     "DigestSecurityScheme": {
       "name": "DigestSecurityScheme",
-      "properties": {}
+      "properties": {
+        "annotations": {
+          "name": "annotations"
+        },
+        "name": {
+          "name": "name"
+        },
+        "type": {
+          "name": "type"
+        },
+        "description": {
+          "name": "description"
+        },
+        "describedBy": {
+          "name": "describedBy"
+        },
+        "displayName": {
+          "name": "displayName"
+        },
+        "settings": {
+          "name": "settings"
+        }
+      }
     },
     "CustomSecurityScheme": {
       "name": "CustomSecurityScheme",
-      "properties": {}
+      "properties": {
+        "annotations": {
+          "name": "annotations"
+        },
+        "name": {
+          "name": "name"
+        },
+        "type": {
+          "name": "type"
+        },
+        "description": {
+          "name": "description"
+        },
+        "describedBy": {
+          "name": "describedBy"
+        },
+        "displayName": {
+          "name": "displayName"
+        },
+        "settings": {
+          "name": "settings"
+        }
+      }
+    },
+    "ResourceTypeRef": {
+      "name": "ResourceTypeRef",
+      "properties": {
+        "annotations": {
+          "name": "annotations"
+        },
+        "resourceType": {
+          "name": "resourceType",
+          "range": "ResourceType",
+          "domain": "ResourceTypeRef"
+        }
+      }
+    },
+    "ResourceType": {
+      "name": "ResourceType",
+      "properties": {
+        "annotations": {
+          "name": "annotations"
+        },
+        "methods": {
+          "name": "methods"
+        },
+        "is": {
+          "name": "is"
+        },
+        "type": {
+          "name": "type"
+        },
+        "description": {
+          "name": "description"
+        },
+        "securedBy": {
+          "name": "securedBy"
+        },
+        "uriParameters": {
+          "name": "uriParameters"
+        },
+        "displayName": {
+          "name": "displayName"
+        },
+        "name": {
+          "name": "name"
+        },
+        "usage": {
+          "name": "usage"
+        },
+        "parametrizedProperties": {
+          "name": "parametrizedProperties",
+          "range": "TypeInstance",
+          "domain": "ResourceType"
+        }
+      }
+    },
+    "ResourceBase": {
+      "name": "ResourceBase",
+      "properties": {
+        "annotations": {
+          "name": "annotations"
+        },
+        "methods": {
+          "name": "methods"
+        },
+        "is": {
+          "name": "is"
+        },
+        "type": {
+          "name": "type"
+        },
+        "description": {
+          "name": "description"
+        },
+        "securedBy": {
+          "name": "securedBy"
+        },
+        "uriParameters": {
+          "name": "uriParameters"
+        }
+      }
+    },
+    "Resource": {
+      "name": "Resource",
+      "properties": {
+        "annotations": {
+          "name": "annotations"
+        },
+        "methods": {
+          "name": "methods"
+        },
+        "is": {
+          "name": "is"
+        },
+        "type": {
+          "name": "type"
+        },
+        "description": {
+          "name": "description"
+        },
+        "securedBy": {
+          "name": "securedBy"
+        },
+        "uriParameters": {
+          "name": "uriParameters"
+        },
+        "relativeUri": {
+          "name": "relativeUri"
+        },
+        "displayName": {
+          "name": "displayName"
+        },
+        "resources": {
+          "name": "resources"
+        }
+      }
+    },
+    "FileTypeDeclaration": {
+      "name": "FileTypeDeclaration",
+      "properties": {
+        "annotations": {
+          "name": "annotations"
+        },
+        "name": {
+          "name": "name"
+        },
+        "displayName": {
+          "name": "displayName"
+        },
+        "facets": {
+          "name": "facets"
+        },
+        "schema": {
+          "name": "schema"
+        },
+        "type": {
+          "name": "type"
+        },
+        "location": {
+          "name": "location"
+        },
+        "locationKind": {
+          "name": "locationKind"
+        },
+        "default": {
+          "name": "default"
+        },
+        "example": {
+          "name": "example"
+        },
+        "examples": {
+          "name": "examples"
+        },
+        "repeat": {
+          "name": "repeat"
+        },
+        "required": {
+          "name": "required"
+        },
+        "description": {
+          "name": "description"
+        },
+        "xml": {
+          "name": "xml"
+        },
+        "allowedTargets": {
+          "name": "allowedTargets"
+        },
+        "isAnnotation": {
+          "name": "isAnnotation"
+        },
+        "fileTypes": {
+          "name": "fileTypes"
+        },
+        "minLength": {
+          "name": "minLength"
+        },
+        "maxLength": {
+          "name": "maxLength"
+        }
+      }
     }
   }
 };export=Universes
