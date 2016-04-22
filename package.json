@@ -1,20 +1,21 @@
 {
   "name": "raml-definition-system",
-  "version": "0.0.14",
+  "version": "0.0.18",
   "main": "dist/definitionSystem.js",
   "scripts": {
     "compile": "rimraf dist && tsc",
     "generateJSON": "node dist/builder.js",
-    "build": "npm run compile && npm run generateJSON",
-    "pullall": "dev-env-installer pullall",
-    "buildall": "dev-env-installer buildall",
-    "testall": "dev-env-installer testall",
+    "generateUniverses": "node dist/enumGen.js",
+    "build": "npm run compile && npm run generateJSON && npm run generateUniverses && tsc",
+    "pullall" : "dev-env-installer pullall",
+    "buildall" : "dev-env-installer buildall",
+    "testall" : "dev-env-installer testall",
     "devInstall": "dev-env-installer install"
   },
   "dependencies": {
     "know-your-http-well": "^0.2.0",
-    "raml-typesystem": "^0.0.20",
-    "ts-structure-parser": "^0.0.5",
+    "raml-typesystem": "^0.0.25",
+    "ts-structure-parser": "^0.0.9",
     "underscore": "^1.8.3"
   },
   "typings": "dist/definitionSystem.d.ts",
@@ -36,6 +37,7 @@
   "devDependencies": {
     "typescript": "^1.8.9",
     "typings": "^0.7.9",
-    "dev-env-installer": "^0.0.2"
+    "dev-env-installer":"^0.0.2",
+    "rimraf":"*"
   }
 }
