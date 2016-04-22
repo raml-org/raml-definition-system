@@ -15,6 +15,10 @@ export enum LocationKind{
  * never produced directly any more
  */
 export class ExampleSpec  extends Annotable{
+  $=[
+    MetaModel.customHandling()
+  ]
+
   value:any
   $value=[
     MetaModel.example(),
@@ -140,7 +144,7 @@ export class TypeDeclaration extends Annotable{
     MetaModel.hide()
   ]
 
-  example:ExampleSpec[]
+  example:ExampleSpec
   $example=[
     MetaModel.example(),
     MetaModel.selfNode(),
