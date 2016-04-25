@@ -47,7 +47,7 @@ export class ExampleSpec  extends Annotable{
     MetaModel.description("Example identifier, if specified")
   ]
   displayName: string
-  description: string
+  description: Sys.MarkdownString
 
   $displayName=[
     MetaModel.description("An alternate, human-friendly name for the example")
@@ -180,7 +180,7 @@ export class TypeDeclaration extends Annotable{
   ]
 
 
-  description: string
+  description: Sys.MarkdownString
 
   $description=[
     MetaModel.description("A longer, human-friendly description of the type"),

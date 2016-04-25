@@ -39,7 +39,7 @@ export class Response  extends Annotable{
   $displayName=[
     MetaModel.description("An alternate, human-friendly name for the response")
   ]
-  description: string
+  description: Sys.MarkdownString
 
   $description=[
     MetaModel.description("A longer, human-friendly description of the response"),

@@ -75,7 +75,7 @@ export class ResourceBase extends Annotable{
             "with resource type name as key and a map of its parameters as value<br>* inline resource type declaration")
     ]
 
-    description: string
+    description: Sys.MarkdownString
 
     //TODO FIXME
     securedBy:Security.SecuritySchemeRef[]

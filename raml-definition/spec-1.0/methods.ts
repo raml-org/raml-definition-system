@@ -77,7 +77,7 @@ export class MethodBase extends Operation{
             "method may be annotated with the null securityScheme.")
     ]
 
-    description: MarkdownString
+    description: Sys.MarkdownString
 
     displayName:string
 }
