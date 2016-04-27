@@ -27,7 +27,7 @@ export class Library extends LibraryBase {
   ]
 }
 
-export class LibraryBase extends Annotable{
+export class LibraryBase extends FragmentDeclaration{
   $=[
     MetaModel.internalClass()
   ]

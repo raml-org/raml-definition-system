@@ -1355,6 +1355,9 @@ var Universes={
         "annotations": {
           "name": "annotations"
         },
+        "uses": {
+          "name": "uses"
+        },
         "schemas": {
           "name": "schemas"
         },
@@ -1387,6 +1390,9 @@ var Universes={
         "annotations": {
           "name": "annotations"
         },
+        "uses": {
+          "name": "uses"
+        },
         "schemas": {
           "name": "schemas"
         },
@@ -1412,6 +1418,9 @@ var Universes={
       "properties": {
         "annotations": {
           "name": "annotations"
+        },
+        "uses": {
+          "name": "uses"
         },
         "schemas": {
           "name": "schemas"
@@ -1471,6 +1480,9 @@ var Universes={
         "annotations": {
           "name": "annotations"
         },
+        "uses": {
+          "name": "uses"
+        },
         "schemas": {
           "name": "schemas"
         },
@@ -1529,6 +1541,9 @@ var Universes={
       "properties": {
         "annotations": {
           "name": "annotations"
+        },
+        "uses": {
+          "name": "uses"
         },
         "schemas": {
           "name": "schemas"
