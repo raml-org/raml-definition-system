@@ -17,7 +17,10 @@ export class ResourceTypeRef extends Sys.Reference<ResourceType>{
 }
 
 export class ResourceType extends ResourceBase  {
-    $=[MetaModel.inlinedTemplates(),MetaModel.allowQuestion()]
+    $=[
+       MetaModel.inlinedTemplates(),MetaModel.allowQuestion(),
+       MetaModel.possibleInterfaces(["FragmentDeclaration"])
+    ]
 
     displayName:string
     $displayName=[

@@ -58,6 +58,9 @@ export function handleTypeAnnotation(a:tsModel.Annotation,rangeType:def.NodeClas
     if (a.name == 'MetaModel.superclasses') {
         rangeType.getAdapter(services.RAMLService).registerSupertypes(<string[]>a.arguments[0]);
     }
+    if (a.name == 'MetaModel.possibleInterfaces') {
+        rangeType.getAdapter(services.RAMLService).registerPossibleInterfaces(<string[]>a.arguments[0]);
+    }
 }
 
 export var annotationHandlers:{[name:string]:AnnotationHandler}={

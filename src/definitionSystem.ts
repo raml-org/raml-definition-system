@@ -767,6 +767,8 @@ export class RAMLService {
     //!!!
     private _allowsOptionalProperties:boolean=false;
 
+    private _possibleInterfaces:ITypeDefinition[] = [];
+
     withAllowQuestion(){
         this._allowsOptionalProperties=true;
     }
@@ -1044,6 +1046,21 @@ export class RAMLService {
             }
             (<AbstractType>this._type).addSuperType(supertype);
         });
+    }
+
+    registerPossibleInterfaces(classNames:string[]){
+        var universe = this._type.universe();
+        for( var x of classNames){
+            var supertype = <AbstractType>universe.type(x);
+            if(!supertype){
+                return;
+            }
+            this._possibleInterfaces.push(supertype);
+        }
+    }
+
+    possibleInterfaces():ITypeDefinition[]{
+        return this._possibleInterfaces;
     }
 }
 var universes:{[key:string]:Universe}={}

@@ -231,6 +231,10 @@ export class FragmentDeclaration extends Annotable{
 }
 
 class DocumentationItem extends Annotable{
+
+  $ = [
+    MetaModel.possibleInterfaces(["FragmentDeclaration"])
+  ]
   title:string
   $title=[
     MetaModel.description("Title of documentation section"),

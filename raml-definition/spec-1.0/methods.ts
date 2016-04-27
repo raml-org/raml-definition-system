@@ -30,7 +30,10 @@ export class Trait extends MethodBase{
     usage:string
     $usage = [ MetaModel.description("Instructions on how and when the trait should be used.") ]
 
-    $=[MetaModel.inlinedTemplates(),MetaModel.allowQuestion()]
+    $=[
+        MetaModel.inlinedTemplates(),MetaModel.allowQuestion(),
+        MetaModel.possibleInterfaces(["FragmentDeclaration"])
+    ]
 
 
 

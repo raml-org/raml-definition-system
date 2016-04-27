@@ -322,6 +322,11 @@ export function customHandling(){}
  */
 export function superclasses(classNames:string[]){}
 
+/**
+ * List of interfaces which can be implemented by the type depending on context
+ */
+export function possibleInterfaces(classNames:string[]){}
+
 export function typeExpression(){};
 
 export function example(){};
