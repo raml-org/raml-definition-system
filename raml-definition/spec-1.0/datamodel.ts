@@ -119,6 +119,14 @@ export class TypeDeclaration extends Annotable{
     MetaModel.valueDescription("string denoting the base type or type expression")
   ]
 
+  structuredType:TypeInstance;
+  $structuredType=[
+    MetaModel.customHandling(),
+    MetaModel.typeExpression(),
+    MetaModel.description("A base type which the current type extends, or more generally a type expression."),
+    MetaModel.valueDescription("Inlined supertype definition")
+  ]
+
   location:ModelLocation
   $location=[
     MetaModel.system(),

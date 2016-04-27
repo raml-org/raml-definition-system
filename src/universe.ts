@@ -1830,6 +1830,11 @@ var Universes={
           "name": "fixedFacets",
           "range": "TypeInstance",
           "domain": "TypeDeclaration"
+        },
+        "structuredType": {
+          "name": "structuredType",
+          "range": "TypeInstance",
+          "domain": "TypeDeclaration"
         }
       }
     },
