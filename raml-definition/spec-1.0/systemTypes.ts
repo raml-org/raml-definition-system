@@ -26,11 +26,51 @@ export class AnyType extends ValueType {
 export class NumberType extends ValueType {
   $=[
     MetaModel.nameAtRuntime("number"),
-    MetaModel.alias("integer"),
     MetaModel.alias("number")
   ]
 }
-
+export class IntegerType extends ValueType {
+  $=[
+    MetaModel.nameAtRuntime("integer"),
+    MetaModel.alias("integer")
+  ]
+}
+export class NullType extends ValueType {
+  $=[
+    MetaModel.nameAtRuntime("null"),
+    MetaModel.alias("null")
+  ]
+}
+export class TimeOnlyType extends ValueType {
+  $=[
+    MetaModel.nameAtRuntime("time-only"),
+    MetaModel.alias("time-only")
+  ]
+}
+export class DateOnlyType extends ValueType {
+  $=[
+    MetaModel.nameAtRuntime("date-only"),
+    MetaModel.alias("date-only")
+  ]
+}
+export class DateTimeOnlyType extends ValueType {
+  $=[
+    MetaModel.nameAtRuntime("datetime-only"),
+    MetaModel.alias("datetime-only")
+  ]
+}
+export class DateTimeType extends ValueType {
+  $=[
+    MetaModel.nameAtRuntime("datetime"),
+    MetaModel.alias("datetime")
+  ]
+}
+export class FileType extends ValueType {
+  $=[
+    MetaModel.nameAtRuntime("file"),
+    MetaModel.alias("file")
+  ]
+}
 export class BooleanType extends ValueType {
   $=[
     MetaModel.nameAtRuntime("boolean"),

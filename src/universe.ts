@@ -1669,6 +1669,62 @@ var Universes={
         }
       }
     },
+    "IntegerType": {
+      "name": "IntegerType",
+      "properties": {
+        "annotations": {
+          "name": "annotations"
+        }
+      }
+    },
+    "NullType": {
+      "name": "NullType",
+      "properties": {
+        "annotations": {
+          "name": "annotations"
+        }
+      }
+    },
+    "TimeOnlyType": {
+      "name": "TimeOnlyType",
+      "properties": {
+        "annotations": {
+          "name": "annotations"
+        }
+      }
+    },
+    "DateOnlyType": {
+      "name": "DateOnlyType",
+      "properties": {
+        "annotations": {
+          "name": "annotations"
+        }
+      }
+    },
+    "DateTimeOnlyType": {
+      "name": "DateTimeOnlyType",
+      "properties": {
+        "annotations": {
+          "name": "annotations"
+        }
+      }
+    },
+    "DateTimeType": {
+      "name": "DateTimeType",
+      "properties": {
+        "annotations": {
+          "name": "annotations"
+        }
+      }
+    },
+    "FileType": {
+      "name": "FileType",
+      "properties": {
+        "annotations": {
+          "name": "annotations"
+        }
+      }
+    },
     "BooleanType": {
       "name": "BooleanType",
       "properties": {
