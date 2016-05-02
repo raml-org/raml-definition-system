@@ -71,7 +71,6 @@ export class OAuth2SecuritySchemeSettings extends SecuritySchemeSettings {
 
   authorizationUri:Sys.FixedUriString
   $authorizationUri=[
-    MetaModel.required(),
     MetaModel.description("The URI of the Authorization Endpoint as defined in RFC6749 Section 3.1. Required forby authorization_code and implicit grant types."),
     MetaModel.valueDescription("FixedUriString")
   ]
@@ -80,13 +79,14 @@ export class OAuth2SecuritySchemeSettings extends SecuritySchemeSettings {
   $authorizationGrants=[
     MetaModel.required(),
     MetaModel.description("A list of the Authorization grants supported by the API as defined in RFC6749 Sections 4.1, 4.2, 4.3 and " +
-      "4.4, can be any of: authorization_code, password, client_credentials, implicit, or refresh_token."),
+      "4.4, can be any of: authorization_code, password, client_credentials, implicit, or any absolute url."),
     MetaModel.markdownDescription("A list of the Authorization grants supported by the API as defined in RFC6749 Sections " +
       "4.1, 4.2, 4.3 and 4.4, can be any of:<br>* authorization_code<br>* password<br>* client_credentials<br>* implicit " +
-      "<br>* refresh_token.")
+      "<br>*  or any absolute url.")
   ]
 
   scopes:string[]
+
   $scopes=[
     MetaModel.description("A list of scopes supported by the security scheme as defined in RFC6749 Section 3.3")
   ]

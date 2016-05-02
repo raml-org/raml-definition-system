@@ -128,6 +128,8 @@ export class TypeDeclaration extends Annotable{
     MetaModel.valueDescription("Inlined supertype definition")
   ]
 
+  
+
   location:ModelLocation
   $location=[
     MetaModel.system(),
