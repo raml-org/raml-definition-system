@@ -1,6 +1,11 @@
-
 export import  rt=require("raml-typesystem")
+
 import typeSystem=rt.nominalTypes;
+
+export function getSchemaUtils(): any {
+    return rt.getSchemaUtils();
+}
+
 function registerAdapters(a:typeSystem.Adaptable){
     if ((<any>a)["isUnion"]) {
         a.addAdapter(new RAMLService(<AbstractType>a))
