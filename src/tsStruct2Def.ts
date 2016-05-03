@@ -364,15 +364,18 @@ var registerClasses = function (m:ModuleWrapper, u:def.Universe) {
             if (refTo) {
                 //console.log("New reference type" + x.name())
                 var ref = new def.ReferenceType(x.name(), x.getModule().path(), refTo, u);
+                ref.setBuiltIn(true);
                 u.register(ref)
             }
             else {
                 var vt = new def.ValueType(x.name(), u, x.getModule().path());
+                vt.setBuiltIn(true);
                 u.register(vt);
             }
         }
         else {
             var gt = new def.NodeClass(x.name(), u, x.getModule().path());
+            gt.setBuiltIn(true);
             u.register(gt);
         }
     })
