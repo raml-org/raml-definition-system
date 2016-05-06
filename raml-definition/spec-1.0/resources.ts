@@ -59,7 +59,7 @@ export class ResourceBase extends Annotable{
         MetaModel.description("Methods that are part of this resource type definition"),
         //MetaModel.issue("definition system did not represents that ? is allowed after method names here"),
         MetaModel.markdownDescription("The methods available on this resource."),
-        MetaModel.documentationTableLabel("get?<br>patch?<br>put?<br>post?<br>delete?<br>options?<br>head?<br>trace?<br>connect?"),
+        MetaModel.documentationTableLabel("get?<br>patch?<br>put?<br>post?<br>delete?<br>options?<br>head?"),
         MetaModel.valueDescription("Object describing the method")
     ]
 
