@@ -95,6 +95,10 @@ class Api extends LibraryBase {
     MetaModel.required(),MetaModel.description("Short plain-text label for the API")
   ]
 
+  description: Sys.MarkdownString
+  $description=[
+    MetaModel.description("A substantial, human-friendly description of the API. Its value is a string and MAY be formatted using markdown.")
+  ]
   version:string
   $version=[
     MetaModel.description("The version of the API, e.g. 'v1'")
