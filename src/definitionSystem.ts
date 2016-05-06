@@ -17,6 +17,15 @@ function registerAdapters(a:typeSystem.Adaptable){
 export type IHighLevelNode=any
 export type IParseResult=any
 export type Named=typeSystem.NamedId;
+export type IHasExtra = rt.IHasExtra;
+export var TOP_LEVEL_EXTRA = rt.TOP_LEVEL_EXTRA;
+export var DEFINED_IN_TYPES_EXTRA = rt.DEFINED_IN_TYPES_EXTRA;
+export var USER_DEFINED_EXTRA = rt.USER_DEFINED_EXTRA;
+
+// export function instanceOfHasExtra(instance : any) : instance is rt.IHasExtra {
+//     return rt.instanceOfHasExtra(instance);
+// }
+
 export var injector={
     inject(a:typeSystem.Adaptable){
         registerAdapters(a);
@@ -34,7 +43,6 @@ export type ITypeDefinition = typeSystem.ITypeDefinition
 export type IProperty=typeSystem.IProperty
 
 export class AbstractType extends typeSystem.AbstractType implements typeSystem.ITypeDefinition{}
-
 
 export class ValueType extends typeSystem.ValueType implements IType{}
 export class EnumType extends ValueType{
