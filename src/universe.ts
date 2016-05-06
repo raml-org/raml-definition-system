@@ -1443,6 +1443,9 @@ var Universes={
         "title": {
           "name": "title"
         },
+        "description": {
+          "name": "description"
+        },
         "version": {
           "name": "version"
         },
@@ -1503,6 +1506,9 @@ var Universes={
         },
         "title": {
           "name": "title"
+        },
+        "description": {
+          "name": "description"
         },
         "version": {
           "name": "version"
@@ -1565,6 +1571,9 @@ var Universes={
         },
         "title": {
           "name": "title"
+        },
+        "description": {
+          "name": "description"
         },
         "version": {
           "name": "version"
