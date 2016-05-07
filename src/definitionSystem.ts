@@ -21,6 +21,7 @@ export type IHasExtra = rt.IHasExtra;
 export var TOP_LEVEL_EXTRA = rt.TOP_LEVEL_EXTRA;
 export var DEFINED_IN_TYPES_EXTRA = rt.DEFINED_IN_TYPES_EXTRA;
 export var USER_DEFINED_EXTRA = rt.USER_DEFINED_EXTRA;
+export var SOURCE_EXTRA = rt.SOURCE_EXTRA;
 
 // export function instanceOfHasExtra(instance : any) : instance is rt.IHasExtra {
 //     return rt.instanceOfHasExtra(instance);
@@ -45,6 +46,13 @@ export type IProperty=typeSystem.IProperty
 export class AbstractType extends typeSystem.AbstractType implements typeSystem.ITypeDefinition{}
 
 export class ValueType extends typeSystem.ValueType implements IType{}
+
+export class SourceProvider {
+    getSource() : any {
+        return null;
+    }
+}
+
 export class EnumType extends ValueType{
     values:string[]=[];
 }
@@ -1047,7 +1055,22 @@ export class RAMLService {
 
 
     getDeclaringNode():any{
-        return this._node;
+        if (this._node) return this._node;
+        else if (this._type) {
+            //if this service have no source registered,
+            //checking if the type has source contributed via extras
+            var sourceNode =  this._type.getExtra(SOURCE_EXTRA);
+            if (!sourceNode) return null;
+
+            if (sourceNode instanceof SourceProvider ||
+                (sourceNode.getSource && typeof(sourceNode.getSource) == "function")) {
+                return (<SourceProvider>sourceNode).getSource();
+            } else {
+                return sourceNode;
+            }
+        }
+
+        return null;
     }
 
     registerSupertypes(classNames:string[]){
