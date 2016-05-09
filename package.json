@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "know-your-http-well": "^0.2.0",
-    "raml-typesystem": "beta",
+    "raml-typesystem": "^0.0.30",
     "ts-structure-parser": "^0.0.9",
     "underscore": "^1.8.3"
   },
