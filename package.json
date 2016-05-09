@@ -1,6 +1,6 @@
 {
   "name": "raml-definition-system",
-  "version": "0.0.22-rc2",
+  "version": "0.0.23",
   "main": "dist/definitionSystem.js",
   "scripts": {
     "compile": "rimraf dist && tsc",
