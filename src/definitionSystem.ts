@@ -1,6 +1,6 @@
 export import  rt=require("raml-typesystem")
 
-import typeSystem=rt.nominalTypes;
+export import typeSystem=rt.nominalTypes;
 
 export function getSchemaUtils(): any {
     return rt.getSchemaUtils();
@@ -45,6 +45,8 @@ export type IProperty=typeSystem.IProperty
 
 export class AbstractType extends typeSystem.AbstractType implements typeSystem.ITypeDefinition{}
 
+// export type StructuredType = typeSystem.StructuredType;
+
 export class ValueType extends typeSystem.ValueType implements IType{}
 
 export class SourceProvider {
@@ -55,6 +57,17 @@ export class SourceProvider {
 
 export class EnumType extends ValueType{
     values:string[]=[];
+
+    createClonedInstance() : AbstractType {
+        return new EnumType(this.nameId(), this._universe, this.getPath());
+    }
+
+    fillClonedInstanceFields(clone : AbstractType, context : tsInterfaces.ICloningContext) {
+        super.fillClonedInstanceFields(clone, context);
+
+        var _clone = <EnumType>clone;
+        _clone.values = this.values;
+    }
 }
 export interface IValueDocProvider{
     (v:string):string
@@ -65,7 +78,7 @@ export interface IValueSuggester{
 
 export class ReferenceType extends ValueType{
 
-   constructor(name:string,path:string,private referenceTo:string,_universe:Universe){
+   constructor(name:string,path:string,private referenceTo:string,_universe:typeSystem.IUniverse){
      super(name,_universe,path)
    }
 
@@ -77,20 +90,39 @@ export class ReferenceType extends ValueType{
     hasStructure():boolean{
         return true;
     }
+
+    createClonedInstance() : AbstractType {
+        return new ReferenceType(this.nameId(), this.getPath(), this.referenceTo, this._universe);
+    }
+
+    fillClonedInstanceFields(clone : AbstractType, context : tsInterfaces.ICloningContext) {
+        super.fillClonedInstanceFields(clone, context);
+
+        var _clone = <ReferenceType>clone;
+
+        _clone.referenceTo = this.referenceTo;
+    }
 }
 
 export class NodeClass extends typeSystem.StructuredType implements IType,typeSystem.ITypeDefinition{
 
-    constructor(_name:string,universe:Universe,path:string,_description="") {
+    constructor(_name:string,universe:typeSystem.IUniverse,path:string,_description="") {
         super(_name,universe,path)
     }
 
     allProperties(v:{ [name:string]: typeSystem.ITypeDefinition}={}):Property[]{
         return <Property[]>super.allProperties(v);
     }
+
+    createClonedInstance() : AbstractType {
+        return new NodeClass(this.nameId(), this._universe, this.getPath(), this.description());
+    }
 }
 
 export class UserDefinedClass extends NodeClass{
+
+    protected highLevelNode:IHighLevelNode;
+
     key(){
         return null;
     }
@@ -111,9 +143,10 @@ export class UserDefinedClass extends NodeClass{
         }
         return rs;
     }
-    constructor(name:string, universe:Universe, hl:IHighLevelNode,path:string, description:string) {
+    constructor(name:string, universe:typeSystem.IUniverse, hl:IHighLevelNode,path:string, description:string) {
         super(name, universe, path, description);
         this.getAdapter(RAMLService).setDeclaringNode(hl);
+        this.highLevelNode = hl;
     }
 
     _value:boolean;
@@ -151,6 +184,20 @@ export class UserDefinedClass extends NodeClass{
 
         return this;
     }
+
+    createClonedInstance() : AbstractType {
+        return new UserDefinedClass(this.nameId(), this._universe, this.highLevelNode,
+            this.getPath(), this.description());
+    }
+
+    fillClonedInstanceFields(clone : AbstractType, context : tsInterfaces.ICloningContext) {
+        super.fillClonedInstanceFields(clone, context);
+
+        var _clone = <UserDefinedClass>clone;
+
+        _clone._value = this._value;
+        _clone.highLevelNode = this.highLevelNode;
+    }
 }
 export class AnnotationType extends UserDefinedClass{
     allProperties(ps:{[name:string]:typeSystem.ITypeDefinition}={}):Property[]{
@@ -172,6 +219,11 @@ export class AnnotationType extends UserDefinedClass{
 
     isAnnotationType(){
         return true;
+    }
+
+    createClonedInstance() : AbstractType {
+        return new AnnotationType(this.nameId(), this._universe, this.highLevelNode,
+            this.getPath(), this.description());
     }
 }
 
@@ -581,6 +633,37 @@ export class Property extends typeSystem.Property implements typeSystem.IPropert
         //TODO implement that
         return null
     }
+
+    createClonedInstance() : typeSystem.Property {
+        return new Property(this.nameId(), this.description());
+    }
+
+    fillClonedInstanceFields(clone : typeSystem.Property, context : tsInterfaces.ICloningContext) {
+        super.fillClonedInstanceFields(clone, context);
+
+        var _clone = <Property> clone;
+
+        _clone._isFromParentKey = this._isFromParentKey;
+        _clone._isFromParentValue = this._isFromParentValue;
+        _clone._key = this._key;
+        _clone._declaresFields = this._declaresFields;
+        _clone._describes = this._describes;
+        _clone._inheritsValueFromContext = this._inheritsValueFromContext;
+        _clone._canBeDuplicator = this._canBeDuplicator;
+        _clone._allowsNull = this._allowsNull;
+        _clone._canBeValue = this._canBeValue;
+        _clone._isInherited = this._isInherited;
+        _clone._oftenKeys = this._oftenKeys;
+        _clone._vprovider = this._vprovider;
+        _clone._suggester = this._suggester;
+        _clone._selfNode = this._selfNode;
+        _clone._noDirectParse = this._noDirectParse;
+        _clone._contextReq = this._contextReq;
+        _clone._newInstanceName = this._newInstanceName;
+        _clone.determinesChildValues = this.determinesChildValues;
+        _clone._id = this._id;
+        _clone._groupName = this._groupName;
+    }
 }
 export type Array= typeSystem.Array
 export class UserDefinedProp extends Property{
@@ -598,6 +681,19 @@ export class UserDefinedProp extends Property{
 
     node(){
         return this._node;
+    }
+
+    createClonedInstance() : typeSystem.Property {
+        return new UserDefinedProp(this.nameId(), this.description());
+    }
+
+    fillClonedInstanceFields(clone : typeSystem.Property, context : tsInterfaces.ICloningContext) {
+        super.fillClonedInstanceFields(clone, context);
+
+        var _clone = <UserDefinedProp> clone;
+
+        _clone._node = this._node;
+        _clone._displayName = this._displayName;
     }
 }
 
