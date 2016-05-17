@@ -319,13 +319,13 @@ export class Property extends typeSystem.Property implements typeSystem.IPropert
     private _isFromParentKey:boolean=false;
 
     private _key:boolean=false;
-    private _declaresFields:boolean;
+    private _declaresFields:boolean=false
     private _describes:string=null;
     private _inheritsValueFromContext:string;
-    private _canBeDuplicator:boolean
-    private _allowsNull:boolean
-    private _canBeValue:boolean;
-    private _isInherited:boolean
+    private _canBeDuplicator:boolean=false
+    private _allowsNull:boolean=false
+    private _canBeValue:boolean=false
+    private _isInherited:boolean=false
     private _oftenKeys:string[]
     private _vprovider:IValueDocProvider
     private _suggester:IValueSuggester
