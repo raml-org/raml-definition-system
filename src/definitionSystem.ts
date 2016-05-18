@@ -1,4 +1,5 @@
 export import  rt=require("raml-typesystem")
+export import  tsInterfaces=rt.tsInterfaces;
 
 export import typeSystem=rt.nominalTypes;
 
