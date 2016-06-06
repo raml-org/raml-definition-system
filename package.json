@@ -1,6 +1,6 @@
 {
   "name": "raml-definition-system",
-  "version": "0.0.30",
+  "version": "0.0.31",
   "main": "dist/definitionSystem.js",
   "scripts": {
     "compile": "rimraf dist && tsc",
@@ -14,8 +14,8 @@
   },
   "dependencies": {
     "know-your-http-well": "^0.2.0",
-    "raml-typesystem": "0.0.37",
-    "ts-structure-parser": "^0.0.9",
+    "raml-typesystem": "0.0.38",
+    "ts-structure-parser": "^0.0.10",
     "underscore": "^1.8.3"
   },
   "typings": "dist/definitionSystem.d.ts",
