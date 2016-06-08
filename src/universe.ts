@@ -2702,6 +2702,12 @@ var Universes={
         },
         "value": {
           "name": "value"
+        },
+        "isArray": {
+          "name": "isArray"
+        },
+        "items": {
+          "name": "items"
         }
       }
     },

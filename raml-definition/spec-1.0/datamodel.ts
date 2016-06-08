@@ -534,6 +534,16 @@ export class TypeInstance {
   $value=[
     MetaModel.description("For instances of scalar types returns scalar value")
   ]
+
+  isArray:boolean
+  $isArray=[
+    MetaModel.description("Indicates whether the instance is array")
+  ]
+
+  items:TypeInstance[]
+  $items=[
+    MetaModel.description("Returns components of array instances")
+  ]
 }
 
 export class TypeInstanceProperty {
