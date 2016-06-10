@@ -187,6 +187,7 @@ export class Universe extends typeSystem.Described implements typeSystem.IUniver
 
 
     private _topLevel:string;
+    private _originalTopLevelText:string;
 
     private matchedObjects;
 
@@ -207,6 +208,13 @@ export class Universe extends typeSystem.Described implements typeSystem.IUniver
     }
     getTopLevel(){
         return this._topLevel;
+    }
+
+    setOriginalTopLevelText(t:string){
+        this._originalTopLevelText=t;
+    }
+    getOriginalTopLevelText(){
+        return this._originalTopLevelText;
     }
 
     setTypedVersion(tv:string){
