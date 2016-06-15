@@ -335,11 +335,9 @@ export class ObjectTypeDeclaration extends TypeDeclaration{
     MetaModel.description("The maximum number of properties allowed for instances of this type.")
   ]
 
-  additionalProperties:TypeDeclaration;
+  additionalProperties:boolean;
   $additionalProperties=[
-    MetaModel.description("JSON schema style syntax for declaring maps"),
-    MetaModel.markdownDescription("JSON schema style syntax for declaring maps. See [[raml-10-spec-map-types|Map Types]]."),
-    MetaModel.valueDescription("Inline type declaration or typename")
+    MetaModel.description("A Boolean that indicates if an object instance has additional properties.")
   ]
 
 
