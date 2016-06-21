@@ -23,6 +23,8 @@ export var DEFINED_IN_TYPES_EXTRA = rt.DEFINED_IN_TYPES_EXTRA;
 export var USER_DEFINED_EXTRA = rt.USER_DEFINED_EXTRA;
 export var SOURCE_EXTRA = rt.SOURCE_EXTRA;
 
+export var tsInterfaces = rt.tsInterfaces;
+
 // export function instanceOfHasExtra(instance : any) : instance is rt.IHasExtra {
 //     return rt.instanceOfHasExtra(instance);
 // }
@@ -51,6 +53,10 @@ export class SourceProvider {
     getSource() : any {
         return null;
     }
+}
+
+export function isSourceProvider(object : any) : object is SourceProvider {
+    return object.getSource && typeof(object.getSource) == "function";
 }
 
 export class EnumType extends ValueType{
@@ -156,14 +162,14 @@ export class AnnotationType extends UserDefinedClass{
     allProperties(ps:{[name:string]:typeSystem.ITypeDefinition}={}):Property[]{
         var rs=this.superTypes()[0].allProperties();
         if (rs.length==0){
-            var up=new UserDefinedProp("value");
+            var node = this.getAdapter(RAMLService).getDeclaringNode();
+            var up=new UserDefinedProp("value", node);
             up.withDomain(this);
-            up._node=this.getAdapter(RAMLService).getDeclaringNode();
             up.withCanBeValue();
             up.withRequired(false);
             var tp=this.superTypes()[0];
             rs=[];
-            up.withRange(up._node.asElement().definition().universe().type("string"));
+            up.withRange(up.node().asElement().definition().universe().type("string"));
             rs.push(up);
 
         }
@@ -593,9 +599,15 @@ export class Property extends typeSystem.Property implements typeSystem.IPropert
 export type Array= typeSystem.Array
 export class UserDefinedProp extends Property{
 
-    _node: IParseResult;
+    private _node: IParseResult;
+    private sourceProvider;
 
     _displayName:string
+
+    constructor(name : string, source : IParseResult) {
+        super(name)
+        this._node = source;
+    }
 
     withDisplayName(name:string){
         this._displayName=name;
@@ -605,7 +617,15 @@ export class UserDefinedProp extends Property{
     }
 
     node(){
+        if(!this._node && this.sourceProvider != null) {
+            this._node = this.sourceProvider.getSource();
+        }
+
         return this._node;
+    }
+
+    setSourceProvider(sourceProvider : SourceProvider) : void {
+        this.sourceProvider = sourceProvider;
     }
 }
 
