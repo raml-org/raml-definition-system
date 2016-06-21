@@ -100,6 +100,12 @@ export class Method extends MethodBase {
             "property itself).")
     ]
 
+    parametrizedProperties:DataModel.TypeInstance
+    $parametrizedProperties = [
+        MetaModel.customHandling(),
+        MetaModel.description("For types defined in resource types returns object representation of parametrized properties")
+    ]
+
 }
 
 export class Operation extends Annotable {

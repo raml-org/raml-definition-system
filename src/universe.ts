@@ -1915,6 +1915,11 @@ var Universes={
           "name": "structuredType",
           "range": "TypeInstance",
           "domain": "TypeDeclaration"
+        },
+        "parametrizedProperties": {
+          "name": "parametrizedProperties",
+          "range": "TypeInstance",
+          "domain": "TypeDeclaration"
         }
       }
     },
@@ -2931,6 +2936,11 @@ var Universes={
         },
         "method": {
           "name": "method"
+        },
+        "parametrizedProperties": {
+          "name": "parametrizedProperties",
+          "range": "TypeInstance",
+          "domain": "Method"
         }
       }
     },
