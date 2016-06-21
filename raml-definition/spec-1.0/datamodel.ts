@@ -237,6 +237,12 @@ export class TypeDeclaration extends Annotable{
   
   isAnnotation:boolean
   $isAnnotation = [ MetaModel.description("Whether the type represents annotation") ]
+
+  parametrizedProperties:TypeInstance
+  $parametrizedProperties = [
+    MetaModel.customHandling(),
+    MetaModel.description("For types defined in traits or resource types returns object representation of parametrized properties")
+  ]
 }
 export class XMLFacetInfo extends Annotable{
   attribute:	boolean
