@@ -17,7 +17,7 @@ export enum LocationKind{
 export class ExampleSpec  extends Annotable{
   $=[
     MetaModel.customHandling(),
-    MetaModel.possibleInterfaces("FragmentDeclaration")
+    MetaModel.possibleInterfaces(["FragmentDeclaration"])
   ]
 
   value:any
