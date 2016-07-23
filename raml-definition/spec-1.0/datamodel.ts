@@ -347,12 +347,12 @@ export class ObjectTypeDeclaration extends TypeDeclaration{
   ]
 
 
-  patternProperties:TypeDeclaration[];
-  $patternProperties=[
-    MetaModel.description("JSON schema style syntax for declaring key restricted maps"),
-    MetaModel.markdownDescription("JSON schema style syntax for declaring key restricted maps. See [[raml-10-spec-map-types|Map Types]]."),
-    MetaModel.valueDescription("An object whose properties map regular expressions (which are regarded as defining ranges for property names) to types of properties expressed as Inline type declaration or typename.")
-  ]
+  // patternProperties:TypeDeclaration[];
+  // $patternProperties=[
+  //   MetaModel.description("JSON schema style syntax for declaring key restricted maps"),
+  //   MetaModel.markdownDescription("JSON schema style syntax for declaring key restricted maps. See [[raml-10-spec-map-types|Map Types]]."),
+  //   MetaModel.valueDescription("An object whose properties map regular expressions (which are regarded as defining ranges for property names) to types of properties expressed as Inline type declaration or typename.")
+  // ]
 
   discriminator:string
   $discriminator=[
