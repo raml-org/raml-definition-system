@@ -2136,9 +2136,6 @@ var Universes={
         "additionalProperties": {
           "name": "additionalProperties"
         },
-        "patternProperties": {
-          "name": "patternProperties"
-        },
         "discriminator": {
           "name": "discriminator"
         },
