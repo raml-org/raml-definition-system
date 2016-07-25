@@ -166,17 +166,7 @@ export class TypeDeclaration extends Annotable{
         "generators to generate sample values for an object of this type. Cannot be present if the example property is present."),
     MetaModel.valueDescription("* Valid value for this type<br>* String representing the serialized version of a valid value")
   ]
-
-  repeat:boolean
-  $repeat=[
-    MetaModel.requireValue("fieldOrParam",true),
-    MetaModel.description("The repeat attribute specifies that the parameter can be repeated. " +
-      "If the parameter can be used multiple times, the repeat parameter value MUST be set to 'true'. " +
-      "Otherwise, the default value is 'false' and the parameter may not be repeated."),
-    MetaModel.defaultBooleanValue(false),
-    MetaModel.hide()
-  ]
-
+  
   required: boolean
   $required=[
     MetaModel.requireValue("fieldOrParam",true),
