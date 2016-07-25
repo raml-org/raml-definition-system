@@ -259,7 +259,7 @@ export var annotationHandlers:{[name:string]:AnnotationHandler}={
     },
     extraMetaKey:(a:tsModel.Annotation,f:def.Property)=>{
         if (a.arguments[0]=="statusCodes"){
-            f.withOftenKeys(khttp.statusCodes.map(x=>x.code))
+            f.withOftenKeys(khttp.statusCodes.filter(statusCode => statusCode.code.indexOf("x") < 0).map(x=>x.code))
             f.setValueDocProvider((name:string)=>{
                 var s= _.find(khttp.statusCodes,x=>x.code==name);
                 if (s){
