@@ -2601,59 +2601,6 @@ var Universes={
         }
       }
     },
-    "DateTypeDeclaration": {
-      "name": "DateTypeDeclaration",
-      "properties": {
-        "annotations": {
-          "name": "annotations"
-        },
-        "name": {
-          "name": "name"
-        },
-        "displayName": {
-          "name": "displayName"
-        },
-        "facets": {
-          "name": "facets"
-        },
-        "schema": {
-          "name": "schema"
-        },
-        "type": {
-          "name": "type"
-        },
-        "location": {
-          "name": "location"
-        },
-        "locationKind": {
-          "name": "locationKind"
-        },
-        "default": {
-          "name": "default"
-        },
-        "example": {
-          "name": "example"
-        },
-        "examples": {
-          "name": "examples"
-        },
-        "required": {
-          "name": "required"
-        },
-        "description": {
-          "name": "description"
-        },
-        "xml": {
-          "name": "xml"
-        },
-        "allowedTargets": {
-          "name": "allowedTargets"
-        },
-        "isAnnotation": {
-          "name": "isAnnotation"
-        }
-      }
-    },
     "TypeInstance": {
       "name": "TypeInstance",
       "properties": {

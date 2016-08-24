@@ -497,18 +497,6 @@ export class DateTimeTypeDeclaration extends TypeDeclaration{
   $format=[MetaModel.oneOf(['rfc3339','rfc2616']),MetaModel.description('Format used for this date time rfc3339 or rfc2616')]
 }
 
-export class DateTypeDeclaration extends TypeDeclaration{
-  type="date"
-
-  $=[
-    MetaModel.description("Value MUST be a string representation of a date as defined in RFC2616 Section 3.3, or according " +
-      "to specified date format"),
-    MetaModel.declaresSubTypeOf("TypeDeclaration")
-  ]
-
-
-}
-
 export class TypeInstance {
   $ = [
     MetaModel.customHandling()
