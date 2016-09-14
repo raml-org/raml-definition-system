@@ -15,7 +15,7 @@
   "dependencies": {
     "know-your-http-well": "^0.2.0",
     "raml-typesystem": "0.0.51",
-    "ts-structure-parser": "0.0.11",
+    "ts-structure-parser": "0.0.12",
     "underscore": "^1.8.3"
   },
   "typings": "dist/definitionSystem.d.ts",
