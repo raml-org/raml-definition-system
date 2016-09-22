@@ -35,7 +35,6 @@
   "ts-model" : {
     "build" : "npm run build",
     "gitUrl" : "https://github.com/mulesoft-labs/ts-model.git",
-    "gitBranch" : "develop",
     "installTypings" : true
   }
 }
