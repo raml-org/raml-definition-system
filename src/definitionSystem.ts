@@ -158,6 +158,18 @@ export class UserDefinedClass extends NodeClass{
         return this;
     }
 }
+
+/**
+ * Instanceof for UserDefinedClass class.
+ * @param clazz
+ * @returns
+ */
+export function isUserDefinedClass(clazz: any) : clazz is UserDefinedClass {
+    var anyClazz = <any>clazz;
+    return anyClazz.genuineUserDefinedType && anyClazz.isUserDefined
+        && anyClazz.isUserDefined();
+}
+
 export class AnnotationType extends UserDefinedClass{
     allProperties(ps:{[name:string]:typeSystem.ITypeDefinition}={}):Property[]{
         var rs=this.superTypes()[0].allProperties();
@@ -627,6 +639,16 @@ export class UserDefinedProp extends Property{
     setSourceProvider(sourceProvider : SourceProvider) : void {
         this.sourceProvider = sourceProvider;
     }
+}
+
+/**
+ * Instanceof for UserDefinedProp class.
+ * @param property
+ * @returns
+ */
+export function isUserDefinedProp(property: IProperty) : property is UserDefinedProp {
+    var anyProp = <any>property;
+    return anyProp.setSourceProvider && anyProp.node && anyProp.withDisplayName;
 }
 
 export class RAMLPropertyDocumentationService{
