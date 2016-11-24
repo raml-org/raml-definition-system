@@ -74,13 +74,23 @@ export class ReferenceType extends ValueType{
     private static CLASS_IDENTIFIER = "definitionSystem.ReferenceType";
 
     public static isInstance(instance : any) : instance is ReferenceType {
-        return instance != null && instance.getClassIdentifier
-            && typeof(instance.getClassIdentifier) == "function"
-            && ReferenceType.CLASS_IDENTIFIER == instance.getClassIdentifier();
+        if(instance != null && instance.getClassIdentifier
+            && typeof(instance.getClassIdentifier) == "function"){
+
+            var identifiers = instance.getClassIdentifier();
+
+            for(var i=0; i<identifiers.length; i++) {
+                if(identifiers[i] == ReferenceType.CLASS_IDENTIFIER) return true;
+            }
+        }
+
+        return false;
     }
 
-    public getClassIdentifier() : string {
-        return ReferenceType.CLASS_IDENTIFIER;
+    public getClassIdentifier() : string[] {
+        var superIdentifiers = [];
+
+        return superIdentifiers.concat(ReferenceType.CLASS_IDENTIFIER);
     }
 
    constructor(name:string,path:string,private referenceTo:string,_universe:Universe){
@@ -98,6 +108,29 @@ export class ReferenceType extends ValueType{
 }
 
 export class NodeClass extends typeSystem.StructuredType implements IType,typeSystem.ITypeDefinition{
+
+    private static CLASS_IDENTIFIER = "definitionSystem.NodeClass";
+
+    public static isInstance(instance : any) : instance is NodeClass {
+
+        if(instance != null && instance.getClassIdentifier
+            && typeof(instance.getClassIdentifier) == "function"){
+
+            var identifiers = instance.getClassIdentifier();
+
+            for(var i=0; i<identifiers.length; i++) {
+                if(identifiers[i] == NodeClass.CLASS_IDENTIFIER) return true;
+            }
+        }
+
+        return false;
+    }
+
+    public getClassIdentifier() : string[] {
+        var superIdentifiers = [];
+
+        return superIdentifiers.concat(NodeClass.CLASS_IDENTIFIER);
+    }
 
     constructor(_name:string,universe:Universe,path:string,_description="") {
         super(_name,universe,path)
@@ -631,13 +664,24 @@ export class UserDefinedProp extends Property{
     private static CLASS_IDENTIFIER = "definitionSystem.UserDefinedProp";
 
     public static isInstance(instance : any) : instance is UserDefinedProp {
-        return instance != null && instance.getClassIdentifier
-            && typeof(instance.getClassIdentifier) == "function"
-            && UserDefinedProp.CLASS_IDENTIFIER == instance.getClassIdentifier();
+
+        if(instance != null && instance.getClassIdentifier
+            && typeof(instance.getClassIdentifier) == "function"){
+
+            var identifiers = instance.getClassIdentifier();
+
+            for(var i=0; i<identifiers.length; i++) {
+                if(identifiers[i] == UserDefinedProp.CLASS_IDENTIFIER) return true;
+            }
+        }
+
+        return false;
     }
 
-    public getClassIdentifier() : string {
-        return UserDefinedProp.CLASS_IDENTIFIER;
+    public getClassIdentifier() : string[] {
+        var superIdentifiers = [];
+
+        return superIdentifiers.concat(UserDefinedProp.CLASS_IDENTIFIER);
     }
 
     constructor(name : string, source : IParseResult) {
