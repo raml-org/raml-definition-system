@@ -71,6 +71,18 @@ export interface IValueSuggester{
 
 export class ReferenceType extends ValueType{
 
+    private static CLASS_IDENTIFIER = "definitionSystem.ReferenceType";
+
+    public static isInstance(instance : any) : instance is ReferenceType {
+        return instance != null && instance.getClassIdentifier
+            && typeof(instance.getClassIdentifier) == "function"
+            && ReferenceType.CLASS_IDENTIFIER == instance.getClassIdentifier();
+    }
+
+    public getClassIdentifier() : string {
+        return ReferenceType.CLASS_IDENTIFIER;
+    }
+
    constructor(name:string,path:string,private referenceTo:string,_universe:Universe){
      super(name,_universe,path)
    }
