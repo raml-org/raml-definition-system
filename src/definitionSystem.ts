@@ -616,6 +616,18 @@ export class UserDefinedProp extends Property{
 
     _displayName:string
 
+    private static CLASS_IDENTIFIER = "definitionSystem.UserDefinedProp";
+
+    public static isInstance(instance : any) : instance is UserDefinedProp {
+        return instance != null && instance.getClassIdentifier
+            && typeof(instance.getClassIdentifier) == "function"
+            && UserDefinedProp.CLASS_IDENTIFIER == instance.getClassIdentifier();
+    }
+
+    public getClassIdentifier() : string {
+        return UserDefinedProp.CLASS_IDENTIFIER;
+    }
+
     constructor(name : string, source : IParseResult) {
         super(name)
         this._node = source;
@@ -639,16 +651,6 @@ export class UserDefinedProp extends Property{
     setSourceProvider(sourceProvider : SourceProvider) : void {
         this.sourceProvider = sourceProvider;
     }
-}
-
-/**
- * Instanceof for UserDefinedProp class.
- * @param property
- * @returns
- */
-export function isUserDefinedProp(property: IProperty) : property is UserDefinedProp {
-    var anyProp = <any>property;
-    return anyProp.setSourceProvider && anyProp.node && anyProp.withDisplayName;
 }
 
 export class RAMLPropertyDocumentationService{
