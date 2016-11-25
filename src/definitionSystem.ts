@@ -50,6 +50,21 @@ export class AbstractType extends typeSystem.AbstractType implements typeSystem.
 export class ValueType extends typeSystem.ValueType implements IType{}
 
 export class SourceProvider {
+
+    public static CLASS_IDENTIFIER = "definitionSystem.SourceProvider";
+
+    public static isInstance(instance : any) : instance is SourceProvider {
+        return instance != null && instance.getClassIdentifier
+            && typeof(instance.getClassIdentifier) == "function"
+            && _.contains(instance.getClassIdentifier(),SourceProvider.CLASS_IDENTIFIER);
+    }
+
+    public getClassIdentifier() : string[] {
+        var superIdentifiers = [];
+
+        return superIdentifiers.concat(SourceProvider.CLASS_IDENTIFIER);
+    }
+
     getSource() : any {
         return null;
     }
@@ -77,10 +92,8 @@ export class ReferenceType extends ValueType{
         if(instance != null && instance.getClassIdentifier
             && typeof(instance.getClassIdentifier) == "function"){
 
-            var identifiers = instance.getClassIdentifier();
-
-            for(var i=0; i<identifiers.length; i++) {
-                if(identifiers[i] == ReferenceType.CLASS_IDENTIFIER) return true;
+            for (let currentIdentifier of instance.getClassIdentifier()){
+                if(currentIdentifier == ReferenceType.CLASS_IDENTIFIER) return true;
             }
         }
 
@@ -116,10 +129,8 @@ export class NodeClass extends typeSystem.StructuredType implements IType,typeSy
         if(instance != null && instance.getClassIdentifier
             && typeof(instance.getClassIdentifier) == "function"){
 
-            var identifiers = instance.getClassIdentifier();
-
-            for(var i=0; i<identifiers.length; i++) {
-                if(identifiers[i] == NodeClass.CLASS_IDENTIFIER) return true;
+            for (let currentIdentifier of instance.getClassIdentifier()){
+                if(currentIdentifier == NodeClass.CLASS_IDENTIFIER) return true;
             }
         }
 
@@ -142,6 +153,27 @@ export class NodeClass extends typeSystem.StructuredType implements IType,typeSy
 }
 
 export class UserDefinedClass extends NodeClass{
+
+    private static CLASS_IDENTIFIER_UserDefinedClass = "definitionSystem.UserDefinedClass";
+
+    public static isInstance(instance : any) : instance is UserDefinedClass {
+        if(instance != null && instance.getClassIdentifier
+            && typeof(instance.getClassIdentifier) == "function"){
+
+            for (let currentIdentifier of instance.getClassIdentifier()){
+                if(currentIdentifier == UserDefinedClass.CLASS_IDENTIFIER_UserDefinedClass) return true;
+            }
+        }
+
+        return false;
+    }
+
+    public getClassIdentifier() : string[] {
+        var superIdentifiers = super.getClassIdentifier();
+
+        return superIdentifiers.concat(UserDefinedClass.CLASS_IDENTIFIER_UserDefinedClass);
+    }
+
     key(){
         return null;
     }
