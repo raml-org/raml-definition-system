@@ -75,6 +75,26 @@ export function isSourceProvider(object : any) : object is SourceProvider {
 }
 
 export class EnumType extends ValueType{
+    private static CLASS_IDENTIFIER = "definitionSystem.EnumType";
+
+    public static isInstance(instance : any) : instance is EnumType {
+        if(instance != null && instance.getClassIdentifier
+            && typeof(instance.getClassIdentifier) == "function"){
+
+            for (let currentIdentifier of instance.getClassIdentifier()){
+                if(currentIdentifier == EnumType.CLASS_IDENTIFIER) return true;
+            }
+        }
+
+        return false;
+    }
+
+    public getClassIdentifier() : string[] {
+        var superIdentifiers = [];
+
+        return superIdentifiers.concat(EnumType.CLASS_IDENTIFIER);
+    }
+
     values:string[]=[];
 }
 export interface IValueDocProvider{
