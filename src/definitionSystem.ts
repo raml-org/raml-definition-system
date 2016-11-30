@@ -54,9 +54,15 @@ export class SourceProvider {
     public static CLASS_IDENTIFIER = "definitionSystem.SourceProvider";
 
     public static isInstance(instance : any) : instance is SourceProvider {
-        return instance != null && instance.getClassIdentifier
-            && typeof(instance.getClassIdentifier) == "function"
-            && _.contains(instance.getClassIdentifier(),SourceProvider.CLASS_IDENTIFIER);
+        if(instance != null && instance.getClassIdentifier
+            && typeof(instance.getClassIdentifier) == "function"){
+
+            for (let currentIdentifier of instance.getClassIdentifier()){
+                if(currentIdentifier == SourceProvider.CLASS_IDENTIFIER) return true;
+            }
+        }
+
+        return false;
     }
 
     public getClassIdentifier() : string[] {
