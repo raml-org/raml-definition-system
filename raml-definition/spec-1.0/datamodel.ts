@@ -268,8 +268,11 @@ export class ArrayTypeDeclaration extends TypeDeclaration {
     MetaModel.description("Should items in array be unique")
   ]
 
-  items: TypeDeclaration
+  items: string
   $items=[
+    MetaModel.typeExpression(),
+    MetaModel.allowMultiple(),
+    MetaModel.canBeValue(),
     MetaModel.description("Array component type."),
     MetaModel.valueDescription("Inline type declaration or type name.")
   ]
