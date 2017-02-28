@@ -277,6 +277,14 @@ export class ArrayTypeDeclaration extends TypeDeclaration {
     MetaModel.valueDescription("Inline type declaration or type name.")
   ]
 
+  structuredItems:TypeInstance;
+  $structuredItems=[
+    MetaModel.customHandling(),
+    MetaModel.typeExpression(),
+    MetaModel.description("Inlined component type definition"),
+    MetaModel.valueDescription("Inlined component type definition")
+  ]
+
   minItems: number
   $minItems=[
     MetaModel.facetId("minItems"),

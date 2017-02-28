@@ -2005,6 +2005,11 @@ var Universes={
         },
         "maxItems": {
           "name": "maxItems"
+        },
+        "structuredItems": {
+          "name": "structuredItems",
+          "range": "TypeInstance",
+          "domain": "ArrayTypeDeclaration"
         }
       }
     },
