@@ -2134,6 +2134,9 @@ var Universes={
         },
         "discriminatorValue": {
           "name": "discriminatorValue"
+        },
+        "enum": {
+          "name": "enum"
         }
       }
     },
@@ -2252,6 +2255,9 @@ var Universes={
         },
         "isAnnotation": {
           "name": "isAnnotation"
+        },
+        "enum": {
+          "name": "enum"
         }
       }
     },
