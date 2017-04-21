@@ -364,6 +364,8 @@ export class ObjectTypeDeclaration extends TypeDeclaration{
   $discriminatorValue=[
     MetaModel.description("The value of discriminator for the type.")
   ]
+
+  enum:any[]
 }
 
 export class StringTypeDeclaration extends TypeDeclaration {
@@ -406,6 +408,7 @@ export class BooleanTypeDeclaration extends TypeDeclaration{
     MetaModel.description("Value must be a boolean"),
     MetaModel.declaresSubTypeOf("TypeDeclaration")
   ]
+  enum:boolean[]
 }
 
 
@@ -432,7 +435,7 @@ export class NumberTypeDeclaration extends TypeDeclaration{
       "specifies the parameter's maximum value.")
   ]
 
-  enum:string[]
+  enum:number[]
   $enum=[
     MetaModel.facetId("enum"),
     MetaModel.describesAnnotation("oneOf"),
