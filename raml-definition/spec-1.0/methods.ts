@@ -3,6 +3,7 @@ import Sys = require("./systemTypes")
 import Bodies=require("./bodies")
 import DataModel=require("./datamodel")
 import Security=require("./security")
+import {Annotable} from "./common";
 
 
 ///////////////////
@@ -17,34 +18,42 @@ export class TraitRef extends Sys.Reference<Trait>{
     ]
 }
 
-export class Trait extends MethodBase{
-    name:string
-    $name=[MetaModel.key(),MetaModel.description("Name of the trait")]
 
-    $displayName=[
-        MetaModel.description("The displayName attribute specifies the trait display name. It is a friendly name used only for  " +
-            "display or documentation purposes. If displayName is not specified, it defaults to the element's key (the name of the " +
-            "property itself).")
+export class Operation extends Annotable {
+    queryParameters:DataModel.TypeDeclaration[]
+    $queryParameters=[
+        MetaModel.setsContextValue("fieldOrParam",true),
+        MetaModel.setsContextValue("location",DataModel.ModelLocation.QUERY),
+        MetaModel.setsContextValue("locationKind",DataModel.LocationKind.APISTRUCTURE),
+        MetaModel.newInstanceName("New query parameter"),
+        MetaModel.description("An APIs resources MAY be filtered (to return a subset of results) or altered (such as transforming " +
+            " a response body from JSON to XML format) by the use of query strings. If the resource or its method supports a query " +
+            "string, the query string MUST be defined by the queryParameters property")
     ]
 
-    usage:string
-    $usage = [ MetaModel.description("Instructions on how and when the trait should be used.") ]
-
-    $=[
-        MetaModel.inlinedTemplates(),MetaModel.allowQuestion(),
-        MetaModel.possibleInterfaces(["FragmentDeclaration"])
+    headers:DataModel.TypeDeclaration[];
+    $headers=[
+        MetaModel.setsContextValue("fieldOrParam",true),
+        MetaModel.setsContextValue("location",DataModel.ModelLocation.HEADERS),
+        MetaModel.setsContextValue("locationKind",DataModel.LocationKind.APISTRUCTURE),
+        MetaModel.description("Headers that allowed at this position"),
+        MetaModel.newInstanceName("New Header")
     ]
 
-
-
-    parametrizedProperties:DataModel.TypeInstance
-    $parametrizedProperties = [
-        MetaModel.customHandling(),
-        MetaModel.description("Returns object representation of parametrized properties of the trait")
+    queryString:DataModel.TypeDeclaration
+    $queryString=[
+        MetaModel.description("Specifies the query string needed by this method. Mutually exclusive with queryParameters.")
     ]
+
+    responses:Bodies.Response[]
+    $responses=[
+        MetaModel.setsContextValue("response","true"),
+        MetaModel.newInstanceName("New Response"),
+        MetaModel.description("Information about the expected responses to a request"),
+        MetaModel.valueDescription("An object whose keys are the HTTP status codes of the responses and whose values describe the responses.")
+    ]
+
 }
-
-
 ///////////////////
 //// Method
 //////////////////
@@ -84,7 +93,6 @@ export class MethodBase extends Operation{
 
     displayName:string
 }
-
 export class Method extends MethodBase {
     method:string;
     $method=[MetaModel.key(),
@@ -107,39 +115,29 @@ export class Method extends MethodBase {
     ]
 
 }
+export class Trait extends MethodBase{
+    name:string
+    $name=[MetaModel.key(),MetaModel.description("Name of the trait")]
 
-export class Operation extends Annotable {
-    queryParameters:DataModel.TypeDeclaration[]
-    $queryParameters=[
-        MetaModel.setsContextValue("fieldOrParam",true),
-        MetaModel.setsContextValue("location",DataModel.ModelLocation.QUERY),
-        MetaModel.setsContextValue("locationKind",DataModel.LocationKind.APISTRUCTURE),
-        MetaModel.newInstanceName("New query parameter"),
-        MetaModel.description("An APIs resources MAY be filtered (to return a subset of results) or altered (such as transforming " +
-            " a response body from JSON to XML format) by the use of query strings. If the resource or its method supports a query " +
-            "string, the query string MUST be defined by the queryParameters property")
+    $displayName=[
+        MetaModel.description("The displayName attribute specifies the trait display name. It is a friendly name used only for  " +
+            "display or documentation purposes. If displayName is not specified, it defaults to the element's key (the name of the " +
+            "property itself).")
     ]
 
-    headers:DataModel.TypeDeclaration[];
-    $headers=[
-        MetaModel.setsContextValue("fieldOrParam",true),
-        MetaModel.setsContextValue("location",DataModel.ModelLocation.HEADERS),
-        MetaModel.setsContextValue("locationKind",DataModel.LocationKind.APISTRUCTURE),
-        MetaModel.description("Headers that allowed at this position"),
-        MetaModel.newInstanceName("New Header")
+    usage:string
+    $usage = [ MetaModel.description("Instructions on how and when the trait should be used.") ]
+
+    $=[
+        MetaModel.inlinedTemplates(),MetaModel.allowQuestion(),
+        MetaModel.possibleInterfaces(["FragmentDeclaration"]),
+        MetaModel.amfDeclares()
     ]
 
-    queryString:DataModel.TypeDeclaration
-    $queryString=[
-        MetaModel.description("Specifies the query string needed by this method. Mutually exclusive with queryParameters.")
-    ]
 
-    responses:Bodies.Response[]
-    $responses=[
-        MetaModel.setsContextValue("response","true"),
-        MetaModel.newInstanceName("New Response"),
-        MetaModel.description("Information about the expected responses to a request"),
-        MetaModel.valueDescription("An object whose keys are the HTTP status codes of the responses and whose values describe the responses.")
+    parametrizedProperties:DataModel.TypeInstance
+    $parametrizedProperties = [
+        MetaModel.customHandling(),
+        MetaModel.description("Returns object representation of parametrized properties of the trait")
     ]
-
 }

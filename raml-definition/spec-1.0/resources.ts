@@ -3,6 +3,7 @@ import Sys = require("./systemTypes")
 import DataModel=require("./datamodel")
 import Security=require("./security")
 import Methods=require("./methods")
+import {Annotable} from "./common";
 
 ///////////////////
 //// Resource Type
@@ -16,38 +17,6 @@ export class ResourceTypeRef extends Sys.Reference<ResourceType>{
     ]
 }
 
-export class ResourceType extends ResourceBase  {
-    $=[
-       MetaModel.inlinedTemplates(),MetaModel.allowQuestion(),
-       MetaModel.possibleInterfaces(["FragmentDeclaration"])
-    ]
-
-    displayName:string
-    $displayName=[
-        MetaModel.description("The displayName attribute specifies the resource type display name. It is a friendly name used only for  " +
-            "display or documentation purposes. If displayName is not specified, it defaults to the element's key (the name of the " +
-            "property itself).")
-    ]
-
-    name:string
-    $name=[
-        MetaModel.key(),
-        MetaModel.description("Name of the resource type")
-    ]
-
-    usage:string
-    $usage=[
-        MetaModel.description("Instructions on how and when the resource type should be used.")
-    ]
-
-
-
-    parametrizedProperties:DataModel.TypeInstance
-    $parametrizedProperties = [
-        MetaModel.customHandling(),
-        MetaModel.description("Returns object representation of parametrized properties of the resource type")
-    ]
-}
 
 ///////////////////
 //// Resource
@@ -98,6 +67,40 @@ export class ResourceBase extends Annotable{
         MetaModel.valueDescription("object whose property names are the URI parameter names and whose values describe the values")
     ]
 }
+export class ResourceType extends ResourceBase  {
+    $=[
+        MetaModel.inlinedTemplates(),MetaModel.allowQuestion(),
+        MetaModel.possibleInterfaces(["FragmentDeclaration"]),
+        MetaModel.amfDeclares()
+    ]
+
+    displayName:string
+    $displayName=[
+        MetaModel.description("The displayName attribute specifies the resource type display name. It is a friendly name used only for  " +
+            "display or documentation purposes. If displayName is not specified, it defaults to the element's key (the name of the " +
+            "property itself).")
+    ]
+
+    name:string
+    $name=[
+        MetaModel.key(),
+        MetaModel.description("Name of the resource type")
+    ]
+
+    usage:string
+    $usage=[
+        MetaModel.description("Instructions on how and when the resource type should be used.")
+    ]
+
+
+
+    parametrizedProperties:DataModel.TypeInstance
+    $parametrizedProperties = [
+        MetaModel.customHandling(),
+        MetaModel.description("Returns object representation of parametrized properties of the resource type")
+    ]
+}
+
 
 export class Resource extends ResourceBase {
     relativeUri:Sys.RelativeUriString
@@ -122,7 +125,6 @@ export class Resource extends ResourceBase {
         MetaModel.documentationTableLabel("/&lt;relativeUri&gt;"),
         MetaModel.valueDescription("object describing the nested resource")
     ]
-
 
 
     $description=[

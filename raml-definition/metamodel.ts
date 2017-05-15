@@ -254,6 +254,15 @@ export function extraMetaKey(name:string){}
 export function nameAtRuntime(name:string){}
 
 
+export function amfDeclares(){}
+
+export function amfEncodes(){}
+
+export function amfProperty(name: string){}
+
+export function amfType(name: string){}
+
+
 export function alias(name:string){}
 /**
  * This annotation may be placed on types which implements Referanceable

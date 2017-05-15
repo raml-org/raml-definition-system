@@ -3,6 +3,8 @@ import  Sys = require("./systemTypes")
 import  Bodies=require("./bodies")
 import  Common=require("./common")
 import  Declarations=require("./declarations")
+import {Annotable} from "./common";
+import {AnnotationTarget} from "./declarations";
 
 export enum ModelLocation{
   QUERY,HEADERS,URI,FORM,BURI,ANNOTATION,MODEL,SECURITYSCHEMATYPE
@@ -178,7 +180,8 @@ export class TypeDeclaration extends Annotable{
 
   $=[
     MetaModel.convertsToGlobalOfType("SchemaString"),MetaModel.canInherit("mediaType"),
-    MetaModel.possibleInterfaces(["FragmentDeclaration"])
+    MetaModel.possibleInterfaces(["FragmentDeclaration"]),
+    MetaModel.amfDeclares()
   ]
 
 
