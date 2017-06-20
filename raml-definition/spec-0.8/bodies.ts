@@ -67,6 +67,12 @@ export class BodyLike {
   description:Sys.MarkdownString;
   $description = [MetaModel.description("Human readable description of the body")];
 
+  parametrizedProperties:Sys.TypeInstance
+  $parametrizedProperties=[
+    MetaModel.customHandling(),
+    MetaModel.description("For bodies defined inside traits and resource types returns object representation of parametrized properties")
+  ]
+
 }
 
 //Later we will attach functionality which is specific for XMLBody and JSONBody at this moment they are the same
@@ -126,5 +132,11 @@ export class Response {
   $description=[
     MetaModel.description("The description attribute describes the intended use or " +
         "meaning of the $self. This value MAY be formatted using Markdown.")
+  ]
+
+  parametrizedProperties:Sys.TypeInstance
+  $parametrizedProperties=[
+    MetaModel.customHandling(),
+    MetaModel.description("For responses defined inside traits and resource types returns object representation of parametrized properties")
   ]
 }
