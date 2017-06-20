@@ -72,7 +72,7 @@ export class TypeDeclaration extends Annotable{
   name:string
   $name=[
     MetaModel.key(),
-    MetaModel.description("name of the parameter"),
+    MetaModel.description("Type name for top level types. For properties and parameters -- property o parameter name, respectively. For bodies -- media type."),
     MetaModel.extraMetaKey("headers"),
     MetaModel.hide()
   ]
@@ -170,7 +170,7 @@ export class TypeDeclaration extends Annotable{
   required: boolean
   $required=[
     MetaModel.requireValue("fieldOrParam",true),
-    MetaModel.description("Sets if property is optional or not"),
+    MetaModel.description("For property or parameter states if it is required."),
     MetaModel.describesAnnotation("required"),
     MetaModel.hide(),
     MetaModel.defaultBooleanValue(true)
