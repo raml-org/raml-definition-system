@@ -86,6 +86,7 @@ export class TypeDeclaration extends Annotable{
 
   facets:TypeDeclaration[];
   $facets=[
+    MetaModel.embeddedInMaps(),
     MetaModel.declaringFields(),
     MetaModel.description("When extending from a type you can define new facets (which can then be set to " +
       "concrete values by subtypes)."),
@@ -324,6 +325,7 @@ export class ObjectTypeDeclaration extends TypeDeclaration{
 
   properties:TypeDeclaration[]
   $properties=[
+    MetaModel.embeddedInMaps(),
     MetaModel.setsContextValue("fieldOrParam",true),
     MetaModel.description("The properties that instances of this type may or must have."),
     MetaModel.valueDescription("An object whose keys are the properties' names and whose values are property declarations.")
