@@ -291,6 +291,9 @@ var Universes={
           "name": "description",
           "range": "MarkdownString",
           "domain": "Parameter"
+        },
+        "parametrizedProperties": {
+          "name": "parametrizedProperties"
         }
       }
     },
@@ -672,6 +675,9 @@ var Universes={
         },
         "schemaContent": {
           "name": "schemaContent"
+        },
+        "parametrizedProperties": {
+          "name": "parametrizedProperties"
         }
       }
     },
@@ -757,6 +763,9 @@ var Universes={
           "name": "description",
           "range": "MarkdownString",
           "domain": "Response"
+        },
+        "parametrizedProperties": {
+          "name": "parametrizedProperties"
         }
       }
     },
@@ -978,6 +987,9 @@ var Universes={
           "name": "is",
           "range": "TraitRef",
           "domain": "Method"
+        },
+        "parametrizedProperties": {
+          "name": "parametrizedProperties"
         }
       }
     },
@@ -2682,6 +2694,11 @@ var Universes={
         },
         "description": {
           "name": "description"
+        },
+        "parametrizedProperties": {
+          "name": "parametrizedProperties",
+          "range": "TypeInstance",
+          "domain": "Response"
         }
       }
     },

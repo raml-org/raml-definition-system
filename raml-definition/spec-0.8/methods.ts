@@ -88,6 +88,12 @@ export class Method extends MethodBase {
     $is=[
         MetaModel.description("Instantiation of applyed traits")
     ]
+
+    parametrizedProperties:Sys.TypeInstance
+    $parametrizedProperties=[
+        MetaModel.customHandling(),
+        MetaModel.description("For methods defined inside resource types returns object representation of parametrized properties")
+    ]
 }
 
 ///////////////////

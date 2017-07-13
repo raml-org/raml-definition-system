@@ -51,4 +51,10 @@ export class Response  extends Annotable{
       "key begins with \"(\" and ends with \")\" and whose name (the part between the beginning and ending parentheses) is a " +
       "declared annotation name.")
   ]
+
+  parametrizedProperties:DataModel.TypeInstance
+  $parametrizedProperties = [
+    MetaModel.customHandling(),
+    MetaModel.description("For responses defined in traits or resource types returns object representation of parametrized properties")
+  ]
 }

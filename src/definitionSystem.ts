@@ -461,6 +461,26 @@ export class Property extends typeSystem.Property implements typeSystem.IPropert
     private _selfNode=false;
     private _noDirectParse:boolean=false;
 
+    private static CLASS_IDENTIFIER_Property_def = "definitionSystem.Property";
+
+    public static isInstance(instance : any) : instance is Property {
+        if(instance != null && instance.getClassIdentifier
+            && typeof(instance.getClassIdentifier) == "function"){
+
+            for (let currentIdentifier of instance.getClassIdentifier()){
+                if(currentIdentifier == Property.CLASS_IDENTIFIER_Property_def) return true;
+            }
+        }
+
+        return false;
+    }
+
+    public getClassIdentifier() : string[] {
+        let superIdentifiers = super.getClassIdentifier();
+
+        return superIdentifiers.concat(Property.CLASS_IDENTIFIER_Property_def);
+    }
+
     isPrimitive(){
         return this.range().isValueType()&&!(this.range() instanceof  ReferenceType);
     }
@@ -737,7 +757,7 @@ export class UserDefinedProp extends Property{
     }
 
     public getClassIdentifier() : string[] {
-        var superIdentifiers = [];
+        let superIdentifiers = super.getClassIdentifier();
 
         return superIdentifiers.concat(UserDefinedProp.CLASS_IDENTIFIER);
     }

@@ -72,7 +72,7 @@ export class TypeDeclaration extends Annotable{
   name:string
   $name=[
     MetaModel.key(),
-    MetaModel.description("name of the parameter"),
+    MetaModel.description("Type name for top level types. For properties and parameters -- property o parameter name, respectively. For bodies -- media type."),
     MetaModel.extraMetaKey("headers"),
     MetaModel.hide()
   ]
@@ -86,6 +86,7 @@ export class TypeDeclaration extends Annotable{
 
   facets:TypeDeclaration[];
   $facets=[
+    MetaModel.embeddedInMaps(),
     MetaModel.declaringFields(),
     MetaModel.description("When extending from a type you can define new facets (which can then be set to " +
       "concrete values by subtypes)."),
@@ -170,7 +171,7 @@ export class TypeDeclaration extends Annotable{
   required: boolean
   $required=[
     MetaModel.requireValue("fieldOrParam",true),
-    MetaModel.description("Sets if property is optional or not"),
+    MetaModel.description("For property or parameter states if it is required."),
     MetaModel.describesAnnotation("required"),
     MetaModel.hide(),
     MetaModel.defaultBooleanValue(true)
@@ -324,6 +325,7 @@ export class ObjectTypeDeclaration extends TypeDeclaration{
 
   properties:TypeDeclaration[]
   $properties=[
+    MetaModel.embeddedInMaps(),
     MetaModel.setsContextValue("fieldOrParam",true),
     MetaModel.description("The properties that instances of this type may or must have."),
     MetaModel.valueDescription("An object whose keys are the properties' names and whose values are property declarations.")

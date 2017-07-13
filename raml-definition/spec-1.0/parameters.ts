@@ -13,8 +13,7 @@ export class FileTypeDeclaration extends DataModel.TypeDeclaration {
 
   fileTypes:Sys.ContentType[]
   $fileTypes=[
-    MetaModel.description("It should also include a new property: fileTypes, which should be a list of valid content-type " +
-      "strings for the file. The file type */* should be a valid value.")
+    MetaModel.description("A list of valid content-type strings for the file. The file type */* should be a valid value.")
   ]
 
   minLength:number
