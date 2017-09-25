@@ -861,7 +861,6 @@ export class RAMLPropertyService extends RAMLPropertyParserService{
         if (!_property){
             throw new Error();
         }
-        super();
     }
 
     private _meta:{[key:string]:any} = {};
