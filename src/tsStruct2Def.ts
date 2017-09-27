@@ -1,4 +1,3 @@
-/// <reference path="../typings/main.d.ts" />
 import tsModel=require("ts-structure-parser")
 import def=require("./definitionSystem")
 import _=require("underscore")

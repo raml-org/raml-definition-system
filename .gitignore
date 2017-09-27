@@ -8,8 +8,6 @@
 *.log
 .idea
 
-/typings/
-
 /dist/
 
 .project
