@@ -17,7 +17,6 @@ npm install raml-definition-system --save
 ### From Sources
 
 ```
-typings install
 npm install
 ```
 
