@@ -1,6 +1,6 @@
 {
   "name": "raml-definition-system",
-  "version": "0.0.69",
+  "version": "0.0.70",
   "main": "dist/definitionSystem.js",
   "scripts": {
     "compile": "rimraf dist && tsc",
@@ -13,9 +13,9 @@
     "devInstall": "dev-env-installer install"
   },
   "dependencies": {
-    "know-your-http-well": "^0.2.0",
-    "raml-typesystem": "0.0.75",
-    "ts-structure-parser": "0.0.13",
+    "know-your-http-well": "^0.5.0",
+    "raml-typesystem": "0.0.76",
+    "ts-structure-parser": "0.0.14",
     "underscore": "^1.8.3"
   },
   "typings": "dist/definitionSystem.d.ts",
@@ -38,8 +38,8 @@
     "@types/node": "4.2.20",
     "@types/underscore": "1.8.3",
     "typescript": "2.5.2",
-    "dev-env-installer":"0.0.5",
-    "json-loader": "^0.5.1",
+    "dev-env-installer": "^0.0.14",
+    "json-loader": "^0.5.7",
     "rimraf":"*"
   }
 }
