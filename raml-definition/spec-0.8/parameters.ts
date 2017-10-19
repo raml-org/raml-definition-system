@@ -53,7 +53,7 @@ export class Parameter {
     "the server uses if the client does not send a value.")
   ]
 
-  example:string
+  example:any
   $example=[
     MetaModel.description("(Optional) The example attribute shows an example value for the property." +
       " This can be used, e.g., by documentation generators to generate sample values for the property.")

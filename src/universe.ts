@@ -279,7 +279,7 @@ var Universes={
         },
         "example": {
           "name": "example",
-          "range": "StringType",
+          "range": "AnyType",
           "domain": "Parameter"
         },
         "repeat": {
@@ -332,7 +332,7 @@ var Universes={
         },
         "example": {
           "name": "example",
-          "range": "StringType",
+          "range": "AnyType",
           "domain": "Parameter"
         },
         "repeat": {
@@ -402,7 +402,7 @@ var Universes={
         },
         "example": {
           "name": "example",
-          "range": "StringType",
+          "range": "AnyType",
           "domain": "Parameter"
         },
         "repeat": {
@@ -452,7 +452,7 @@ var Universes={
         },
         "example": {
           "name": "example",
-          "range": "StringType",
+          "range": "AnyType",
           "domain": "Parameter"
         },
         "repeat": {
@@ -512,7 +512,7 @@ var Universes={
         },
         "example": {
           "name": "example",
-          "range": "StringType",
+          "range": "AnyType",
           "domain": "Parameter"
         },
         "repeat": {
@@ -572,7 +572,7 @@ var Universes={
         },
         "example": {
           "name": "example",
-          "range": "StringType",
+          "range": "AnyType",
           "domain": "Parameter"
         },
         "repeat": {
@@ -622,7 +622,7 @@ var Universes={
         },
         "example": {
           "name": "example",
-          "range": "StringType",
+          "range": "AnyType",
           "domain": "Parameter"
         },
         "repeat": {
