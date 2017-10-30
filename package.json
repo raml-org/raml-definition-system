@@ -13,10 +13,10 @@
     "devInstall": "dev-env-installer install"
   },
   "dependencies": {
-    "know-your-http-well": "^0.5.0",
+    "know-your-http-well": "0.5.0",
     "raml-typesystem": "0.0.78",
     "ts-structure-parser": "0.0.15",
-    "underscore": "^1.8.3"
+    "underscore": "1.8.3"
   },
   "typings": "dist/definitionSystem.d.ts",
   "repository": {
@@ -38,8 +38,8 @@
     "@types/node": "4.2.20",
     "@types/underscore": "1.8.3",
     "typescript": "2.5.2",
-    "dev-env-installer": "^0.0.14",
-    "json-loader": "^0.5.7",
+    "dev-env-installer": "0.0.14",
+    "json-loader": "0.5.7",
     "rimraf":"*"
   }
 }
