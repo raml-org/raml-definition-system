@@ -89,7 +89,7 @@ export class Method extends MethodBase {
     method:string;
     $method=[MetaModel.key(),
         MetaModel.extraMetaKey("methods"),
-        MetaModel.oneOf(["get","put","post","delete","options","head","patch"]),
+        MetaModel.oneOf(["get","put","post","delete","options","head","patch", "trace", "connect"]),
         MetaModel.description("Method that can be called"),
         MetaModel.hide()
     ]
