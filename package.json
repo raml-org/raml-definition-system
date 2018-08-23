@@ -37,7 +37,7 @@
   "devDependencies": {
     "@types/node": "4.2.20",
     "@types/underscore": "1.8.3",
-    "typescript": "2.5.2",
+    "typescript": "2.8.4",
     "dev-env-installer": "0.0.14",
     "json-loader": "0.5.7",
     "rimraf":"*"
