@@ -16,7 +16,7 @@
     "know-your-http-well": "0.5.0",
     "raml-typesystem": "0.0.88",
     "ts-structure-parser": "0.0.16",
-    "underscore": "1.8.3"
+    "underscore": "1.9.1"
   },
   "typings": "dist/definitionSystem.d.ts",
   "repository": {
@@ -37,7 +37,7 @@
   "devDependencies": {
     "@types/node": "4.2.20",
     "@types/underscore": "1.8.3",
-    "typescript": "2.8.4",
+    "typescript": "3.0.1",
     "dev-env-installer": "0.0.14",
     "json-loader": "0.5.7",
     "rimraf":"*"
