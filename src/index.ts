@@ -1,4 +1,4 @@
-import ts=require("ts-structure-parser")
+import ts=require("ts-structure-model")
 
 export interface JSONDump{
     RAML08:ts.Module,

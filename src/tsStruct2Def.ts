@@ -1,4 +1,4 @@
-import tsModel=require("ts-structure-parser")
+import tsModel=require("ts-structure-model")
 import def=require("./definitionSystem")
 import _=require("underscore")
 import aHandlers=require("./annotationHandlers")

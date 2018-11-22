@@ -15,7 +15,7 @@
   "dependencies": {
     "know-your-http-well": "0.5.0",
     "raml-typesystem": "0.0.90",
-    "ts-structure-parser": "0.0.17",
+    "ts-structure-model": "0.0.1",
     "underscore": "1.9.1"
   },
   "typings": "dist/definitionSystem.d.ts",
@@ -37,6 +37,7 @@
   "devDependencies": {
     "@types/node": "4.2.20",
     "@types/underscore": "1.8.3",
+    "ts-structure-parser": "0.0.19",
     "typescript": "3.0.1",
     "dev-env-installer": "0.0.14",
     "json-loader": "0.5.7",
