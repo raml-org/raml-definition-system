@@ -1,6 +1,6 @@
 {
   "name": "raml-definition-system",
-  "version": "0.0.86",
+  "version": "0.0.87",
   "main": "dist/definitionSystem.js",
   "scripts": {
     "compile": "rimraf dist && tsc",
@@ -37,7 +37,7 @@
   "devDependencies": {
     "@types/node": "4.2.20",
     "@types/underscore": "1.8.3",
-    "ts-structure-parser": "0.0.18",
+    "ts-structure-parser": "0.0.19",
     "typescript": "3.0.1",
     "dev-env-installer": "0.0.14",
     "json-loader": "0.5.7",
