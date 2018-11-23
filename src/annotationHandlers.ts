@@ -1,5 +1,5 @@
 /// <reference path="../typings/main.d.ts" />
-import tsModel=require("ts-structure-parser")
+import tsModel=require("ts-structure-model")
 import def=require("./definitionSystem")
 import khttp=require ("know-your-http-well");
 import _=require("underscore")
