@@ -1,6 +1,6 @@
 # RAML Definition System
 
-[![Build Status](https://travis-ci.org/raml-org/raml-definition-system.svg?branch=master)](https://travis-ci.org/raml-org/raml-definition-system)
+[![Build Status](https://travis-ci.org/raml-org/raml-definition-system.svg?branch=master)](https://travis-ci.org/raml-org/raml-definition-system) [![Greenkeeper badge](https://badges.greenkeeper.io/raml-org/raml-definition-system.svg)](https://greenkeeper.io/)
 
 > This repository contains a set of interfaces that represents a declarative description of the RAML specification.
 
