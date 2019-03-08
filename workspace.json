@@ -2,7 +2,8 @@
   "raml-1-parser" : {
     "build" : "npm run build",
     "test" : "gulp test",
-    "gitUrl" : "https://github.com/raml-org/raml-js-parser-2.git"
+    "gitUrl" : "https://github.com/raml-org/raml-js-parser-2.git",
+    "gitBranch": "upgrade_nodejs"
   },
   "raml-definition-system" : {
     "build" : "npm run build",
@@ -12,7 +13,8 @@
   "raml-typesystem" : {
     "build" : "npm run build",
     "test" : "npm run test-cov",
-    "gitUrl" : "https://github.com/raml-org/raml-typesystem.git"
+    "gitUrl" : "https://github.com/raml-org/raml-typesystem.git",
+    "gitBranch": "upgrade_nodejs"
   },
   "raml-xml-validation" : {
     "build" : "npm run build",
