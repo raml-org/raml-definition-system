@@ -7,9 +7,9 @@
     "generateJSON": "node dist/builder.js",
     "generateUniverses": "node dist/enumGen.js",
     "build": "npm run compile && npm run generateJSON && npm run generateUniverses && tsc",
-    "pullall" : "dev-env-installer pullall",
-    "buildall" : "dev-env-installer buildall",
-    "testall" : "dev-env-installer testall",
+    "pullall": "dev-env-installer pullall",
+    "buildall": "dev-env-installer buildall",
+    "testall": "dev-env-installer testall",
     "devInstall": "dev-env-installer install"
   },
   "dependencies": {
@@ -41,6 +41,6 @@
     "typescript": "3.3.3333",
     "dev-env-installer": "0.0.14",
     "json-loader": "0.5.7",
-    "rimraf":"*"
+    "rimraf": "*"
   }
 }
