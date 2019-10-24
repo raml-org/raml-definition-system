@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "know-your-http-well": "0.5.0",
-    "raml-typesystem": "0.0.93",
+    "raml-typesystem": "^0.0.94",
     "ts-structure-model": "0.0.1",
     "underscore": "1.9.1"
   },
@@ -35,12 +35,12 @@
     "url": "https://github.com/raml-org/raml-definition-system/issues"
   },
   "devDependencies": {
-    "@types/node": "11.9.6",
-    "@types/underscore": "1.8.10",
-    "ts-structure-parser": "0.0.19",
-    "typescript": "3.3.3333",
+    "@types/node": "^12.11.6",
+    "@types/underscore": "^1.9.3",
     "dev-env-installer": "0.0.14",
     "json-loader": "0.5.7",
-    "rimraf": "*"
+    "rimraf": "*",
+    "ts-structure-parser": "0.0.19",
+    "typescript": "3.3.3333"
   }
 }
