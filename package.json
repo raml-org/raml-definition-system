@@ -1,6 +1,6 @@
 {
   "name": "raml-definition-system",
-  "version": "0.0.91",
+  "version": "0.0.92",
   "main": "dist/definitionSystem.js",
   "scripts": {
     "compile": "rimraf dist && tsc",
@@ -16,7 +16,7 @@
     "know-your-http-well": "0.5.0",
     "raml-typesystem": "^0.0.94",
     "ts-structure-model": "0.0.1",
-    "underscore": "1.9.1"
+    "underscore": "^1.9.2"
   },
   "typings": "dist/definitionSystem.d.ts",
   "repository": {
@@ -35,7 +35,7 @@
     "url": "https://github.com/raml-org/raml-definition-system/issues"
   },
   "devDependencies": {
-    "@types/node": "^12.11.6",
+    "@types/node": "^13.9.0",
     "@types/underscore": "^1.9.3",
     "dev-env-installer": "0.0.14",
     "json-loader": "0.5.7",
