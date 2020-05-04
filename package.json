@@ -36,7 +36,7 @@
   },
   "devDependencies": {
     "@types/node": "^13.9.0",
-    "@types/underscore": "^1.9.3",
+    "@types/underscore": "1.9.4",
     "dev-env-installer": "0.0.14",
     "json-loader": "0.5.7",
     "rimraf": "*",
